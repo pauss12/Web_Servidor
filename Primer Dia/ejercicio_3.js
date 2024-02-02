@@ -1,27 +1,6 @@
-/* EJERCICIO 1
 
-function holaMundo(nombre)
-{
-    return `Hola ${ nombre }`;
-}
-
-console.log(holaMundo('Paula'));
-
-*/
-
-/* EJERCICIO 2 */
-/*
-function mostrarTema(tema)
-{
-    console.log("El tema es " + tema);
-}
-
-setTimeout(mostrarTema, 2000, "Programación");
-
-*/
 
 /* EJERCICIO 3 */
-
 function mostrarTema(tema)
 {
     console.log("El tema es " + tema);
