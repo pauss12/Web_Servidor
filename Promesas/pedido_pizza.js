@@ -9,7 +9,7 @@ const products = [
 ];
 
 const getProducts = () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         setTimeout(() => {
             resolve(products);
         }, 3000);
@@ -20,6 +20,9 @@ getProducts().then((products) => {
 
     console.log(products);
 })
+    .catch((error) => {
+        console.log(error);
+});
 
 
 
