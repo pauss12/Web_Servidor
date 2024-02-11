@@ -14,7 +14,7 @@ app.get('/', (req, res) => { res.send('Hello World') })
 const port = process.env.PORT || 3000;
 
 // UNA FORMA DE HACER EL GET ---------------------------------
-app.get('/api/cursos/programacion', (req, res) => {
+/*app.get('/api/cursos/programacion', (req, res) => {
     res.send(JSON.stringify(infoCursos.programacion));
 })
 
@@ -42,7 +42,13 @@ app.get('/api/cursos/programacion/:lenguaje', (req, res) => {
         res.status(404).send("ERROR 404: No se encontró el curso");
     }
 
-    res.send(JSON.stringify(data))
+    if (req.query.ordenar === 'vistas') {
+        //Orden DESC, si lo queremos ASC, sería (a.vistas, b.vistas)
+        res.send(JSON.stringify(data.sort((a, b) => b.vistas - a.vistas)));
+    } else {
+        res.send(JSON.stringify(data));
+    }
+
 })
 
 app.get('/api/cursos/programacion/:lenguaje/:nivel', (req, res) => {
@@ -71,6 +77,66 @@ app.get('/api/cursos/matematicas/:tema', (req, res) => {
     }
 
     res.send(JSON.stringify(data))
+})
+*/
+
+//ROTERS EN EXPRESS
+const routerProgramacion = express.Router();
+
+app.use('/api/cursos/programacion', routerProgramacion);
+
+routerProgramacion.get('/:lenguaje', (req, res) => {
+
+    const lenguaje = req.params.lenguaje;
+
+    const data = infoCursos.programacion.filter((curso) => curso.lenguaje === lenguaje);
+
+    if (data.length === 0) {
+        res.status(404).send("ERROR 404: No se encontró el curso");
+    }
+
+    if (req.query.ordenar === 'vistas') {
+        //Orden DESC, si lo queremos ASC, sería (a.vistas, b.vistas)
+        res.send(JSON.stringify(data.sort((a, b) => b.vistas - a.vistas)));
+    } else {
+        res.send(JSON.stringify(data));
+    }
+
+})
+
+routerProgramacion.get('/:lenguaje/:nivel', (req, res) => {
+
+    const lenguaje = req.params.lenguaje;
+
+    const nivel = req.params.nivel;
+
+    const data = infoCursos.programacion.filter((curso) => curso.lenguaje === lenguaje && curso.nivel === nivel);
+
+    if (data.length === 0) {
+
+        res.status(404).send("ERROR 404: No se encontró el curso");
+    }
+
+    res.send(JSON.stringify(data))
+
+})
+
+const routerMatematicas = express.Router();
+
+app.use('/api/cursos/matematicas', routerMatematicas);
+
+routerMatematicas.get('/:tema', (req, res) => {
+
+    const tema = req.params.tema;
+
+    const data = infoCursos.matematicas.filter((curso) => curso.tema === tema);
+
+    if (data.length === 0) {
+        res.status(404).send("ERROR 404: No se encontró el curso");
+    }
+
+    res.send(JSON.stringify(data))
+
 })
 
 // Listening ----------------------------------------------

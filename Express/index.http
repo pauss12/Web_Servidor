@@ -24,3 +24,7 @@ GET http://localhost:3000/api/cursos/matematicas/calculo
 ###
 
 GET http://localhost:3000/api/cursos
+
+###
+
+GET http://localhost:3000/api/cursos/programacion/python?ordenar=vistas
