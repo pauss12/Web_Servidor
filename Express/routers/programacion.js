@@ -13,7 +13,7 @@ routerProgramacion.get('/:lenguaje', (req, res) => {
 
     const lenguaje = req.params.lenguaje;
 
-    const data = infoCursos.programacion.filter((curso) => curso.lenguaje === lenguaje);
+    const data = programacion.filter((curso) => curso.lenguaje === lenguaje);
 
     if (data.length === 0) {
         res.status(404).send("ERROR 404: No se encontró el curso");
@@ -34,7 +34,7 @@ routerProgramacion.get('/:lenguaje/:nivel', (req, res) => {
 
     const nivel = req.params.nivel;
 
-    const data = infoCursos.programacion.filter((curso) => curso.lenguaje === lenguaje && curso.nivel === nivel);
+    const data = programacion.filter((curso) => curso.lenguaje === lenguaje && curso.nivel === nivel);
 
     if (data.length === 0) {
 

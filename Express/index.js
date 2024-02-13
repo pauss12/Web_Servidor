@@ -8,7 +8,7 @@ const { infoCursos } = require('./cursos.js');
 require('dotenv').config();
 
 // Routing
-app.get('/', (req, res) => { res.send('Hello World') })
+//app.get('/', (req, res) => { res.send('Hello World') })
 
 const routerProgramacion = require('./routers/programacion.js');
 app.use('/api/cursos/programacion', routerProgramacion);

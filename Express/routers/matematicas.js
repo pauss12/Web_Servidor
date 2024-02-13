@@ -13,7 +13,7 @@ routerMatematicas.get('/:tema', (req, res) => {
 
     const tema = req.params.tema;
 
-    const data = infoCursos.matematicas.filter((curso) => curso.tema === tema);
+    const data = matematicas.filter((curso) => curso.tema === tema);
 
     if (data.length === 0) {
         res.status(404).send("ERROR 404: No se encontró el curso");
