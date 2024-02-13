@@ -45,4 +45,61 @@ routerProgramacion.get('/:lenguaje/:nivel', (req, res) => {
 
 })
 
+//FUNCION POST --------------------------------
+routerProgramacion.use(express.json());
+
+routerProgramacion.post('/', (req, res) => {
+    const cursoNuevo = req.body;//Aquí irían algunas comprobaciones de formato
+    programacion.push(cursoNuevo);
+    res.send(JSON.stringify(programacion));
+});
+
+//FUNCION PUT --------------------------------
+routerProgramacion.put('/:id', (req, res) => {
+
+    const cursoActualizado = req.body;
+    const id = req.params.id;
+    const indice = programacion.findIndex(curso => curso.id == id);
+
+    // Si no lo encuentra, devuelve -1
+    if (indice >= 0) {
+        programacion[indice] = cursoActualizado;
+    }
+
+    res.json(programacion);
+});
+
+//FUNCION PATCH (Modifica solo los campos que se le pasen) ----
+routerProgramacion.patch('/:id', (req, res) => {
+
+    const cursoActualizado = req.body;
+    const id = req.params.id;
+    const indice = programacion.findIndex(curso => curso.id == id);
+
+    // Si no lo encuentra, devuelve -1
+    if (indice >= 0) {
+        
+        const cursoAModificar = programacion[indice];
+
+        //Modifica solo algunas propiedades del objeto
+        Object.assign(cursoAModificar, cursoActualizado)
+
+    }
+
+    res.json(programacion);
+});
+
+//Funcion DELETE --------------------------------
+routerProgramacion.delete('/:id', (req, res) => {
+
+    const id = req.params.id;
+    const indice = programacion.findIndex(curso => curso.id == id);
+
+    if (indice >= 0) {
+        programacion.splice(indice, 1);
+    }
+
+    res.json(programacion);
+});
+
 module.exports = routerProgramacion;
