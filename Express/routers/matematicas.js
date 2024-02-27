@@ -6,6 +6,12 @@ const routerMatematicas = express.Router();
 
 routerMatematicas.use(express.json());
 
+//Si no lo encuentra, devuelve error 404
+routerMatematicas.get('/', (req, res) => {
+
+    res.json(matematicas);
+});
+
 routerMatematicas.get('/', (req, res) => {
 
     res.json(matematicas);
