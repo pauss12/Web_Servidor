@@ -1,7 +1,9 @@
+
+
 const customHeader = (req, res, next) => {
 
     try {
-        const apiKey = req.headers['x-api-key'];
+        const apiKey = req.headers['api-key'];
         if (apiKey === 'Api-publica-123') {
             next();
         } else {
@@ -14,4 +16,4 @@ const customHeader = (req, res, next) => {
 
 }
 
-module.exports = customHeader;
+module.exports = { customHeader };

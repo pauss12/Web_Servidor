@@ -31,10 +31,11 @@ GET http://localhost:3000/file-1708690942122.jpg
 
 POST http://localhost:3000/api/tracks HTTP/1.1
 Content-Type: application/json
+api-key: Api-publica-123
 
 {
-    "dato": "basura",
-    "name": "cryptobro",
+    "dato": "AALOOOO",
+    "name": "buenas",
     "album": "cuentame",
     "cover": "http://yyy.com",
     "artist": {
@@ -51,8 +52,6 @@ Content-Type: application/json
 }
 
 ###
-
-
 
 POST http://localhost:3000/api/users HTTP/1.1
 Content-Type: application/json
