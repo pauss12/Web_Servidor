@@ -18,4 +18,23 @@ const createUser = async (req, res) => {
     res.send(data)
 }
 
-module.exports = { getUsers, getUser, createUser };
+const deleteUser = async (req, res) => {
+
+    try {
+
+        const body = matchedData(req)
+
+        console.log(body)
+
+        const data = await tracksModel.create(body)
+
+        res.send(data)
+    }
+    catch (error) {
+
+        handleHttpError(res, 'ERROR_DELETE_ITEMS');
+    }
+}
+
+
+module.exports = { getUsers, getUser, createUser, deleteUser };
