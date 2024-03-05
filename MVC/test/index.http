@@ -76,13 +76,17 @@ GET http://localhost:3000/api/tracks/buenas
 
 ### 
 
+DELETE http://localhost:3000/api/tracks/buenas
+
+###
+
 POST http://localhost:3000/api/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "paula",
+    "name": "elena",
     "age": "20",
-    "email": "paulam@gmail.com",
+    "email": "elena@gmail.com",
     "password": "12345678",
     "role":"user"
   
@@ -98,3 +102,4 @@ GET http://localhost:3000/api/users/paula
 
 ###
 
+DELETE http://localhost:3000/api/users/elena
