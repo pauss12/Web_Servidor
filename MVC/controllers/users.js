@@ -2,7 +2,7 @@ const { usersModel } = require('../models')
 
 const getUsers = async (req, res) => {
     const data = await usersModel.find({})
-    res.send(data, user)
+    res.send(data)
 }
 
 
