@@ -7,7 +7,7 @@ const getItems = async (req, res) => {
     
     try {
 
-        const data = await tracksModel.find()
+        const data = await tracksModel.find({})
         res.send(data)
 
     } catch (error) {
@@ -19,9 +19,13 @@ const getItems = async (req, res) => {
 }
 
 const getItem = async (req, res) => {
-    const { id } = req.params.id
-    const data = await tracksModel.find({ name: id })
-    res.send(data, id)
+
+    const id = req.params.id
+
+    const data = await tracksModel.findOne({ name: id })
+
+    res.send(data)
+
 }
 
 const createItem = async (req, res) => {
