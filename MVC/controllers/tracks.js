@@ -26,6 +26,8 @@ const getItem = async (req, res) => {
 
     const id = req.params.id
 
+    console.log(id)
+
     const data = await tracksModel.findOne({ name: id })
 
     res.send(data)
@@ -74,6 +76,8 @@ const deleteItem = async (req, res) => {
     try {
         
         const id = req.params.id
+
+        console.log(id)
     
         // "deleteOne" realiza el borrado físico en la BD
         const data = await tracksModel.deleteOne({ name: id });

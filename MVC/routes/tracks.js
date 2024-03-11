@@ -7,7 +7,9 @@ const { validatorCreateItem, validatorGetItem } = require("../validators/tracks"
 const { customHeader } = require("../Middleware/customHeader")
 
 router.get("/", getItems)
+
 router.get("/:id", validatorGetItem, getItem)
+
 router.post("/", validatorCreateItem, customHeader, createItem)
 
 router.delete("/:id", validatorGetItem, deleteItem)
