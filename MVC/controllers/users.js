@@ -112,15 +112,15 @@ const changeRole = async (req, res) => {
 
         const id = req.params.id
 
-        console.log(id)
+        //console.log(id)
 
-        const user = await usersModel.findOne({ _id: id })
+        //const user = await usersModel.findOne({ _id: id })
 
-        console.log(user)
+        //console.log(user)
 
         const data = await usersModel.findOneAndUpdate({ _id: id }, { role: "admin" }, { new: true })
         
-        console.log(data)
+        //console.log(data)
         
         res.send(data)
 
