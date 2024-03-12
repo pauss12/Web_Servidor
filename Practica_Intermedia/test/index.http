@@ -1,0 +1,30 @@
+
+
+
+###
+
+POST http://localhost:3000/api/comercio HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombreComercio": "Comercio 2",
+    "cifComercio": "1",
+    "direccion": "Calle 2",
+    "email": "comercio2@mail.com",
+    "telefonoContacto": "1",
+    "idPagina": 1
+    
+}
+
+###
+
+GET http://localhost:3000/api/comercio
+
+###
+
+GET http://localhost:3000/api/comercio/A12345678
+
+###
+
+GET http://localhost:3000/api/comercio/A12345622
+
