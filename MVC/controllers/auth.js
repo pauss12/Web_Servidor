@@ -70,4 +70,51 @@ const loginCtrl = async (req, res) => {
     }
 }
 
-module.exports = { registerCtrl, loginCtrl }
+/*
+    TODO: FUNCION DE UPDATE USER
+
+*/
+
+const updateUser = async (req, res) => {
+
+    try {
+
+        const { email } = req.params; // Obtener el email del usuario de los parámetros de la solicitud
+        const { role } = req.body; // Obtener el nuevo rol del cuerpo de la solicitud
+
+        // Verificar si el email proporcionado es válido
+        if (!email) {
+            handleHttpError(res, "INVALID_EMAIL", 400);
+            return;
+        }
+
+        // Verificar si se proporcionó un nuevo rol
+        if (!role) {
+            handleHttpError(res, "MISSING_ROLE", 400);
+            return;
+        }
+
+        // Actualizar el usuario por su email y establecer el nuevo rol
+        const updatedUser = await usersModel.findOneAndUpdate(
+            { email },
+            { role },
+            { new: true }
+        );
+
+        // Verificar si se encontró y actualizó el usuario correctamente
+        if (!updatedUser) {
+            handleHttpError(res, "USER_NOT_FOUND", 404);
+            return;
+        }
+
+        // Enviar respuesta con el usuario actualizado
+        res.json({ message: "User role updated successfully", user: updatedUser });
+
+    } catch (err) {
+
+        handleHttpError(res, "UPDATE_FAILED", 500);
+    }
+};
+
+
+module.exports = { registerCtrl, loginCtrl, updateUser }
