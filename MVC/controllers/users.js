@@ -1,4 +1,6 @@
-const { usersModel } = require('../models/nosql/users')
+const { usersModel } = require('../models/')
+
+const { handleHttpError } = require("../utils/handleError")
 
 const getUsers = async (req, res) => {
     const data = await usersModel.find({})
@@ -26,7 +28,7 @@ const deleteUser = async (req, res) => {
 
         console.log(body)
 
-        const data = await tracksModel.create(body)
+        const data = await usersModel.create(body)
 
         res.send(data)
     }
@@ -36,5 +38,52 @@ const deleteUser = async (req, res) => {
     }
 }
 
+/*const updateUser = async (req, res) => {
 
-module.exports = { getUsers, getUser, createUser, deleteUser };
+    try {
+
+        const body = matchedData(req)
+
+        console.log(body)
+
+        const data = await tracksModel.findOneAndUpdate({ _id: body.user }, body)
+
+        res.send(data)
+
+    }
+    catch (error) {
+
+        handleHttpError(res, 'ERROR_UPDATE_ITEMS');
+    }
+
+}*/
+
+const changeRole = async (req, res) => {
+
+    try {
+
+        const id = req.params.id
+
+        console.log(id)
+
+        const user = await usersModel.findOne({ _id: id })
+
+        console.log(user)
+
+        const data = await usersModel.findOneAndUpdate({ _id: id }, { role: "admin" }, { new: true })
+        
+        console.log(data)
+        
+        res.send(data)
+
+    }
+    catch (error) {
+
+        handleHttpError(res, 'ERROR_UPDATE_ITEMS');
+    }
+
+
+}
+
+
+module.exports = { getUsers, getUser, createUser, deleteUser, changeRole };
