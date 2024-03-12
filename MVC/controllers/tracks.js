@@ -140,4 +140,4 @@ const updateItem = async (req, res) => {
 
 //PATCH
 
-module.exports = { getItems, getItem, createItem, deleteItem };
+module.exports = { getItems, getItem, createItem, deleteItem, updateItem };
