@@ -31,7 +31,7 @@ GET http://localhost:3000/file-1709629888158.jpg
 
 POST http://localhost:3000/api/tracks HTTP/1.1
 Content-Type: application/json
-api-key: Api-publica-123
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWYwMTM3NmY3NTFjMGU0NTY0ZDhhZjIiLCJlbWFpbCI6InRlc3QxMEB0ZXN0LmNvbSIsImlhdCI6MTcxMDIzMjQ1MCwiZXhwIjoxNzEwMjM5NjUwfQ.cefpbQCqDZgOCl-3ArT9NmEm4TE7QAmaGK_mzS8f3fc
 
 {
     "dato": "AALOOOO",
@@ -103,3 +103,36 @@ GET http://localhost:3000/api/users/paula
 ###
 
 DELETE http://localhost:3000/api/users/elena
+
+###
+
+POST http://localhost:3000/api/auth/login HTTP/1.1
+
+###
+
+POST http://localhost:3000/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Menganito",
+    "age": 20,
+    "email": "test10@test.com",
+    "password": "HolaMundo.01"
+}
+
+###
+
+POST http://localhost:3000/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "test10@test.com",
+    "password": "HolaMundo.01"
+}
+
+###
+
+GET http://localhost:3000/api/tracks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWYwMTM3NmY3NTFjMGU0NTY0ZDhhZjIiLCJlbWFpbCI6InRlc3QxMEB0ZXN0LmNvbSIsImlhdCI6MTcxMDIzMjQ1MCwiZXhwIjoxNzEwMjM5NjUwfQ.cefpbQCqDZgOCl-3ArT9NmEm4TE7QAmaGK_mzS8f3fc
+
+###

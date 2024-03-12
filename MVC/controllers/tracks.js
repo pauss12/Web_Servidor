@@ -10,9 +10,12 @@ const getItems = async (req, res) => {
     
     try {
 
+        const user = req.user
         const data = await tracksModel.find({})
-        res.send(data)
 
+        // Tengo todos los datos el cliente
+        res.send({ data, user })
+        
     } catch (error) {
 
         //Si no sirve el de por defecto, que hemos establecido, no es necesario pasar el 403

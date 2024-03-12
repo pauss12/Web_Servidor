@@ -37,6 +37,7 @@ const registerCtrl = async (req, res) => {
  * @param {*} res 
  */
 const loginCtrl = async (req, res) => {
+    
     try {
         req = matchedData(req)
         const user = await usersModel.findOne({ email: req.email }).select("password name role email")
