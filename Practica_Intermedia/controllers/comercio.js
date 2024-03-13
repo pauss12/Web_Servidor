@@ -3,7 +3,7 @@ const { comercioModel } = require('../models')
 
 const { handleHttpError } = require('../utils/handleError')
 
-//const { matchedData } = require('express-validator')
+const { matchedData } = require('express-validator')
 
 /*
     GET ITEMS --------------------------------
@@ -59,11 +59,15 @@ const getComercio = async (req, res) => {
 
     try {
 
-        const id = req.params.id
+        //const id = req.params.id
 
-        //console.log(id)
+        console.log(req)
 
-        const data = await comercioModel.findOne({ cifComercio: id })
+        const { cifComercio } = matchedData(req)
+
+        console.log(cifComercio)
+
+        const data = await comercioModel.findOne({ cifComercio: cifComercio })
 
         //console.log(data)
 
@@ -114,25 +118,6 @@ const createComercio = async (req, res) => {
     }
 }
 
-//DELETE ----------------------------------------------
-/*const deleteItem = async (req, res) => {
-
-    try {
-        const { name } = matchedData(req)
-    
-        // "deleteOne" realiza el borrado físico en la BD
-        const data = await tracksModel.deleteOne({ name: name });
-        
-        // "delete" realiza el borrado lógico en la BD
-        //const data = await tracksModel.delete({ _id: id }); 
-        res.send(data)
-
-    } catch (err) {
-        
-        handleHttpError(res, 'ERROR_DELETE_ITEM')
-    }
-}*/
-
 /*
     DELETE ITEM POR EL CIF DEL COMERCIO ----------------------------
 
@@ -153,6 +138,8 @@ const createComercio = async (req, res) => {
 const deleteComercio = async (req, res) => {
 
     try {
+
+        //const { name } = matchedData(req)
 
         const id = req.params.id
 
