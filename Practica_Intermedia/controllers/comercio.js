@@ -10,15 +10,17 @@ const getComercios = async (req, res) => {
 
     try {
 
-        const user = req.user
+        const data = await comercioModel.find({})
+
+        //console.log(data)
+
+        //ordenarlos ascendentemente por su cif cuando ya los tienes guardado en data
+        data.sort((a, b) => a.cifComercio.localeCompare(b.cifComercio))
         
-        //const data = await comercioModel.find({})
-
-        const data = await comercioModel.find({}).sort({ cif: 1 });
-
+        //console.log(data)
 
         // Tengo todos los datos el cliente
-        res.send({ data, user })
+        res.send(data)
 
     } catch (error) {
 
