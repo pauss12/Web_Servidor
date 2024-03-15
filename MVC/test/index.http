@@ -8,7 +8,7 @@ GET http://localhost:3000/
 ###
 
 
-GET http://localhost:3000/api/storage
+GET http://localhost:3000/api/storag
 
 
 ###
