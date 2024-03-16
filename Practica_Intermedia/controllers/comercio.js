@@ -57,13 +57,20 @@ const getComercios = async (req, res) => {
 */
 const getComercio = async (req, res) => {
 
+
     try {
 
-        const { cifComercio } = matchedData(req)
+        //console.log(req)
 
-       console.log(cifComercio)
+        console.log("holaa")
 
-        const data = await comercioModel.findOne({ cifComercio: cifComercio })
+        const { cifComercio } = matchedData(req.id)
+
+        console.log(id)
+
+        const data = await comercioModel.findOne({ cifComercio: id })
+
+        console.log('Los datos son ' + data)
 
         res.send(data)
 
@@ -73,23 +80,6 @@ const getComercio = async (req, res) => {
     }
 
 }
-
-/*const getComercio = async (req, res) => {
-
-    try {
-
-        //Me quedo solo con el id
-        const { id } = matchedData(req)
-
-        const data = await comercioModel.findById(id)
-
-        res.send(data)
-
-    } catch (err) {
-
-        handleHttpError(res, "ERROR_GET_ITEM")
-    }
-}*/
 
 //CREATE ITEM --------------------------------
 const createComercio = async (req, res) => {
@@ -135,15 +125,21 @@ const deleteComercio = async (req, res) => {
 
         //const { name } = matchedData(req)
 
+        console.log("hola")
+
         const id = req.params.id
 
         console.log(id)
+
+        const activo = req.query.logic
+
+        console.log(activo)
 
         // "deleteOne" realiza el borrado físico en la BD
         //const data = await comercioModel.deleteOne({ cifComercio: id });
 
         // "delete" realiza el borrado lógico en la BD
-        const data = await comercioModel.delete({ cifComercio: id }); 
+        //const data = await comercioModel.delete({ cifComercio: id }); 
 
         //console.log(data)
 
