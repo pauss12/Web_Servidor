@@ -59,17 +59,11 @@ const getComercio = async (req, res) => {
 
     try {
 
-        //const id = req.params.id
-
-        console.log(req)
-
         const { cifComercio } = matchedData(req)
 
-        console.log(cifComercio)
+       console.log(cifComercio)
 
         const data = await comercioModel.findOne({ cifComercio: cifComercio })
-
-        //console.log(data)
 
         res.send(data)
 
