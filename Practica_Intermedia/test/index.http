@@ -20,7 +20,7 @@ GET http://localhost:3000/api/comercio
 
 ###
 
-GET http://localhost:3000/api/comercio/A12345678
+GET http://localhost:3000/api/comercio/1
 
 
 ###
