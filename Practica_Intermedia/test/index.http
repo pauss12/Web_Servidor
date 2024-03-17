@@ -20,6 +20,10 @@ GET http://localhost:3000/api/comercio
 
 ###
 
+GET http://localhost:3000/api/comercio?orden=ascendente
+
+###
+
 GET http://localhost:3000/api/comercio/3
 
 

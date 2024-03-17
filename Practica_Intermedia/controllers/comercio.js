@@ -22,14 +22,16 @@ const getComercios = async (req, res) => {
 
     try {
 
+        const { orden } = req.query
+
         const data = await comercioModel.find({})
 
-        //console.log(data)
-
-        //ordenarlos ascendentemente por su cif cuando ya los tienes guardado en data
-        data.sort((a, b) => a.cifComercio.localeCompare(b.cifComercio))
-        
-        //console.log(data)
+        //Si la query dice que los ordenemos de manera ascendente, lo hacemos
+        if (orden === "ascendente")
+        {
+            //ordenarlos ascendentemente por su cif cuando ya los tienes guardado en data
+            data.sort((a, b) => a.cifComercio.localeCompare(b.cifComercio))
+        }
 
         res.send(data)
 
@@ -105,19 +107,19 @@ const createComercio = async (req, res) => {
 
     Luego, en la funcion "deleteComercio" se hace un "deleteOne" para buscar el comercio por su cif en la BBDD, que es el parametro que le hemos pasado en la llamada del HTTP
 
-
     Hay dos tipos de "DELETE" que se pueden hacer en la BBDD, uno es el "deleteOne" que realiza el borrado físico en la Base de datos, que eliminaria elemento de la BBDD y el otro es el "delete" que realiza el borrado lógico en la BD; es decir, simplemente actualizaria el flag de eliminado, y cuando haces el "GET", no apareceria, pero sigue en la BBDD.
+
+    Para poder hacer el "deleteOne" en la BBDD, se le pasa un parametro en la llamada del HTTP, que es "logic=true" y en la funcion "deleteComercio" se le pasa un parametro en la query que es "logic" y si es "true", se hace un "deleteOne" y si es "false", se hace un "delete".
+
+    Luego, se manda el resultado de la operacion al cliente para que sepa si se ha realizado correctamente o no.
 */
 
 const deleteComercio = async (req, res) => {
 
     try {
 
-        //const { cifComercio } = matchedData(req)
 
         const { cifComercio }  = req.params
-
-        console.log(cifComercio)
 
         //Coger el valor de la query logic
         const { logic } = req.query
