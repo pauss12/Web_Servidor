@@ -60,17 +60,9 @@ const getComercio = async (req, res) => {
 
     try {
 
-        //console.log(req)
+        const { cifComercio } = matchedData(req)
 
-        console.log("holaa")
-
-        const { cifComercio } = matchedData(req.id)
-
-        console.log(id)
-
-        const data = await comercioModel.findOne({ cifComercio: id })
-
-        console.log('Los datos son ' + data)
+        const data = await comercioModel.findOne({ cifComercio })
 
         res.send(data)
 
@@ -86,11 +78,9 @@ const createComercio = async (req, res) => {
 
     try {
 
-        //const body = matchedData(req)
+        const body = matchedData(req)
 
-        const { body } = req
-
-        console.log(body)
+        //console.log(body)
 
         const data = await comercioModel.create(body)
 
@@ -123,25 +113,23 @@ const deleteComercio = async (req, res) => {
 
     try {
 
-        //const { name } = matchedData(req)
+        //const { cifComercio } = matchedData(req)
 
-        console.log("hola")
+        const { cifComercio }  = req.params
 
-        const id = req.params.id
+        console.log(cifComercio)
 
-        console.log(id)
+        //Coger el valor de la query logic
+        const { logic } = req.query
 
-        const activo = req.query.logic
+        let data;
 
-        console.log(activo)
+        if (logic === "true")
+            data = await comercioModel.delete({ cifComercio });
+        else
+            data = await comercioModel.deleteOne({ cifComercio });
 
-        // "deleteOne" realiza el borrado físico en la BD
-        //const data = await comercioModel.deleteOne({ cifComercio: id });
-
-        // "delete" realiza el borrado lógico en la BD
-        //const data = await comercioModel.delete({ cifComercio: id }); 
-
-        //console.log(data)
+        console.log(data)
 
         res.send(data)
 
@@ -168,17 +156,16 @@ const updateComercio = async (req, res) => {
 
     try {
 
-        const id = req.params.id
+        const { cifComercio } = req.params
 
-        const { body } = req
+        const body = matchedData(req)
 
-        console.log(id)
+        const data = await comercioModel.findOneAndUpdate({ cifComercio }, body, { new: true })
 
-        console.log(body)
+        if (!data) {
 
-        const data = await comercioModel.updateOne({ cifComercio: id }, body)
-
-        console.log(data)
+            handleHttpError(res, 'ERROR_UPDATE_COMERCIO', 403);
+        }
 
         res.send(data)
 

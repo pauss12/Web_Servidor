@@ -23,9 +23,5 @@ fs.readdirSync(__dirname).filter((file) => {
     }
 })
 
-router.get("/", (req, res) => {
-    const data = ["hola", "mundo", "tracks"]
-    res.send({ data })
-})
 
 module.exports = router

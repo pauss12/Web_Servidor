@@ -10,15 +10,23 @@ const { validatorGetItem, validatorCreateItem } = require("../validators/comerci
 //RUTAS DE LAS LLAMADAS A GET ----------------
 router.get("/", getComercios)
 
-router.get("/:id", validatorGetItem, getComercio)
+router.get("/:cifComercio", validatorGetItem, getComercio)
 
 //RUTAS DE LAS LLAMADAS A POST ----------------
 router.post("/", validatorCreateItem, createComercio)
 
-//RUTAS DE LAS LLAMADAS A DELETE ----------------
-router.delete("/:id?logic=:activo", deleteComercio)
+//RUTAS DE LAS LLAMADAS A DELETE LOGICO----------------
+router.delete("/:cifComercio", validatorGetItem, deleteComercio)
+
+//RUTAS DE LAS LLAMADAS A DELETE FISICO----------------
+router.delete("/:cifComercio", validatorGetItem, (req, res) => {
+    
+    req.query.logic = true;
+    next();
+
+}, deleteComercio)
 
 //RUTAS DE LAS LLAMADAS A PUT ----------------
-router.put("/:id", updateComercio)
+router.put("/:cifComercio", validatorGetItem, validatorCreateItem, updateComercio)
 
 module.exports = router
