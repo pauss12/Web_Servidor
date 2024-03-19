@@ -17,7 +17,6 @@ const { matchedData } = require('express-validator')
     Una vez ya los tengo, los ordeno de manera ascendente por su cif y los mando al cliente
 
 */
-
 const getComercios = async (req, res) => {
 
     try {
@@ -118,8 +117,7 @@ const deleteComercio = async (req, res) => {
 
     try {
 
-
-        const { cifComercio }  = req.params
+        const { cifComercio } = matchedData(req)
 
         //Coger el valor de la query logic
         const { logic } = req.query
@@ -131,7 +129,7 @@ const deleteComercio = async (req, res) => {
         else
             data = await comercioModel.deleteOne({ cifComercio });
 
-        console.log(data)
+        //console.log(data)
 
         res.send(data)
 
@@ -151,14 +149,12 @@ const deleteComercio = async (req, res) => {
 
     Luego, se manda el resultado de la operacion al cliente para que sepa si se ha realizado correctamente o no.
 
-
 */
-
 const updateComercio = async (req, res) => {
 
     try {
 
-        const { cifComercio } = req.params
+        const { cifComercio } = matchedData(req)
 
         const body = matchedData(req)
 
