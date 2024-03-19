@@ -16,8 +16,10 @@ router.get("/:id", validatorGetItem, getItem)
 
 //router.post("/", authMiddleware, validatorCreateItem, createItem)
 
+router.post("/", validatorCreateItem, createItem)
+
 //Otra prueba, para chequear si el usuario es admin
-router.post("/", authMiddleware, checkRol(["admin"]), validatorCreateItem, createItem)
+//router.post("/", authMiddleware, checkRol(["admin"]), validatorCreateItem, createItem)
 
 router.delete("/:id", validatorGetItem, deleteItem)
 

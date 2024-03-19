@@ -1,12 +1,13 @@
 const { handleHttpError } = require("../utils/handleError")
 const { verifyToken } = require("../utils/handleJwt")
 const { usersModel } = require("../models")
+const getProperties = require("../utils/handlePropertiesEngine")
+const propertiesKey = getProperties()
 
 const authMiddleware = async (req, res, next) => {
 
     try {
         
-        //Si no esta el header de autorización; termina el programa con error 401
         if (!req.headers.authorization) {
             handleHttpError(res, "NOT_TOKEN", 401)
             return
@@ -14,19 +15,27 @@ const authMiddleware = async (req, res, next) => {
 
         // Nos llega la palabra reservada Bearer (es un estándar) y el Token, así que me quedo con la última parte
         const token = req.headers.authorization.split(' ').pop()
-
         //Del token, miramos en Payload (revisar verifyToken de utils/handleJwt)
         const dataToken = await verifyToken(token)
 
-        if (!dataToken._id) {
-            handleHttpError(res, "ERROR_ID_TOKEN", 401)
-            return
+        if (!dataToken) {
+            handleHttpError(res, "NOT_PAYLOAD_DATA", 401)
+            retrun
         }
+        /*
+                if(!dataToken._id) {
+                    handleHttpError(res, "ERROR_ID_TOKEN", 401)
+                    return
+                }
+        */
 
-        const user = await usersModel.findById(dataToken._id)
-
-        // Inyecto al user en la petición
-        req.user = user
+        const query = {
+            // _id o id 
+            [propertiesKey.id]: dataToken[propertiesKey.id]
+        }
+        //const user = await usersModel.findById(dataToken._id) // findById solo para Mongoose
+        const user = await usersModel.findOne(query) // findOne válido para Mongoose y Sequelize
+        req.user = user // Inyecto al user en la petición
 
         next()
 

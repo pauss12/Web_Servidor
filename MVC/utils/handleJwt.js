@@ -1,5 +1,9 @@
 const jwt = require("jsonwebtoken")
 
+const getProperties = require("../utils/handlePropertiesEngine")
+
+const propertiesKey = getProperties()
+
 /**
  * El objeto del usuario
  * @param {*} user 
@@ -7,7 +11,8 @@ const jwt = require("jsonwebtoken")
 const tokenSign = async (user) => {
     const sign = jwt.sign(
         {
-            _id: user._id,
+            //_id: user.id,
+            [propertiesKey.id]: user[propertiesKey.id], // [] propiedad dinámica
             email: user.email
         },
         process.env.JWT_SECRET,

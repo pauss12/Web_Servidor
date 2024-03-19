@@ -139,3 +139,35 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWYwMTM3N
 
 PUT http://localhost:3000/api/users/65e6de6120cc8144d0584861
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWYwMTM3NmY3NTFjMGU0NTY0ZDhhZjIiLCJlbWFpbCI6InRlc3QxMEB0ZXN0LmNvbSIsImlhdCI6MTcxMDIzMjQ1MCwiZXhwIjoxNzEwMjM5NjUwfQ.cefpbQCqDZgOCl-3ArT9NmEm4TE7QAmaGK_mzS8f3fc
+
+###
+
+POST http://localhost:3000/api/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "elena2",
+    "age": "21",
+    "email": "elena@gmail.com",
+    "password": "12345678",
+    "role":"user"
+  
+}
+
+###
+
+POST http://localhost:3000/api/tracks HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "buenas",
+    "album": "cuentame",
+    "cover": "http://yyy.com",
+    "artist_name": "joe",
+    "artist_nickname": "parecetrue",
+    "artist_nationality": "ES",
+    "duration_start": 1,
+    "duration_end": 2,
+    "mediaId": "0444456789abcdef01234567"
+  
+}

@@ -2,6 +2,8 @@ const { usersModel } = require('../models/')
 
 const { handleHttpError } = require("../utils/handleError")
 
+const { matchedData } = require('express-validator')
+
 const getUsers = async (req, res) => {
 
     const data = await usersModel.find({})
