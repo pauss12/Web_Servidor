@@ -47,5 +47,28 @@ const TracksScheme = new mongoose.Schema(
     }
 )
 
+/**
+ * Implementar método propio (custom findAllData static function) con relación a Storage
+ */
+TracksScheme.statics.findAllData = function () {
+    // "this." hace referencia a su propio modelo
+    const joinData = this.aggregate([
+        {
+            // lookup =~ join (STAGE 1)
+            $lookup: {
+                from: "storages",
+                localField: "mediaId", // tracks.mediaId
+                foreignField: "_id",   // storages._id
+                as: "audio" // Alias audio
+            }
+        },
+        /*{
+              // From left join to inner join (STAGE 2) 
+              $unwind:"$audio"
+          } */
+    ])
+    return joinData
+}
+
 TracksScheme.plugin(mongooseDelete, {overrideMethods: "all"})
 module.exports = mongoose.model("tracks", TracksScheme) // Nombre de la colección (o de la tabla en SQL)
