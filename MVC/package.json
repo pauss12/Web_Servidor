@@ -28,6 +28,8 @@
     "mysql2": "^3.9.2",
     "nodemon": "^3.1.0",
     "save-dev": "^0.0.1-security",
-    "sequelize": "^6.37.1"
+    "sequelize": "^6.37.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
   }
 }
