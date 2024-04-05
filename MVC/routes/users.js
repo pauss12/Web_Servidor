@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const { getUsers, getUser, createUser } = require("../controllers/users")
+const { getUsers, getUser, createUser, deleteUser } = require("../controllers/users")
 
 const { updateUser, changeRole } = require("../controllers/users")
 const { authMiddleware } = require("../Middleware/session")
@@ -23,7 +23,7 @@ const checkRol = require("../Middleware/rol")
  *          '500':
  *              description: Server error
  */
-router.get("/", getUsers)
+router.get("/", authMiddleware, getUsers)
 
 /**
 *   @openapi
@@ -47,27 +47,6 @@ router.get("/", getUsers)
 *              description: Server error
 */
 router.get("/:id", getUser)
-
-/**
- *  @openapi 
- *  /api/users/createUser:
- *  post:
- *      tags:
- *          - User
- *            summary: "Create Iser"
- *            description: Create a new user
- *           requestBody:
- *               content:
- *                  application/json:
- *                     schema:
- *                         $ref: "#/components/schemas/user"
- *           responses:
- *             '200':* description: Returns the inserted object
- *            '401':* description: Validation error
- * 
- *           security:
- *             - bearerAuth: []
- */
 
 router.post("/", createUser)
 
@@ -100,5 +79,30 @@ router.post("/", createUser)
  *          - bearerAuth: []
  */
 router.put("/:id", authMiddleware, checkRol(["admin"]), validatorGetItem, changeRole)
+
+/**
+ * @openapi
+ * /api/auth/delete/{id}:
+ *  delete:
+ *      tags:
+ *      - User
+ *      summary: Delete user
+ *      description: Delete a user by an admin
+ *      parameters:
+ *          -   name: id
+ *              in: path
+ *              description: id that need to be deleted
+ *              required: true
+ *              schema:
+ *                  type: string
+ *      responses:
+ *          '200':
+ *              description: Returns the inserted object
+ *          '401':
+ *              description: Validation error
+ *      security:
+ *          - bearerAuth: []
+ */
+router.delete("/:id", validatorGetItem, deleteUser)
 
 module.exports = router

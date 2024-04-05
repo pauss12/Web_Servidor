@@ -60,3 +60,5 @@ morganBody(app, {
         return res.statusCode < 400
     }, stream: loggerStream
 })
+
+module.exports = app

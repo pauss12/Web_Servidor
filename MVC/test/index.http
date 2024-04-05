@@ -68,15 +68,15 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/tracks
-
+GET http://localhost:3000/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBmZTYyMmE4MWQ2OGE3OGU2OGVkMjUiLCJlbWFpbCI6InRlc3QxMEB0ZXN0LmNvbSIsImlhdCI6MTcxMjMxNzk4NiwiZXhwIjoxNzEyMzI1MTg2fQ.DxDJERG7ldj9Gibx9hFrgeWpSrfdVgt1GyvIobuwd4M
 ###
 
 GET http://localhost:3000/api/tracks/buenas
 
 ### 
 
-DELETE http://localhost:3000/api/tracks/buenas
+DELETE http://localhost:3000/api/users/660fe622a81d68a78e68ed25
 
 ###
 
@@ -171,3 +171,4 @@ Content-Type: application/json
     "mediaId": "0444456789abcdef01234567"
   
 }
+
