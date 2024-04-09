@@ -1,0 +1,16 @@
+body {
+
+    background-image: url("../../public/imagenes/fondo_paginaRegistro.avif");
+}
+
+form {
+
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 2px 25px 25px 25px;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    box-shadow: 0px 0px 10px 0px #000000;
+}

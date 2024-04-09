@@ -1,0 +1,32 @@
+body {
+
+    background-image: url("../../public/imagenes/fondoAdmin.avif");
+}
+
+.crearComercio {
+
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 0 10px 10px 10px;
+    width: 300px;
+    box-shadow: 10px 4px 4px rgba(110, 106, 106, 0.904);
+    
+}
+
+.contenedor {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.busquedaComercios {
+
+    background-color: lightgray;
+    margin-left: 5%;
+    border-radius: 10px;
+    padding: 1%  1% 1%;
+    width: 300px;
+    box-shadow: 4px 4px 4px rgba(110, 106, 106, 0.904);
+}
