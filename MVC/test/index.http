@@ -172,3 +172,7 @@ Content-Type: application/json
   
 }
 
+###
+
+GET https://frozen-debora-pms.koyeb.app/api/tracks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWYwMTM3NmY3NTFjMGU0NTY0ZDhhZjIiLCJlbWFpbCI6InRlc3QxMEB0ZXN0LmNvbSIsImlhdCI6MTcxMDIzMjQ1MCwiZXhwIjoxNzEwMjM5NjUwfQ.cefpbQCqDZgOCl-3ArT9NmEm4TE7QAmaGK_mzS8f3fc
