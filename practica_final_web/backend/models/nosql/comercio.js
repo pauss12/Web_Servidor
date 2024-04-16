@@ -9,14 +9,15 @@ const comercioScheme = new mongoose.Schema(
             type: String
         },
         cifComercio: {
-            type: String
+            type: String,
+            unique: true
         },
         direccion: {
             type: String
-
         },
         email: {
-            type: String
+            type: String,
+            unique: true
         },
         telefonoContacto: {
             type: String
@@ -51,6 +52,8 @@ const comercioScheme = new mongoose.Schema(
         versionKey: false
     }
 )
+
+//ID PAGINA: ALGO QUE IDENTIFIQUE A LA PAGINA DE CADA COMERCIO
 
 comercioScheme.plugin(mongooseDelete, { overrideMethods: "all" })
 
