@@ -8,12 +8,12 @@ const { validatorGetItem, validatorGetUser, validatorUpdateItem } = require("../
 
 router.get("/", getItems)
 
-router.get("/getUserId/:id", validatorGetItem, getItem)
+router.get("/users/:id", validatorGetItem, getItem)
 
-router.get("/user/:username", validatorGetUser, getUser)
+/*router.get("/users/:username", validatorGetUser, getUser)*/
 
-router.put("/:id", validatorUpdateItem, updateItem)
+/*router.put("/:id", validatorUpdateItem, updateItem)
 
-router.delete("/:id", validatorGetItem, deleteItem)
+router.delete("/:id", validatorGetItem, deleteItem)*/
 
 module.exports = router
