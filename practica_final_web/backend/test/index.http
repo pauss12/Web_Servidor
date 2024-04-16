@@ -1,0 +1,73 @@
+GET http://localhost:3000/api/comercio
+
+###
+
+POST http://localhost:3000/api/comercio
+Content-Type: application/json
+
+{
+    "nombreComercio": "Comercio 1",
+    "cifComercio": "A12345678",
+    "direccion": "Calle 1",
+    "email": "comercio1@gmail.com",
+    "telefonoContacto": "123456789",
+    "idPagina": 1,
+    "ciudad": "Ciudad 1",
+    "actividad": "Actividad 1",
+    "textos": [
+        "Titulo 1: Descripcion 1"
+    ],
+    "fotos": [
+        "https://www.google.com"
+    ],
+    "scoring": 5,
+    "numeroPuntuaciones": 1,
+    "reseñas": [
+        "Usuario 1: Comentario 1"
+    ]
+}
+
+###
+    
+PUT http://localhost:3000/api/comercio/3
+Content-Type: application/json
+
+{
+    "nombreComercio": "Comercio 1",
+    "cifComercio": "A12345678",
+    "direccion": "Calle 1",
+    "email": "comercio1@gmail.com",
+    "telefonoContacto": "123456789",
+    "idPagina": 1,
+    "ciudad": "Ciudad 1",
+    "actividad": "Actividad 1",
+    "textos": [
+        {
+            "titulo": "Titulo 1",
+            "descripcion": "Descripcion 1"
+        },
+        {
+            "titulo": "Titulo 2",
+            "descripcion": "Descripcion 2"
+        }
+    ],
+    "fotos": [
+        {
+            "url": "https://www.google.com",
+            "descripcion": "Descripcion 1"
+        },
+        {
+            "url": "https://www.google.com",
+            "descripcion": "Descripcion 2"
+        }
+    ],
+    "scoring": 5,
+    "numeroPuntuaciones": 1,
+    "reseñas": [
+        {
+            "nombre": "Usuario 1",
+            "puntuacion": 5,
+            "comentario": "Comentario 1"
+        }
+    ]
+}
