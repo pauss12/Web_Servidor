@@ -10,9 +10,9 @@ const validateResults = (req, res, next) => {
     } catch (err) {
         
         res.status(403)
-        res.send({ errors: err.array() })
+        res.send(err)
         //console.log(err)
     }
 }
 
-module.exports = validateResults
+module.exports = { validateResults }
