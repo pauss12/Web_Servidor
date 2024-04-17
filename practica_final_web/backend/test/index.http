@@ -2,17 +2,48 @@ GET http://localhost:3000/api/comercio
 
 ###
 
-POST http://localhost:3000/api/comercio
+GET http://localhost:3000/api/comercio/661e3b3ef3a8733c03369e3c
+
+###
+
+POST http://localhost:3000/api/comercio HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombreComercio": "Comercio 1",
-    "cifComercio": "A12345678",
-    "direccion": "Calle 1",
-    "email": "comercio1@gmail.com",
-    "telefonoContacto": "123456789",
+    "nombreComercio": "Comercio 3",
+    "cifComercio": "A12345678G",
+    "direccion": "Calle 3",
+    "email": "comercio3@gmail.com",
+    "telefonoContacto": "3456789ABC",
+    "idPagina": 3,
+    "ciudad": "Ciudad 3",
+    "actividad": "Actividad 3",
+    "textos": [
+        "Titulo 3: Descripcion 3"
+    ],
+    "fotos": [
+        "https://www.google.com"
+    ],
+    "scoring": 5,
+    "numeroPuntuaciones": 3,
+    "reseñas": [
+        "Usuario 3: Comentario 3"
+    ]
+}
+
+###
+    
+PUT http://localhost:3000/api/comercio/661e3b3ef3a8733c03369e3c HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombreComercio": "Comercio 2",
+    "cifComercio": "A1234567B",
+    "direccion": "Calle 2",
+    "email": "comercio2@gmail.com",
+    "telefonoContacto": "1234567890",
     "idPagina": 1,
-    "ciudad": "Ciudad 1",
+    "ciudad": "Ciudad 2",
     "actividad": "Actividad 1",
     "textos": [
         "Titulo 1: Descripcion 1"
@@ -21,53 +52,14 @@ Content-Type: application/json
         "https://www.google.com"
     ],
     "scoring": 5,
-    "numeroPuntuaciones": 1,
+    "numeroPuntuaciones": 2,
     "reseñas": [
-        "Usuario 1: Comentario 1"
+        "Usuario 2: Comentario 2"
     ]
 }
 
 ###
-    
-PUT http://localhost:3000/api/comercio/3
-Content-Type: application/json
 
-{
-    "nombreComercio": "Comercio 1",
-    "cifComercio": "A12345678",
-    "direccion": "Calle 1",
-    "email": "comercio1@gmail.com",
-    "telefonoContacto": "123456789",
-    "idPagina": 1,
-    "ciudad": "Ciudad 1",
-    "actividad": "Actividad 1",
-    "textos": [
-        {
-            "titulo": "Titulo 1",
-            "descripcion": "Descripcion 1"
-        },
-        {
-            "titulo": "Titulo 2",
-            "descripcion": "Descripcion 2"
-        }
-    ],
-    "fotos": [
-        {
-            "url": "https://www.google.com",
-            "descripcion": "Descripcion 1"
-        },
-        {
-            "url": "https://www.google.com",
-            "descripcion": "Descripcion 2"
-        }
-    ],
-    "scoring": 5,
-    "numeroPuntuaciones": 1,
-    "reseñas": [
-        {
-            "nombre": "Usuario 1",
-            "puntuacion": 5,
-            "comentario": "Comentario 1"
-        }
-    ]
-}
+DELETE http://localhost:3000/api/comercio/66200ccab23abaf6d8689d0b
+
+###
