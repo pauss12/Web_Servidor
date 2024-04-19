@@ -50,17 +50,11 @@ const getComercio = async (req, res) => {
 //Funcion para crear un comercio
 const createComercio = async (req, res) => {
 
-    console.log("gijaDNSn")
-
     try {
 
-        console.log(req)
+        //const { body } = req
 
-        //const body = req;
-
-        const { body } = req;
-
-        console.log(body)
+        const body = matchedData(req)
 
         const data = await comercioModel.create(body)
         res.status(201).send(data)
@@ -118,6 +112,7 @@ const updateComercio = async (req, res) => {
     try {
 
         const { id, ...body } = matchedData(req)
+
         const data = await comercioModel.findByIdAndUpdate({ _id: id }, body);
 
         if (!data)
@@ -151,13 +146,21 @@ const updateComercio = async (req, res) => {
  */
 const deleteComercio = async (req, res) => {
 
+    console.log('deleteComercio')
+
     try {
+
         const { id } = matchedData(req)
+
+        console.log("El id es " + id)
+
         const data = await comercioModel.deleteOne({ _id: id });
 
         res.status(200).send(data)
+
     } catch (err) {
-        //console.log(err)
+
+        console.log(err)
         handleHttpError(res, 'ERROR_DELETE_ITEM')
     }
 }
