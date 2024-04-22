@@ -2,7 +2,7 @@ GET http://localhost:3000/api/comercio
 
 ###
 
-GET http://localhost:3000/api/comercio/661e3b3ef3a8733c03369e3c
+GET http://localhost:3000/api/comercio/66200b88b23abaf6d8689d04
 
 ###
 
@@ -60,6 +60,6 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/comercio/66200ccab23abaf6d8689d0b
+DELETE http://localhost:3000/api/comercio/66200b88b23abaf6d8689d04
 
 ###
