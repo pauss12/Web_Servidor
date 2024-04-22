@@ -4,16 +4,16 @@ const router = express.Router();
 
 const { getComercios, getComercio, deleteComercio, updateComercio, createComercio } = require('../controllers/comercio');
 
-const { validatorGetComercio, validatorCreateItem, validatorUpdateComercio } = require('../validators/comercio');
+const { validatorGetItem, validatorCreateItem, validatorUpdateComercio } = require('../validators/comercio');
 
 router.post('/', validatorCreateItem, createComercio);
 
 router.get('/', getComercios);
 
-router.get('/:id', getComercio);
+router.get('/:id', validatorGetItem, getComercio);
 
 router.put('/:id', validatorUpdateComercio, updateComercio);
 
-router.delete('/:id', validatorGetComercio, deleteComercio);
+router.delete('/:id', validatorGetItem, deleteComercio);
 
 module.exports = router;
