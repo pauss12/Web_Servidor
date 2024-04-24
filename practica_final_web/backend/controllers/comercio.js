@@ -146,8 +146,6 @@ const updateComercio = async (req, res) => {
  */
 const deleteComercio = async (req, res) => {
 
-    console.log('deleteComercio')
-
     try {
 
         const { id } = matchedData(req)
