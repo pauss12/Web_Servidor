@@ -1,23 +1,25 @@
 const mongoose = require("mongoose")
+
 const UsersScheme = new mongoose.Schema(
+
     {
-        nombre: {
+        nombreUsuario: {
             type: String
         },
-        email: {
+        emailUsuario: {
             type: String,
-            unique: true
+            unique: true,
         },
-        password: {
+        passwordUsuario: {
             type: String
         },
-        edad: {
+        edadUsuario: {
             type: Number
         },
-        ciudad: {
+        ciudadUsuario: {
             type: String
         },
-        intereses: [{
+        interesesUsuario: [{
             type: String
         }],
         permiteOfertas: {
@@ -25,7 +27,8 @@ const UsersScheme = new mongoose.Schema(
             default: false
         },
         role: {
-            type: ["usuarioRegistrado", "admin"],
+            type: String,
+            enum: ["usuarioRegistrado", "admin"],
             default: "usuarioRegistrado"
         }
     },
