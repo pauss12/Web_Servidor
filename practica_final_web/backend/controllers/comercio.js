@@ -61,7 +61,7 @@ const createComercio = async (req, res) => {
 
     } catch (err) {
 
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, 'ERROR_CREATE_COMERCIO')
     }
 }
