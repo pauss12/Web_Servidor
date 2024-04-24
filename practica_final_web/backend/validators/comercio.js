@@ -36,19 +36,19 @@ const validatorUpdateComercio = [
     //Checkear el id de mongo
     check("id").exists().notEmpty().isMongoId(),
     //Checkear si el resto como opcional
-    check("nombreComercio").optional().notEmpty().isString(),
-    check("cifComercio").optional().notEmpty().isString(),
-    check("direccion").optional().notEmpty().isString(),
-    check("email").optional().notEmpty().isString(),
-    check("telefonoContacto").optional().notEmpty().isString(),
+    check("nombreComercio").optional().notEmpty(),
+    check("cifComercio").optional().notEmpty(),
+    check("direccion").optional().notEmpty(),
+    check("email").optional().notEmpty(),
+    check("telefonoContacto").optional().notEmpty(),
     check("idPagina").optional().notEmpty(),
-    check("ciudad").optional().notEmpty().isString(),
-    check("actividad").optional().notEmpty().isString(),
-    check("textos").optional().isArray(),
-    check("fotos").optional().isArray(),
+    check("ciudad").optional().notEmpty(),
+    check("actividad").optional().notEmpty(),
+    check("textos").optional(),
+    check("fotos").optional(),
     check("scoring").optional(),
     check("numeroPuntuaciones").optional(),
-    check("reseñas").optional().isArray(),
+    check("reseñas").optional(),
     (req, res, next) => {
         return validateResults(req, res, next)
     }

@@ -22,7 +22,7 @@ const validatorGetUser = [
     }
 ]*/
 
-/*const validatorUpdateItem = [
+const validatorUpdateItem = [
     check("id").exists().notEmpty().isMongoId(),
     // Al menos uno de los siguientes campos debe estar presente para la actualización
     check("nombreDelUsuario").optional(),
@@ -35,6 +35,6 @@ const validatorGetUser = [
     check("fotoDePerfil").optional(),
     check("permiteNotificaciones").optional(),
     (req, res, next) => validateResults(req, res, next)
-];*/
+];
 
-module.exports = { validatorGetItem, validatorGetUser }
+module.exports = { validatorGetItem, validatorGetUser, validatorUpdateItem }
