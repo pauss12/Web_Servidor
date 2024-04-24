@@ -10,24 +10,24 @@ POST http://localhost:3000/api/comercio HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombreComercio": "Comercio 4",
-    "cifComercio": "AB2345678G",
-    "direccion": "Calle 4",
-    "email": "comercio4@gmail.com",
-    "telefonoContacto": "456789ABCD",
+    "nombreComercio": "Comercio 5",
+    "cifComercio": "AB2345678GH",
+    "direccion": "Calle 5",
+    "email": "comercio5@gmail.com",
+    "telefonoContacto": "456789ABCDE",
     "idPagina": 4,
-    "ciudad": "Ciudad 4",
-    "actividad": "Actividad 4",
+    "ciudad": "Ciudad 5",
+    "actividad": "Actividad 5",
     "textos": [
-        "Titulo 4: Descripcion 4"
+        "Titulo 5: Descripcion 5"
     ],
     "fotos": [
         "https://www.google.com"
     ],
     "scoring": 5,
-    "numeroPuntuaciones": 4,
+    "numeroPuntuaciones": 5,
     "reseñas": [
-        "Usuario 4: Comentario 4"
+        "Usuario 5: Comentario 5"
     ]
 }
 
@@ -63,3 +63,67 @@ Content-Type: application/json
 DELETE http://localhost:3000/api/comercio/66200b88b23abaf6d8689d04
 
 ###
+
+GET http://localhost:3000/api/users
+
+###
+
+POST http://localhost:3000/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombreUsuario": "Usuario 1",
+    "emailUsuario": "usuario1@gmail.com",
+    "passwordUsuario": "12345678",
+    "edadUsuario": 25,
+    "ciudadUsuario": "Ciudad 1",
+    "interesesUsuario": [
+        "Interes 1"
+    ],
+    "permiteOfertas": false,
+    "role": "usuarioRegistrado"
+}
+
+###
+
+POST http://localhost:3000/api/users HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombreUsuario": "Usuario2",
+    "emailUsuario": "usuario2@gmail.com",
+    "passwordUsuario": "123445",
+    "edadUsuario": 22,
+    "ciudadUsuario": "Ciudad 2",
+    "interesesUsuario": [
+        "Interes 2"
+    ],
+    "permiteOfertas": true,
+    "role": "usuarioRegistrado"
+}
+
+###
+
+GET http://localhost:3000/api/users/6629618c13e13dd2ea7ae700
+
+###
+
+PUT http://localhost:3000/api/users/6629618c13e13dd2ea7ae700 HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombreUsuario": "Usuario 1",
+    "emailUsuario": "user1@gmail.com",
+    "passwordUsuario": "12345678",
+    "edadUsuario": 25,
+    "ciudadUsuario": "Ciudad 1",
+    "interesesUsuario": [
+        "Interes usuario 1"
+    ],
+    "permiteOfertas": true,
+    "role": "usuarioRegistrado"
+}
+
+###
+
+DELETE http://localhost:3000/api/users/6629618c13e13dd2ea7ae700
