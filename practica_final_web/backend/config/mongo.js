@@ -8,7 +8,7 @@ const dbConnect = () => {
 
     try {
 
-        mongoose.connect(db_uri, { dbName: 'practica_final_web' })
+        mongoose.connect(db_uri)
     }
     catch (error) {
 
