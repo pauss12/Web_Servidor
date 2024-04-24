@@ -2,7 +2,7 @@ GET http://localhost:3000/api/comercio
 
 ###
 
-GET http://localhost:3000/api/comercio/66200b88b23abaf6d8689d04
+GET http://localhost:3000/api/comercio/66200ccab23abaf6d8689d0b
 
 ###
 
@@ -10,43 +10,43 @@ POST http://localhost:3000/api/comercio HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombreComercio": "Comercio 3",
-    "cifComercio": "A12345678G",
-    "direccion": "Calle 3",
-    "email": "comercio3@gmail.com",
-    "telefonoContacto": "3456789ABC",
-    "idPagina": 3,
-    "ciudad": "Ciudad 3",
-    "actividad": "Actividad 3",
+    "nombreComercio": "Comercio 4",
+    "cifComercio": "AB2345678G",
+    "direccion": "Calle 4",
+    "email": "comercio4@gmail.com",
+    "telefonoContacto": "456789ABCD",
+    "idPagina": 4,
+    "ciudad": "Ciudad 4",
+    "actividad": "Actividad 4",
     "textos": [
-        "Titulo 3: Descripcion 3"
+        "Titulo 4: Descripcion 4"
     ],
     "fotos": [
         "https://www.google.com"
     ],
     "scoring": 5,
-    "numeroPuntuaciones": 3,
+    "numeroPuntuaciones": 4,
     "reseñas": [
-        "Usuario 3: Comentario 3"
+        "Usuario 4: Comentario 4"
     ]
 }
 
 ###
     
-PUT http://localhost:3000/api/comercio/661e3b3ef3a8733c03369e3c HTTP/1.1
+PUT http://localhost:3000/api/comercio/6628c9ab818866b9a8bc162d HTTP/1.1
 Content-Type: application/json
 
 {
     "nombreComercio": "Comercio 2",
     "cifComercio": "A1234567B",
-    "direccion": "Calle 2",
-    "email": "comercio2@gmail.com",
-    "telefonoContacto": "1234567890",
+    "direccion": "Calle 4",
+    "email": "comercio4@gmail.com",
+    "telefonoContacto": "1256789AB",
     "idPagina": 1,
     "ciudad": "Ciudad 2",
     "actividad": "Actividad 1",
     "textos": [
-        "Titulo 1: Descripcion 1"
+        "Titulo 4: Descripcion 4"
     ],
     "fotos": [
         "https://www.google.com"
