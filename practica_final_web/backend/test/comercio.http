@@ -4,10 +4,39 @@ GET http://localhost:3000/api/comercio
 
 GET http://localhost:3000/api/comercio/662a8a81f695d5fcfdd3f6ce
 
-###
+### POST DE UN COMERCIO CON UN USUARIO NORMAL, QUE NO ES ADMINISTRADOR
 
 POST http://localhost:3000/api/comercio HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJhZGNkZTUxYThiZjdiYjVlMDExZTAiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTQwODUwODYsImV4cCI6MTcxNDA5MjI4Nn0.QQ0DxOukT0C5kF3wTS1aL61izxqxV-5m2JPsVSednIc
+
+{
+    "nombreComercio": "Comercio 1",
+    "cifComercio": "12345678",
+    "direccion": "Calle 1",
+    "email": "comercio1@gmail.com",
+    "telefonoContacto": "4123456789",
+    "idPagina": 1,
+    "ciudad": "Ciudad 1",
+    "actividad": "Actividad 1",
+    "textos": [
+        "Titulo 1: Descripcion 1"
+    ],
+    "fotos": [
+        "https://www.google.com"
+    ],
+    "scoring": 1,
+    "numeroPuntuaciones": 1,
+    "reseñas": [
+        "Usuario 1: Comentario 1"
+    ]
+}
+
+### POST DE UN COMERCIO CON UN USUARIO QUE  ES ADMINISTRADOR
+
+POST http://localhost:3000/api/comercio HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJhZGQ4YzUxYThiZjdiYjVlMDExZWEiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTQwODUyNjAsImV4cCI6MTcxNDA5MjQ2MH0.jeAZQWto7r5Dy21HYT9Xe4rE4kP7i2Rq6kg-yOV6w28
 
 {
     "nombreComercio": "Comercio 1",
@@ -60,6 +89,6 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/comercio/6629617713e13dd2ea7ae6fe
+DELETE http://localhost:3000/api/comercio/662a8a81f695d5fcfdd3f6ce
 
 ###

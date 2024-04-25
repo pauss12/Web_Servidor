@@ -6,15 +6,16 @@ POST http://localhost:3000/api/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombreUsuario": "Usuario 1",
-    "emailUsuario": "usuario1@gmail.com",
+    "nombreUsuario": "Usuario 3",
+    "emailUsuario": "usuario3@gmail.com",
     "passwordUsuario": "123456780",
     "edadUsuario": 22,
-    "ciudadUsuario": "Ciudad 1",
+    "ciudadUsuario": "Ciudad 3",
     "interesesUsuario": [
-        "Interes 1"
+        "Interes 3"
     ],
-    "permiteOfertas": true
+    "permiteOfertas": true,
+    "role": "admin"
 }
 
 ###
@@ -50,4 +51,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/users/662ac4fed396b807491c3ca5
+DELETE http://localhost:3000/api/users/662adcc351a8bf7bb5e011dc
