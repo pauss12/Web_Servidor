@@ -29,26 +29,25 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/users/662aba74d4ad6b2d43879697
+GET http://localhost:3000/api/users/662ad81bdbd44d55b9b432ee
 
 ###
 
-PUT http://localhost:3000/api/users/6629619413e13dd2ea7ae702 HTTP/1.1
+PUT http://localhost:3000/api/users/662ad81bdbd44d55b9b432ee HTTP/1.1
 Content-Type: application/json
 
 {
     "nombreUsuario": "Usuario 3",
-    "emailUsuario": "user3@gmail.com",
-    "passwordUsuario": "123456",
+    "emailUsuario": "usuario1@gmail.com",
+    "passwordUsuario": "123456780",
     "edadUsuario": 22,
-    "ciudadUsuario": "Ciudad 3",
+    "ciudadUsuario": "Ciudad 1",
     "interesesUsuario": [
-        "Interes 3"
+        "Interes 1"
     ],
-    "permiteOfertas": false,
-    "role": "admin"
+    "permiteOfertas": true
 }
 
 ###
 
-DELETE http://localhost:3000/api/users/662aba4bd4ad6b2d43879690
+DELETE http://localhost:3000/api/users/662ac4fed396b807491c3ca5
