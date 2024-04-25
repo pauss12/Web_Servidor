@@ -19,7 +19,17 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/users/662ab4dbd4ad6b2d4387968b
+POST http://localhost:3000/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "emailUsuario": "usuario1@gmail.com",
+    "passwordUsuario": "123456780"
+}
+
+###
+
+GET http://localhost:3000/api/users/662aba74d4ad6b2d43879697
 
 ###
 
@@ -41,4 +51,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/users/662ab4dbd4ad6b2d4387968b
+DELETE http://localhost:3000/api/users/662aba4bd4ad6b2d43879690
