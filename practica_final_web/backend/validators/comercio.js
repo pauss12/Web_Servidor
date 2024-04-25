@@ -31,7 +31,7 @@ const validatorCreateItem = [
 
 ]
 
-const validatorUpdateComercio = [
+const validatorUpdateItem = [
 
     //Checkear el id de mongo
     check("id").exists().notEmpty().isMongoId(),
@@ -55,4 +55,4 @@ const validatorUpdateComercio = [
 
 ]
 
-module.exports = { validatorGetItem, validatorCreateItem, validatorUpdateComercio }
+module.exports = { validatorGetItem, validatorCreateItem, validatorUpdateItem }
