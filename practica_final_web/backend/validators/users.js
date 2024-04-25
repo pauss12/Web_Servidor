@@ -38,7 +38,7 @@ const validatorCreateItem = [
     }
 ]*/
 
-const validatorUpdateElement = [
+const validatorUpdateItem = [
 
     check("id").exists().notEmpty().isMongoId(),
     
@@ -56,4 +56,4 @@ const validatorUpdateElement = [
     }
 ];
 
-module.exports = { validatorGetItem, validatorGetUser, validatorUpdateElement, validatorCreateItem }
+module.exports = { validatorGetItem, validatorGetUser, validatorUpdateItem, validatorCreateItem }
