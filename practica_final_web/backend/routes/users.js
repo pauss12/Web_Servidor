@@ -11,8 +11,6 @@ router.get('/', getItems)
 
 router.get('/:id', validatorGetItem, getItem)
 
-router.post('/', validatorCreateItem, createUsuario)
-
 /*router.get("/users/:username", validatorGetUser, getUser)*/
 
 router.put('/:id', validatorUpdateItem, updateItem)

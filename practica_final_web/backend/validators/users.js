@@ -15,22 +15,6 @@ const validatorGetUser = [
     }
 ]
 
-const validatorCreateItem = [
-
-    check("nombreUsuario").isString().notEmpty(),
-    check("emailUsuario").isString(),
-    check("passwordUsuario").isString().notEmpty(),
-    check("edadUsuario").isNumeric().notEmpty(),
-    check("ciudadUsuario").isString().notEmpty(),
-    check("interesesUsuario").isArray().notEmpty(),
-    check("permiteOfertas").isBoolean(),
-    check("role").exists().isString().notEmpty(),
-    (req, res, next) => {
-        return validateResults(req, res, next)
-    }
-    
-];
-
 /*const validatorGetEmail = [
     check("email").exists().notEmpty(),
     (req, res, next) => {
@@ -56,4 +40,4 @@ const validatorUpdateItem = [
     }
 ];
 
-module.exports = { validatorGetItem, validatorGetUser, validatorUpdateItem, validatorCreateItem }
+module.exports = { validatorGetItem, validatorGetUser, validatorUpdateItem }

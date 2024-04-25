@@ -81,28 +81,6 @@ const getUser = async (req, res) => {
     }
 }*/
 
-/**
- * Crea un nuevo usuario en la base de datos
- * @param {*} req
- * @param {*} res
-*/
-const createUsuario = async (req, res) => {
-
-    try {
-
-        const body = matchedData(req)
-
-        const data = await usersModel.create(body)
-
-        res.status(201).send(data)
-
-    } catch (err) {
-
-        console.log(err)
-        handleHttpError(res, 'ERROR_CREATE_USUARIO')
-    }
-}
-
 
 /**
  * Actualiza los datos del usuario en la base de datos
@@ -169,4 +147,4 @@ const deleteItem = async (req, res) => {
     }
 }*/
 
-module.exports = { getItems, getItem, getUser, updateItem, deleteItem, createUsuario };
+module.exports = { getItems, getItem, getUser, updateItem, deleteItem };
