@@ -3,6 +3,8 @@ const router = express.Router()
 
 const { registerControl, loginControl } = require("../controllers/auth")
 
+const { validatorRegister, validatorLogin } = require("../validators/auth")
+
 /**
 *  @openapi 
 *  /api/auth/register:
@@ -25,10 +27,27 @@ const { registerControl, loginControl } = require("../controllers/auth")
 *       security:
 *         - bearerAuth: []
 */
-const { validatorRegister, validatorLogin } = require("../validators/auth")
-
 router.post("/register", validatorRegister, registerControl)
 
+/**
+*  @openapi 
+*  /api/auth/login:
+*   post:
+*       tags:
+*       - User
+*       summary: "User Login"
+*       description: Login a user from the Database
+*       requestBody: 
+*           content: 
+*               application/json: 
+*                   schema:
+*                       $ref: "#/components/schemas/login"          
+*       responses:
+*           '200':
+*               description: Returns the token and the user data
+*           '401':
+*               description: Validation error 
+*/
 router.post("/login", validatorLogin, loginControl)
 
 module.exports = router
