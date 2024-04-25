@@ -1,18 +1,21 @@
 const express = require('express');
 
+const { checkRol } = require('../middleware/rol');
+
 const router = express.Router();
 
 const { getComercios, getComercio, deleteComercio, updateComercio, createComercio } = require('../controllers/comercio');
 
-const { validatorGetItem, validatorCreateItem, validatorUpdateComercio } = require('../validators/comercio');
-
-router.post('/', validatorCreateItem, createComercio);
+const { validatorGetItem, validatorUpdateItem, validatorCreateItem } = require('../validators/comercio');
 
 router.get('/', getComercios);
 
 router.get('/:id', validatorGetItem, getComercio);
 
-router.put('/:id', validatorUpdateComercio, updateComercio);
+/*router.post('/', checkRol["admin"], validatorCreateComercio, createComercio);*/
+router.post('/', validatorCreateItem, createComercio);
+
+router.put('/:id', validatorUpdateItem, updateComercio);
 
 router.delete('/:id', validatorGetItem, deleteComercio);
 
