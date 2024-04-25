@@ -8,6 +8,11 @@ const { handleHttpError } = require("../utils/handleError")
 
 const { usersModel } = require("../models")
 
+/**
+ * Encargado de hacer registro del usuario
+ * @param {*} req 
+ * @param {*} res 
+ */
 const registerControl = async (req, res) => {
     
     try {
