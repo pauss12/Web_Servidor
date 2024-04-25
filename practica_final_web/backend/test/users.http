@@ -2,43 +2,24 @@ GET http://localhost:3000/api/users
 
 ###
 
-POST http://localhost:3000/api/users HTTP/1.1
+POST http://localhost:3000/api/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
     "nombreUsuario": "Usuario 1",
     "emailUsuario": "usuario1@gmail.com",
-    "passwordUsuario": "12345678",
-    "edadUsuario": 25,
+    "passwordUsuario": "123456780",
+    "edadUsuario": 22,
     "ciudadUsuario": "Ciudad 1",
     "interesesUsuario": [
         "Interes 1"
     ],
-    "permiteOfertas": false,
-    "role": "usuarioRegistrado"
+    "permiteOfertas": true
 }
 
 ###
 
-POST http://localhost:3000/api/auth/register HTTP/1.1
-Content-Type: application/json
-
-{
-    "nombreUsuario": "Usuario 4",
-    "emailUsuario": "usuario4@gmail.com",
-    "passwordUsuario": "12345678",
-    "edadUsuario": 22,
-    "ciudadUsuario": "Ciudad 4",
-    "interesesUsuario": [
-        "Interes 4"
-    ],
-    "permiteOfertas": true,
-    "role": "usuarioRegistrado"
-}
-
-###
-
-GET http://localhost:3000/api/users/6629619413e13dd2ea7ae702
+GET http://localhost:3000/api/users/662ab4dbd4ad6b2d4387968b
 
 ###
 
@@ -60,4 +41,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/users/662961fa13e13dd2ea7ae704
+DELETE http://localhost:3000/api/users/662ab4dbd4ad6b2d4387968b
