@@ -150,8 +150,6 @@ const deleteComercio = async (req, res) => {
 
         const { id } = matchedData(req)
 
-        console.log("El id es " + id)
-
         const data = await comercioModel.deleteOne({ _id: id });
 
         res.status(200).send(data)
