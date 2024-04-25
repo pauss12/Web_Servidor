@@ -1,9 +1,9 @@
 const express = require("express")
 const router = express.Router()
 
-const { getItems, getItem, getUser, deleteItem, updateItem, createUsuario } = require("../controllers/users")
+const { getItems, getItem, getUser, deleteItem, updateItem } = require("../controllers/users")
 
-const { validatorGetItem, validatorGetUser, validatorUpdateItem, validatorCreateItem } = require("../validators/users")
+const { validatorGetItem, validatorGetUser, validatorUpdateItem } = require("../validators/users")
 
 //const { uploadMiddlewareUsuario } = require("../utils/handleStorage")
 
