@@ -33,23 +33,48 @@ const options = {
             schemas: {
                 user: {
                     type: "object",
-                    required: ["name", "age", "email", "password"],
+                    required: ["nombreUsuario", "emailUsuario", "emailUsuario", "passwordUsuario", "edadUsuario", "ciudadUsuario", "interesesUsuario", "permiteOfertas"],
                     properties: {
-                        name: {
-                            type: "string",
-                            example: "Menganito"
+                        id: {
+                            type: "integer",
+                            format: "int64",
+                            example: 1,
                         },
-                        age: {
+                        nombreUsuario: {
+                            type: "string",
+                            example: "Paula"
+                        },
+                        edadUsuario: {
                             type: "integer",
                             example: 20
                         },
-                        email: {
+                        emailUsuario: {
                             type: "string",
-                            example: "miemail@google.com"
+                            example: "paula@gmail.com"
                         },
-                        password: {
+                        passwordUsuario: {
                             type: "string"
                         },
+                        ciudadUsuario: {
+                            type: "string",
+                            example: "Madrid"
+                        },
+                        interesesUsuario: {
+                            type: "array",
+                            items: {
+                                type: "string"
+                            },
+                            example: ["futbol", "baloncesto"]
+                        },
+                        permiteOfertas: {
+                            type: "boolean",
+                            example: true
+                        },
+                        role: {
+                            type: "string",
+                            example: "usuarioRegistrado"
+                        },
+                        
                     },
                 },
                 login: {
@@ -58,7 +83,7 @@ const options = {
                     properties: {
                         email: {
                             type: "string",
-                            example: "miemail@google.com"
+                            example: "paula@gmail.com"
                         },
                         password: {
                             type: "string"
