@@ -35,7 +35,7 @@ const registerControl = async (req, res) => {
         res.send(data)
 
     } catch (err) {
-        
+
         //console.log(err)
         handleHttpError(res, "ERROR_REGISTER_USER")
     }
@@ -49,16 +49,20 @@ const registerControl = async (req, res) => {
 const loginControl = async (req, res) => {
 
     try {
+
         req = matchedData(req)
-        const user = await usersModel.findOne({ email: req.email }).select("password name role email")
+
+        // Buscar el usuario por su email; y le pide que devuelva solo los campos que se le indican
+        const user = await usersModel.findOne({ emailUsuario: req.emailUsuario }).select("passwordUsuario nombreUsuario role emailUsuario")
 
         if (!user) {
             handleHttpError(res, "USER_NOT_EXISTS", 404)
             return
         }
 
-        const hashPassword = user.password;
-        const check = await compare(req.password, hashPassword)
+        const hashPassword = user.passwordUsuario;
+
+        const check = await compare(req.passwordUsuario, hashPassword)
 
         if (!check) {
             handleHttpError(res, "INVALID_PASSWORD", 401)
@@ -66,7 +70,7 @@ const loginControl = async (req, res) => {
         }
 
         //Si no quisiera devolver el hash del password
-        user.set('password', undefined, { strict: false })
+        user.set('passwordUsuario', undefined, { strict: false })
         const data = {
             token: await tokenSign(user),
             user
@@ -84,8 +88,11 @@ const updateUser = async (req, res) => {
 
     try {
 
-        const { email } = req.params; // Obtener el email del usuario de los parámetros de la solicitud
-        const { role } = req.body; // Obtener el nuevo rol del cuerpo de la solicitud
+        // Obtener el email del usuario de los parámetros de la solicitud
+        const { email } = req.params; 
+
+        // Obtener el nuevo rol del usuario de los parámetros de la solicitud
+        const { role } = req.body; 
 
         // Verificar si el email proporcionado es válido
         if (!email) {
