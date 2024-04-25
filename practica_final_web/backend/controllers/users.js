@@ -109,7 +109,7 @@ const createUsuario = async (req, res) => {
  * @param {*} req
  * @param {*} res
  */
-const updateElement = async (req, res) => {
+const updateItem = async (req, res) => {
 
     try {
 
@@ -125,6 +125,7 @@ const updateElement = async (req, res) => {
         handleHttpError(res, 'ERROR_UPDATE_ITEMS')
     }
 }
+
 
 /*const submitFile = async (req, res) => {
     try {
@@ -168,4 +169,4 @@ const deleteItem = async (req, res) => {
     }
 }*/
 
-module.exports = { getItems, getItem, getUser, updateElement, deleteItem, createUsuario };
+module.exports = { getItems, getItem, getUser, updateItem, deleteItem, createUsuario };
