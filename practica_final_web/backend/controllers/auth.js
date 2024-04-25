@@ -1,8 +1,8 @@
 const { matchedData } = require("express-validator")
 
-//const { tokenSign } = require("../utils/handleJwt")
+const { tokenSign } = require("../utils/handleJwt")
 
-//const { encrypt, compare } = require("../utils/handlePassword")
+const { encrypt, compare } = require("../utils/handlePassword")
 
 const { handleHttpError } = require("../utils/handleError")
 
@@ -19,13 +19,13 @@ const registerControl = async (req, res) => {
 
         req = matchedData(req)
 
-        const password = await encrypt(req.password)
+        const passwordUsuario = await encrypt(req.passwordUsuario)
 
-        const body = { ...req, password }
+        const body = { ...req, passwordUsuario }
 
         const dataUser = await usersModel.create(body)
         
-        dataUser.set('password', undefined, { strict: false })
+        dataUser.set('passwordUsuario', undefined, { strict: false })
 
         const data = {
             token: await tokenSign(dataUser),
@@ -35,6 +35,7 @@ const registerControl = async (req, res) => {
         res.send(data)
 
     } catch (err) {
+        
         //console.log(err)
         handleHttpError(res, "ERROR_REGISTER_USER")
     }
