@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 
-const { getItems, getItem, getUser, deleteItem, updateElement, createUsuario } = require("../controllers/users")
+const { getItems, getItem, getUser, deleteItem, updateItem, createUsuario } = require("../controllers/users")
 
 const { validatorGetItem, validatorGetUser, validatorUpdateItem, validatorCreateItem } = require("../validators/users")
 
@@ -15,9 +15,9 @@ router.post('/', validatorCreateItem, createUsuario)
 
 /*router.get("/users/:username", validatorGetUser, getUser)*/
 
-router.put("/:id", validatorUpdateItem, updateElement)
+router.put('/:id', validatorUpdateItem, updateItem)
 
-/*router.patch("/:id", validatorUpdateItem, )*/
+/*router.patch("/:id", validatorGetItem, updateItem)*/
 
 router.delete("/:id", validatorGetItem, deleteItem)
 
