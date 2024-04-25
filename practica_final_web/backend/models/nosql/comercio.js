@@ -21,31 +21,7 @@ const comercioScheme = new mongoose.Schema(
         },
         telefonoContacto: {
             type: String
-        },
-        idPagina: {
-            type: Number
-        },
-        ciudad: {
-            type: String
-        },
-        actividad: {
-            type: String
-        },
-        textos: [{
-            type: String
-        }],
-        fotos: [{
-            type: String
-        }],
-        scoring: {
-            type: Number
-        },
-        numeroPuntuaciones: {
-            type: Number
-        },
-        reseñas: [{
-            type: String
-        }]
+        }
     },
     {
         timestamp: true,
