@@ -92,12 +92,14 @@ const updateItem = async (req, res) => {
     try {
 
         const { id, ...body } = matchedData(req)
+
         const data = await usersModel.findByIdAndUpdate({ _id: id }, body);
 
         if (!data)
             return handleHttpError(res, 'Documento no encontrado', 404)
         else
             res.status(200).send(data)
+
     } catch (err) {
         //console.log(err) 
         handleHttpError(res, 'ERROR_UPDATE_ITEMS')
