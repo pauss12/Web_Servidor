@@ -1,6 +1,8 @@
 const { check } = require("express-validator")
 const { validateResults } = require("../utils/handleValidator")
 
+
+
 const validatorCrearPaginaComercio = [
 
     
@@ -8,7 +10,7 @@ const validatorCrearPaginaComercio = [
     check("titulo").optional().notEmpty().isString(),
     check("ciudadComercio").optional().notEmpty(),
     check("actividadComercio").optional().notEmpty(),
-    check("resumenComercio").optional().notEmpty().
+    check("resumenComercio").optional().notEmpty(),
     check("textos").optional().isArray(),
     check("fotos").optional().isArray(),
     (req, res, next) => {
