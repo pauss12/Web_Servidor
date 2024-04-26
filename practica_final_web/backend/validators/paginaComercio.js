@@ -8,8 +8,8 @@ const validatorCrearPaginaComercio = [
     check("actividad").exists().notEmpty().isString(),
     check("titulo").exists().notEmpty().isString(),
     check("resumen").exists().notEmpty().isString(),
-    check("textos").exists().notEmpty().isArray(),
-    check("fotos").exists().notEmpty().isArray(),
+    check("textos").optional().isArray(),
+    check("fotos").optional().isArray(),
     (req, res, next) => {
         return validateResults(req, res, next)
     }
