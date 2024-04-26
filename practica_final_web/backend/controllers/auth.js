@@ -49,10 +49,8 @@ const registerControl = async (req, res) => {
 const loginControl = async (req, res) => {
 
     try {
-
+        
         req = matchedData(req)
-
-        // Buscar el usuario por su email; y le pide que devuelva solo los campos que se le indican
         const user = await usersModel.findOne({ emailUsuario: req.emailUsuario }).select("passwordUsuario nombreUsuario role emailUsuario")
 
         if (!user) {
@@ -61,7 +59,6 @@ const loginControl = async (req, res) => {
         }
 
         const hashPassword = user.passwordUsuario;
-
         const check = await compare(req.passwordUsuario, hashPassword)
 
         if (!check) {
