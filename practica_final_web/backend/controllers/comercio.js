@@ -2,7 +2,7 @@ const { comercioModel } = require('../models')
 const { matchedData } = require('express-validator')
 const { handleHttpError } = require('../utils/handleError')
 
-const { tokenSign } = require("../utils/handleJwt")
+const { tokenSigComercio } = require("../utils/handleJwt")
 const { encrypt, compare } = require("../utils/handlePassword")
 /**
  * Obtener lista de comercios de la base de datos sin ningun tipo de fitro
@@ -49,6 +49,62 @@ const getComercio = async (req, res) => {
     }
 }
 
+//Funcion para hacer login de un comercio y crear su pagina web
+const loginComercio = async (req, res) => {
+
+    try {
+
+        console.log("\n\n ENTRA EN LOGIN COMERCIO \n\n")
+
+        req = matchedData(req)
+
+        console.log(req.body)
+
+        console.log("\n\n-----------------------------------\n\n")
+
+        /*const comercio = await paginaModel.findOne({ _id: req._id }).select("passwordComercio nombreUsuario role emailUsuario")*/
+
+        const comercio = await comercioModel.findOne({ emailComercio: req.emailComercio }).select("passwordComercio nombreComercio _id emailComercio")
+
+        console.log(comercio)
+
+        if (!comercio) {
+            handleHttpError(res, "COMERCIO_NOT_EXISTS", 404)
+            return
+        }
+
+        const hashPassword = comercio.passwordComercio;
+
+        console.log("la contraseña hasheada es " + hashPassword)
+
+        console.log("la contraseña ingresada es " + req.passwordComercio)
+
+
+        const check = await compare(req.passwordComercio, hashPassword)
+
+        console.log("El check es " + check)
+
+        if (!check) {
+            handleHttpError(res, "INVALID_PASSWORD", 401)
+            return
+        }
+
+        //Si no quisiera devolver el hash del password
+        comercio.set('passwordComercio', undefined, { strict: false })
+
+        const data = {
+            token: await tokenSigComercio(comercio),
+            comercio
+        }
+
+        res.send(data)
+
+    } catch (err) {
+        console.log(err)
+        handleHttpError(res, "ERROR_LOGIN_USER")
+    }
+}
+
 //Funcion para crear un comercio
 const createComercio = async (req, res) => {
 
@@ -70,7 +126,7 @@ const createComercio = async (req, res) => {
         dataComercio.set('passwordComercio', undefined, { strict: false })
 
         const data = {
-            token: await tokenSign(dataComercio),
+            token: await tokenSigComercio(dataComercio),
             user: dataComercio
         }
 
@@ -189,5 +245,5 @@ const deleteComercio = async (req, res) => {
     }
 }*/
 
-module.exports = { getComercios, getComercio, deleteComercio, updateComercio, createComercio};
+module.exports = { getComercios, getComercio, deleteComercio, updateComercio, createComercio, loginComercio };
 
