@@ -5,11 +5,11 @@ const validatorRegister = [
 
     check("nombreUsuario").exists().notEmpty().isLength({ min: 3, max: 99 }),
     check("emailUsuario").isString(),
-    check("passwordUsuario").exists().notEmpty().isLength({ min: 8, max: 16 }),
+    check("passwordUsuario").exists().notEmpty(),
     check("edadUsuario").isNumeric().notEmpty(),
     check("ciudadUsuario").isString().notEmpty(),
     check("interesesUsuario").isArray().notEmpty(),
-    check("permiteOfertas").isBoolean(),   
+    check("permiteOfertas").isBoolean(), 
     (req, res, next) => {
         return validateResults(req, res, next)
     }
@@ -18,7 +18,7 @@ const validatorRegister = [
 const validatorLogin = [
     
     check("emailUsuario").exists().notEmpty().isEmail(),
-    check("passwordUsuario").exists().notEmpty().isLength({ min: 8, max: 16 }),
+    check("passwordUsuario").exists().notEmpty(),
     (req, res, next) => {
         return validateResults(req, res, next)
     }
