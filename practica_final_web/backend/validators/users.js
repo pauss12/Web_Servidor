@@ -33,7 +33,7 @@ const validatorUpdateItem = [
     check("interesesUsuario").optional(),
     check("permiteOfertas").optional(),
     check("permiteNotificaciones").optional(),
-    check("tipoUsuario").optional(),
+    check("role").optional(),
     (req, res, next) => {
         return validateResults(req, res, next)
     }
