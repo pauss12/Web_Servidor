@@ -2,41 +2,27 @@ GET http://localhost:3000/api/comercio
 
 ###
 
-GET http://localhost:3000/api/comercio/662a8a81f695d5fcfdd3f6ce
+GET http://localhost:3000/api/comercio/662add9b51a8bf7bb5e011ec
 
 ### POST DE UN COMERCIO CON UN USUARIO NORMAL, QUE NO ES ADMINISTRADOR
 
 POST http://localhost:3000/api/comercio HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJhZGNkZTUxYThiZjdiYjVlMDExZTAiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTQwODUwODYsImV4cCI6MTcxNDA5MjI4Nn0.QQ0DxOukT0C5kF3wTS1aL61izxqxV-5m2JPsVSednIc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiODk0YzNkNTk3MTAxNDg3YmRiYWMiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTQxMjk1MjcsImV4cCI6MTcxNDEzNjcyN30.zUk0r3ihNewg1EpPJaYV4vsx_AlQMgZanoDCuXi4NyI
 
 {
     "nombreComercio": "Comercio 1",
     "cifComercio": "12345678",
     "direccion": "Calle 1",
     "email": "comercio1@gmail.com",
-    "telefonoContacto": "4123456789",
-    "idPagina": 1,
-    "ciudad": "Ciudad 1",
-    "actividad": "Actividad 1",
-    "textos": [
-        "Titulo 1: Descripcion 1"
-    ],
-    "fotos": [
-        "https://www.google.com"
-    ],
-    "scoring": 1,
-    "numeroPuntuaciones": 1,
-    "reseñas": [
-        "Usuario 1: Comentario 1"
-    ]
+    "telefonoContacto": "4123456789"
 }
 
 ### POST DE UN COMERCIO CON UN USUARIO QUE  ES ADMINISTRADOR
 
 POST http://localhost:3000/api/comercio HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJhZGQ4YzUxYThiZjdiYjVlMDExZWEiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTQwODUyNjAsImV4cCI6MTcxNDA5MjQ2MH0.jeAZQWto7r5Dy21HYT9Xe4rE4kP7i2Rq6kg-yOV6w28
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiNzVmYjEzOGI4MTY2MWFhN2IyOGEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTQxMjk2MDQsImV4cCI6MTcxNDEzNjgwNH0.qW4eaANmXk5SEtW4B5ciudGnWwKFiCoEzAkjxcWXcvE
 
 {
     "nombreComercio": "Comercio 1",
@@ -89,6 +75,6 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/comercio/662a8a81f695d5fcfdd3f6ce
+DELETE http://localhost:3000/api/comercio/662add9b51a8bf7bb5e011ec
 
 ###
