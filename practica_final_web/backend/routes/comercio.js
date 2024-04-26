@@ -3,13 +3,18 @@ const { checkRol, checkearComercio } = require('../middleware/rol');
 const { authMiddleware } = require("../middleware/session")
 const router = express.Router();
 
-const { getComercios, getComercio, deleteComercio, updateComercio, createComercio } = require('../controllers/comercio');
+const { getComercios, getComercio, deleteComercio, updateComercio, createComercio, loginComercio } = require('../controllers/comercio');
 
 const { validatorGetItem, validatorUpdateItemAdmin, validatorCreateItem } = require('../validators/comercio');
 
+//Obtener lista de comercios
 router.get('/', getComercios);
 
+//Obtener un comercio en especifico por id
 router.get('/:id', validatorGetItem, getComercio);
+
+//Login comercio
+router.post('/loginComercio', checkearComercio, loginComercio);
 
 //crear comercio
 router.post('/', authMiddleware, checkRol(["admin"]), validatorCreateItem, createComercio);
