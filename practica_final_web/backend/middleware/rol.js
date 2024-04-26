@@ -1,6 +1,6 @@
+const { comercioModel } = require("../models")
 const { handleHttpError } = require("../utils/handleError")
-
-const JWT_SECRET = process.env.JWT_SECRET
+const { verifyToken } = require("../utils/handleJwt")
 
 const checkRol = (roles) => (req, res, next) => {
 
@@ -27,33 +27,42 @@ const checkRol = (roles) => (req, res, next) => {
 }
 
 //Checkear que el comercio que se va a editar sea del comercio propio
-const checkearComercio = (req, res, next) => {
-
-    console.log("checkearComercio")
+const checkearComercio = async (req, res, next) => {
     
     try {
+
+        if (!req.headers.authorization) {
+            handleHttpError(res, "NOT_TOKEN", 401)
+            return
+        }
+
+        // Nos llega la palabra reservada Bearer (es un estándar) y el Token, así que me quedo con la última parte
+        const token = req.headers.authorization.split(' ').pop()
         
         // Verificar el token
-        const decoded = jwt.verify(token, JWT_SECRET);
+        const dataToken = await verifyToken(token)
 
-        console.log('decoded:', decoded);
+        if (!dataToken) {
+            handleHttpError(res, "NOT_PAYLOAD_DATA", 401)
+            retrun
+        }
 
+        if (!dataToken._id) {
+            handleHttpError(res, "ERROR_ID_TOKEN", 401)
+            return
+        }
 
-        // Obtener el email del comercio de la base de datos
-        const emailBBDD = req.user.email;
+        const comercio = await comercioModel.findById(dataToken._id)
 
-        console.log('emailBBDD:', emailBBDD);
+        //Añadimos el usuario a la request
+        req.comercio = comercio
 
-        // Comparar el email del token con el email de la base de datos
-        if (decoded.email === emailBBDD)
-            return true; 
-        else
-            return false; 
+        //Pasamos al siguiente middleware
+        next()
 
     } catch (error) {
-        // Manejar errores de verificación del token
-        console.error('Error al verificar el token:', error);
-        return false;
+       
+        handleHttpError(res, "NOT_SESSION", 403)
     }
 }
 
