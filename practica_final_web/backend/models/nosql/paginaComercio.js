@@ -5,9 +5,6 @@ const mongooseDelete = require("mongoose-delete")
 const paginaComercioScheme = new mongoose.Schema(
 
     {
-        tokenComercio: {
-            type: String
-        },
         paginaId: {
             type: String
         },
