@@ -1,0 +1,47 @@
+GET http://localhost:3000/api/paginaComercio
+
+### CREACION DE UNA PAGINA DE COMERCIO
+POST http://localhost:3000/api/paginaComercio/createPage HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiYjAwNjJmNjkyZjA1OTYxZWY5MGIiLCJlbWFpbCI6ImNvbWVyY2lvMUBnbWFpbC5jb20iLCJpYXQiOjE3MTQxMzkxNDIsImV4cCI6MTcxNDE0NjM0Mn0.qfzAGdEA87vdb_dxJ14pOby0kykfwYJmBkr-icyZi2o
+
+{
+    "idPagina": 1,
+    "titulo": "Titulo 1",
+    "ciudadComercio": "Ciudad 1",
+    "actividadComercio": "Actividad 1",
+    "resumenComercio": "Resumen 1",
+    "textos": [
+        "Titulo 1: Descripcion 1"
+    ],
+    "fotos": [
+        "https://www.google.com"
+    ]
+}
+
+
+### MODIFICACION DE UN COMERCIO SIENDO EL COMERCIO PROPIO, solo puede modificar cosas de su pagina de comercio
+
+PUT http://localhost:3000/api/paginaComercio/662b8acd7289b86a735ba4fb HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiYjAwNjJmNjkyZjA1OTYxZWY5MGIiLCJlbWFpbCI6ImNvbWVyY2lvMUBnbWFpbC5jb20iLCJpYXQiOjE3MTQxMzkxNDIsImV4cCI6MTcxNDE0NjM0Mn0.qfzAGdEA87vdb_dxJ14pOby0kykfwYJmBkr-icyZi2o
+
+{
+    "idPagina": 1,
+    "ciudad": "Ciudad 1",
+    "actividad": "Actividad 1",
+    "textos": [
+        "Titulo 1: Descripcion 1"
+    ],
+    "fotos": [
+        "https://www.google.com"
+    ],
+    "reseñas": [
+        "Usuario 1: Comentario 1"
+    ]
+}
+
+### ELIMINACION DE UNA PAGINA DE COMERCIO
+DELETE http://localhost:3000/api/paginaComercio/662bccd4ca34670d3b67014a HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiZDYwNWFhMzg0Nzc1M2NlZDE1MWUiLCJlbWFpbCI6ImNvbWVyY2lvMUBnbWFpbC5jb20iLCJpYXQiOjE3MTQxNDg4NjksImV4cCI6MTcxNDE1NjA2OX0.n82ueHMhzZszY2_xIKGJORFNbgYAMIUMaK1LJ6CZk8A

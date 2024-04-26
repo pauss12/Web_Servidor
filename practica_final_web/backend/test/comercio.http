@@ -2,79 +2,83 @@ GET http://localhost:3000/api/comercio
 
 ###
 
-GET http://localhost:3000/api/comercio/662add9b51a8bf7bb5e011ec
+GET http://localhost:3000/api/comercio/662be0ecd9edda32d5fd957e
 
 ### POST DE UN COMERCIO CON UN USUARIO NORMAL, QUE NO ES ADMINISTRADOR
 
 POST http://localhost:3000/api/comercio HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiODk0YzNkNTk3MTAxNDg3YmRiYWMiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTQxMjk1MjcsImV4cCI6MTcxNDEzNjcyN30.zUk0r3ihNewg1EpPJaYV4vsx_AlQMgZanoDCuXi4NyI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiODk0YzNkNTk3MTAxNDg3YmRiYWMiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTQxNTE2NDIsImV4cCI6MTcxNDE1ODg0Mn0.XHG0CJLU3fruqDbVeK2tNoTlqFiX6Bd1w-cOOXF344c
 
 {
     "nombreComercio": "Comercio 1",
     "cifComercio": "12345678",
     "direccion": "Calle 1",
     "email": "comercio1@gmail.com",
+    "passwordComercio": "12345678",
     "telefonoContacto": "4123456789"
 }
 
-### POST DE UN COMERCIO CON UN USUARIO QUE  ES ADMINISTRADOR
+### POST DE UN COMERCIO CON UN USUARIO QUE ES ADMINISTRADOR
 
 POST http://localhost:3000/api/comercio HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiNzVmYjEzOGI4MTY2MWFhN2IyOGEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTQxMjk2MDQsImV4cCI6MTcxNDEzNjgwNH0.qW4eaANmXk5SEtW4B5ciudGnWwKFiCoEzAkjxcWXcvE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiNzVmYjEzOGI4MTY2MWFhN2IyOGEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTQxNTAxOTYsImV4cCI6MTcxNDE1NzM5Nn0.stlFJjaxQ_VNN9Xjqdmd6FtGuIUZsDYur_D1S3yqswA
 
 {
     "nombreComercio": "Comercio 1",
     "cifComercio": "12345678",
     "direccion": "Calle 1",
     "email": "comercio1@gmail.com",
-    "telefonoContacto": "4123456789",
-    "idPagina": 1,
-    "ciudad": "Ciudad 1",
-    "actividad": "Actividad 1",
-    "textos": [
-        "Titulo 1: Descripcion 1"
-    ],
-    "fotos": [
-        "https://www.google.com"
-    ],
-    "scoring": 1,
-    "numeroPuntuaciones": 1,
-    "reseñas": [
-        "Usuario 1: Comentario 1"
-    ]
-}
-
-###
+    "passwordComercio": "12345678",
+    "telefonoContacto": "4123456789FG"
     
-PUT http://localhost:3000/api/comercio/662a8a81f695d5fcfdd3f6ce HTTP/1.1
+}
+
+### HACER LOGIN EN LA PAGINA DE UN COMERCIO
+POST http://localhost:3000/api/comercio/loginComercio HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiZTBlY2Q5ZWRkYTMyZDVmZDk1N2UiLCJlbWFpbCI6ImNvbWVyY2lvMUBnbWFpbC5jb20iLCJpYXQiOjE3MTQxNTE2NjEsImV4cCI6MTcxNDE1ODg2MX0.wYIUcTe7CV4GYPTXZXTFcl4VBkAomyp5T3x7ofAJ_P8
 
 {
-    "nombreComercio": "Comercio 1",
+    "emailComercio": "comercio1@gmail.com",
+    "passwordComercio": "12345678"
+}
+
+
+### MODIFICACION DE UN COMERCIO CON UN USUARIO QUE NO ES ADMINISTRADOR
+PUT http://localhost:3000/api/comercio/662b8acd7289b86a735ba4fb HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiODk0YzNkNTk3MTAxNDg3YmRiYWMiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTQxMzg1NzgsImV4cCI6MTcxNDE0NTc3OH0.J_SXDYqalW-HVad7zpc8zYj8GgUiWhkiSyTeAh3EQsc
+
+{
+    "nombreComercio": "Comercio1",
     "cifComercio": "12345678",
-    "direccion": "Calle 1",
+    "direccion": "Calle1",
+    "email": "comercio1@gmail.com",
+    "passwordComercio":"12345678",
+    "telefonoContacto": "4123456789",
+    
+}
+
+### MODIFICACION DE UN COMERCIO CON UN USUARIO QUE ES ADMINISTRADOR
+PUT http://localhost:3000/api/comercio/662b8acd7289b86a735ba4fb HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiNzVmYjEzOGI4MTY2MWFhN2IyOGEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTQxMzg2MTgsImV4cCI6MTcxNDE0NTgxOH0.12xxQFC3GZFm-r89x4u49VWdTHz13_ITkjAiIc80IX4
+
+{
+    "nombreComercio": "Comercio1",
+    "cifComercio": "12345678",
+    "direccion": "Calle1",
     "email": "comercio1@gmail.com",
     "telefonoContacto": "4123456789",
-    "idPagina": 1,
-    "ciudad": "Ciudad 1",
-    "actividad": "Actividad 1",
-    "textos": [
-        "Titulo 1: Descripcion 1"
-    ],
-    "fotos": [
-        "https://www.google.com"
-    ],
-    "scoring": 1,
-    "numeroPuntuaciones": 1,
-    "reseñas": [
-        "Usuario 1: Comentario 1"
-    ]
+    
 }
+
 
 ###
 
-DELETE http://localhost:3000/api/comercio/662add9b51a8bf7bb5e011ec
+DELETE http://localhost:3000/api/comercio/662bdb5471b6611807d6f109
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiZGI1NDcxYjY2MTE4MDdkNmYxMDkiLCJlbWFpbCI6ImNvbWVyY2lvMUBnbWFpbC5jb20iLCJpYXQiOjE3MTQxNTAyMjgsImV4cCI6MTcxNDE1NzQyOH0.FFFC2zE-2P0y8_4W15O3Mu2zGCA5LNK94rvBjpnLrsY
 
 ###
