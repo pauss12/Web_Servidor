@@ -2,6 +2,8 @@ const { comercioModel } = require('../models')
 const { matchedData } = require('express-validator')
 const { handleHttpError } = require('../utils/handleError')
 
+const { tokenSign } = require("../utils/handleJwt")
+const { encrypt, compare } = require("../utils/handlePassword")
 /**
  * Obtener lista de comercios de la base de datos sin ningun tipo de fitro
  * 
@@ -52,16 +54,31 @@ const createComercio = async (req, res) => {
 
     try {
 
-        //const { body } = req
-
-        const body = matchedData(req)
+        /*const body = matchedData(req)
 
         const data = await comercioModel.create(body)
-        res.status(201).send(data)
+        res.status(201).send(data)*/
+
+        req = matchedData(req)
+
+        const passwordComercio = await encrypt(req.passwordComercio)
+
+        const body = { ...req, passwordComercio }
+
+        const dataComercio = await comercioModel.create(body)
+
+        dataComercio.set('passwordComercio', undefined, { strict: false })
+
+        const data = {
+            token: await tokenSign(dataComercio),
+            user: dataComercio
+        }
+
+        res.send(data)
 
     } catch (err) {
 
-        //console.log(err)
+        console.log(err)
         handleHttpError(res, 'ERROR_CREATE_COMERCIO')
     }
 }
