@@ -6,13 +6,31 @@ const JWT_SECRET = process.env.JWT_SECRET
  * El objeto del usuario
  * @param {*} user 
  */
-const tokenSign = async (user) => {
+const tokenSigUser = async (user) => {
     
     const sign = jwt.sign(
         {
             _id: user._id,
             email: user.email,
             role: user.role
+        },
+        JWT_SECRET,
+        {
+            expiresIn: "2h"
+        }
+    )
+    return sign
+}
+
+/*
+    Token signer del comercio
+*/
+const tokenSigComercio = async (comercio) => {
+
+    const sign = jwt.sign(
+        {
+            _id: comercio._id,
+            email: comercio.email
         },
         JWT_SECRET,
         {
@@ -34,4 +52,4 @@ const verifyToken = async (tokenJwt) => {
     }
 }
 
-module.exports = { tokenSign, verifyToken }
+module.exports = { tokenSigUser, verifyToken, tokenSigComercio }
