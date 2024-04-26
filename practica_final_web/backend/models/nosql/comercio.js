@@ -19,6 +19,9 @@ const comercioScheme = new mongoose.Schema(
             type: String,
             unique: true
         },
+        passwordComercio: {
+            type: String
+        },
         telefonoContacto: {
             type: String
         }
