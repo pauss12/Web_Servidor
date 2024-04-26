@@ -1,24 +1,26 @@
 const express = require('express');
-
-const { checkRol } = require('../middleware/rol');
-
-const { authMiddleware } = require("../Middleware/session")
-
+const { checkRol, checkearComercio } = require('../middleware/rol');
+const { authMiddleware } = require("../middleware/session")
 const router = express.Router();
 
 const { getComercios, getComercio, deleteComercio, updateComercio, createComercio } = require('../controllers/comercio');
 
-const { validatorGetItem, validatorUpdateItem, validatorCreateItem } = require('../validators/comercio');
+const { validatorGetItem, validatorUpdateItemAdmin, validatorCreateItem } = require('../validators/comercio');
 
 router.get('/', getComercios);
 
 router.get('/:id', validatorGetItem, getComercio);
 
-router.post('/', checkRol["admin"], validatorCreateComercio, createComercio);
-//router.post('/', validatorCreateItem, createComercio);
+//crear comercio
+router.post('/', authMiddleware, checkRol(["admin"]), validatorCreateItem, createComercio);
 
-router.put('/:id', validatorUpdateItem, updateComercio);
+//Modificar comercio siendo admin
+router.put('/:id', authMiddleware, checkRol(["admin"]), validatorUpdateItemAdmin, updateComercio);
 
-router.delete('/:id', validatorGetItem, deleteComercio);
+//Borrar comercio siendo admin
+router.delete('/:id', authMiddleware, checkRol(["admin"]), validatorGetItem, deleteComercio);
+
+//Borrar comercio siendo el dueño del comercio
+router.delete('/:id', checkearComercio, validatorGetItem, deleteComercio);
 
 module.exports = router;
