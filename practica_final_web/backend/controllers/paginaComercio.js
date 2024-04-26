@@ -4,8 +4,6 @@ const { matchedData } = require('express-validator')
 
 const { handleHttpError } = require('../utils/handleError')
 
-const { tokenSign } = require("../utils/handleJwt")
-
 const { encrypt, compare } = require("../utils/handlePassword")
 
 /**
@@ -25,47 +23,7 @@ const getPaginasComercio = async (req, res) => {
     }
 }
 
-const loginComercio = async (req, res) => {
 
-    try {
-
-        req = matchedData(req)
-
-        /*const comercio = await paginaModel.findOne({ _id: req._id }).select("passwordComercio nombreUsuario role emailUsuario")*/
-
-        const comercio = await paginaModel.findOne({ emailComercio: req.emailComercio }).select("passwordComercio nombreComercio _id emailComercio")
-
-        console.log(comercio)
-
-        if (!comercio) {
-            handleHttpError(res, "COMERCIO_NOT_EXISTS", 404)
-            return
-        }
-
-        const hashPassword = comercio.passwordComercio;
-
-        const check = await compare(req.passwordComercio, hashPassword)
-
-        if (!check) {
-            handleHttpError(res, "INVALID_PASSWORD", 401)
-            return
-        }
-
-        //Si no quisiera devolver el hash del password
-        comercio.set('passwordComercio', undefined, { strict: false })
-
-        const data = {
-            token: await tokenSign(comercio),
-            comercio
-        }
-
-        res.send(data)
-
-    } catch (err) {
-        console.log(err)
-        handleHttpError(res, "ERROR_LOGIN_USER")
-    }
-}
 
 const createPaginaComercio = async (req, res) => {
 
@@ -74,7 +32,7 @@ const createPaginaComercio = async (req, res) => {
         const body = matchedData(req)
 
         const data = await paginaModel.create(body)
-        res.status(201).send(data)
+        res.status(200).send(data)
 
     } catch (err) {
 
@@ -84,6 +42,24 @@ const createPaginaComercio = async (req, res) => {
     }
 }
 
+const deletePaginaComercio = async (req, res) => {
+
+    try {
+
+        const { id } = matchedData(req)
+
+        const data = await paginaModel.deleteOne({ _id: id });
+
+        res.status(200).send(data)
+
+    } catch (err) {
+
+        console.log(err)
+        handleHttpError(res, 'ERROR_DELETE_ITEM')
+    }
+}
 
 
-module.exports = { getPaginasComercio, createPaginaComercio, loginComercio }
+
+
+module.exports = { getPaginasComercio, createPaginaComercio, deletePaginaComercio }
