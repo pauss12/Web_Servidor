@@ -1,4 +1,5 @@
-const swaggerJsdoc = require("swagger-jsdoc")
+const swaggerJsdoc = require("swagger-jsdoc");
+const comercio = require("../models/nosql/comercio");
 
 const options = {
     definition: {
@@ -77,7 +78,7 @@ const options = {
                         
                     },
                 },
-                login: {
+                loginUser: {
                     type: "object",
                     required: ["email", "password"],
                     properties: {
@@ -90,7 +91,7 @@ const options = {
                         },
                     }
                 },
-                register: {
+                registerUser: {
                     type: "object",
                     required: ["nombreUsuario", "emailUsuario", "emailUsuario", "passwordUsuario", "edadUsuario", "ciudadUsuario", "interesesUsuario", "permiteOfertas"],
                     properties: {
@@ -127,6 +128,41 @@ const options = {
 
                     }
                 },
+                comercio: {
+                    type: "object",
+                    required: ["nombreComercio", "cifComercio", "emailComercio", "direccionComercio", "emailComercio", "passwordComercio", "telefonoContacto"],
+                    properties: {
+                        id: {
+                            type: "integer",
+                            format: "int64",
+                            example: 1,
+                        },
+                        nombreComercio: {
+                            type: "string",
+                            example: "Media Markt"
+                        },
+                        cifComercio: {
+                            type: "string",
+                            example: "B-12345678"
+                        },
+                        direccionComercio: {
+                            type: "string",
+                            example: "Calle Gran Via, 23, Madrid"
+                        },
+                        emailComercio: {
+                            type: "string",
+                            example: "mediamarkt@gmail.com"
+                        },
+                        passwordComercio: {
+                            type: "string"
+                        },
+                        telefonoContacto: {
+                            type: "string",
+                            example: "+34 915 426 879"
+                        },
+                    },
+                },
+                
             },
         },
     },
