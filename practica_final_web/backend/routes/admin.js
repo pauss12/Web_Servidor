@@ -24,7 +24,7 @@ router.put('/:id', authMiddleware, checkRol(["admin"]), validatorUpdateItemAdmin
  * /api/admin/{id}:
  *  delete:
  *      tags:
- *      - Comercio
+ *      - Admin
  *      summary: Delete merchant by admin
  *      description: Delete a merchant by an admin; checks the token we have in the header and after that, checks the role of the users whose token we have in the header and if it is admin, it will allow us to delete the merchant
  *      parameters:
