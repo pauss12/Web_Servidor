@@ -20,7 +20,7 @@ const getComercios = async (req, res) => {
 
     } catch (err) {
 
-        //console.log(err)
+        console.log(err)
         handleHttpError(res, 'ERROR_GET_COMERCIOS')
     }
 }
@@ -60,6 +60,7 @@ const loginComercio = async (req, res) => {
 
         /*const comercio = await comercioModel.findOne({ emailComercio: req.emailComercio })*/
 
+        console.log(comercio)
 
         if (!comercio) {
             handleHttpError(res, "COMERCIO_NOT_EXISTS", 404)
@@ -86,12 +87,44 @@ const loginComercio = async (req, res) => {
         res.send(data)
 
     } catch (err) {
-        //console.log(err)
+        console.log(err)
         handleHttpError(res, "ERROR_LOGIN_USER")
     }
 }
 
+//Funcion para crear un comercio
+const createComercio = async (req, res) => {
 
+    try {
+
+        /*const body = matchedData(req)
+
+        const data = await comercioModel.create(body)
+        res.status(201).send(data)*/
+
+        req = matchedData(req)
+
+        const passwordComercio = await encrypt(req.passwordComercio)
+
+        const body = { ...req, passwordComercio }
+
+        const dataComercio = await comercioModel.create(body)
+
+        dataComercio.set('passwordComercio', undefined, { strict: false })
+
+        const data = {
+            token: await tokenSigComercio(dataComercio),
+            user: dataComercio
+        }
+
+        res.send(data)
+
+    } catch (err) {
+
+        console.log(err)
+        handleHttpError(res, 'ERROR_CREATE_COMERCIO')
+    }
+}
 
 /**
  * Obtener usuario de la base de datos
@@ -199,5 +232,5 @@ const deleteComercio = async (req, res) => {
     }
 }*/
 
-module.exports = { getComercios, getComercio, deleteComercio, updateComercio, loginComercio };
+module.exports = { getComercios, getComercio, deleteComercio, updateComercio, createComercio, loginComercio };
 
