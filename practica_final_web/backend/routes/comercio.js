@@ -5,7 +5,7 @@ const router = express.Router();
 
 const { getComercios, getComercio, deleteComercio, updateComercio, createComercio, loginComercio } = require('../controllers/comercio');
 
-const { validatorGetItem, validatorUpdateItemAdmin, validatorCreateItem } = require('../validators/comercio');
+const { validatorGetItem, validatorUpdateItemAdmin, validatorCreateItem, validatorLoginComercio } = require('../validators/comercio');
 
 //Obtener lista de comercios
 router.get('/', getComercios);
@@ -14,7 +14,7 @@ router.get('/', getComercios);
 router.get('/:id', validatorGetItem, getComercio);
 
 //Login comercio
-router.post('/loginComercio', checkearComercio, loginComercio);
+router.post('/loginComercio', checkearComercio, validatorLoginComercio, loginComercio);
 
 //crear comercio
 router.post('/', authMiddleware, checkRol(["admin"]), validatorCreateItem, createComercio);
