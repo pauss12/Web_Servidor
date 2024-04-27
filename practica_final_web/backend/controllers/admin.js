@@ -13,11 +13,6 @@ const createComercio = async (req, res) => {
 
     try {
 
-        /*const body = matchedData(req)
-
-        const data = await comercioModel.create(body)
-        res.status(201).send(data)*/
-
         req = matchedData(req)
 
         const passwordComercio = await encrypt(req.passwordComercio)
