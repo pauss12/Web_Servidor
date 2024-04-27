@@ -54,19 +54,12 @@ const loginComercio = async (req, res) => {
 
     try {
 
-        console.log("\n\n ENTRA EN LOGIN COMERCIO \n\n")
-
         req = matchedData(req)
-
-        console.log(req.body)
-
-        console.log("\n\n-----------------------------------\n\n")
-
-        /*const comercio = await paginaModel.findOne({ _id: req._id }).select("passwordComercio nombreUsuario role emailUsuario")*/
 
         const comercio = await comercioModel.findOne({ emailComercio: req.emailComercio }).select("passwordComercio nombreComercio _id emailComercio")
 
-        console.log(comercio)
+        /*const comercio = await comercioModel.findOne({ emailComercio: req.emailComercio })*/
+
 
         if (!comercio) {
             handleHttpError(res, "COMERCIO_NOT_EXISTS", 404)
@@ -75,14 +68,7 @@ const loginComercio = async (req, res) => {
 
         const hashPassword = comercio.passwordComercio;
 
-        console.log("la contraseña hasheada es " + hashPassword)
-
-        console.log("la contraseña ingresada es " + req.passwordComercio)
-
-
         const check = await compare(req.passwordComercio, hashPassword)
-
-        console.log("El check es " + check)
 
         if (!check) {
             handleHttpError(res, "INVALID_PASSWORD", 401)
@@ -100,7 +86,7 @@ const loginComercio = async (req, res) => {
         res.send(data)
 
     } catch (err) {
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, "ERROR_LOGIN_USER")
     }
 }
