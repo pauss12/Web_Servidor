@@ -33,7 +33,7 @@ const checkearComercio = async (req, res, next) => {
 
         if (!req.headers.authorization) {
             handleHttpError(res, "NOT_TOKEN", 401)
-            return
+            return;
         }
 
         // Nos llega la palabra reservada Bearer (es un estándar) y el Token, así que me quedo con la última parte
@@ -44,15 +44,20 @@ const checkearComercio = async (req, res, next) => {
 
         if (!dataToken) {
             handleHttpError(res, "NOT_PAYLOAD_DATA", 401)
-            retrun
+            return;
         }
 
         if (!dataToken._id) {
             handleHttpError(res, "ERROR_ID_TOKEN", 401)
-            return
+            return;
         }
 
         const comercio = await comercioModel.findById(dataToken._id)
+
+        if (!comercio) {
+            handleHttpError(res, "COMERCIO_NOT_FOUND", 404);
+            return;
+        }
 
         //Añadimos el usuario a la request
         req.comercio = comercio
