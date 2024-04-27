@@ -1,9 +1,10 @@
 const express = require('express');
-const { checkRol, checkearComercio } = require('../middleware/rol');
-const { authMiddleware } = require("../middleware/session")
+
+const { checkearComercio } = require('../middleware/rol');
+
 const router = express.Router();
 
-const { getComercios, getComercio, deleteComercio, updateComercio, createComercio, loginComercio } = require('../controllers/comercio');
+const { getComercios, getComercio, deleteComercio, loginComercio } = require('../controllers/comercio');
 
 const { validatorGetItem, validatorUpdateItemAdmin, validatorCreateItem, validatorLoginComercio } = require('../validators/comercio');
 
@@ -47,35 +48,6 @@ router.get('/:id', validatorGetItem, getComercio);
 
 //Login comercio
 router.post('/loginComercio', checkearComercio, validatorLoginComercio, loginComercio);
-
-//crear comercio
-router.post('/', authMiddleware, checkRol(["admin"]), validatorCreateItem, createComercio);
-
-//Modificar comercio siendo admin
-router.put('/:id', authMiddleware, checkRol(["admin"]), validatorUpdateItemAdmin, updateComercio);
-
-/**
- * @openapi
- * /api/comercio/{id}:
- *  delete:
- *      tags:
- *      - Comercio
- *      summary: Delete merchant by admin
- *      description: Delete a merchant by an admin; checks the token we have in the header and after that, checks the role of the users whose token we have in the header and if it is admin, it will allow us to delete the merchant
- *      parameters:
- *          -   name: id
- *              in: path
- *              description: id that need to be deleted
- *              required: true
- *      responses:
- *          '200':
- *              description: Returns the inserted object
- *          '401':
- *              description: Validation error
- *      security:
- *          - bearerAuth: []
- */
-router.delete('/:id', authMiddleware, checkRol(["admin"]), validatorGetItem, deleteComercio);
 
 /**
  * @openapi
