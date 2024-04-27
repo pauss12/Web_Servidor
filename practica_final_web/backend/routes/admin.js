@@ -8,6 +8,8 @@ const router = express.Router();
 
 const { createComercio } = require('../controllers/admin');
 
+const { updateComercio, deleteComercio } = require('../controllers/comercio');
+
 const { validatorCreateItem, validatorUpdateItemAdmin, validatorGetItem } = require('../validators/comercio');
 
 
@@ -39,7 +41,5 @@ router.put('/:id', authMiddleware, checkRol(["admin"]), validatorUpdateItemAdmin
  *          - bearerAuth: []
  */
 router.delete('/:id', authMiddleware, checkRol(["admin"]), validatorGetItem, deleteComercio);
-
-
 
 module.exports = router;
