@@ -1,5 +1,7 @@
 const { comercioModel } = require('../models')
+
 const { matchedData } = require('express-validator')
+
 const { handleHttpError } = require('../utils/handleError')
 
 const { tokenSigComercio } = require("../utils/handleJwt")
