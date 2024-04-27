@@ -20,7 +20,7 @@ const getComercios = async (req, res) => {
 
     } catch (err) {
 
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, 'ERROR_GET_COMERCIOS')
     }
 }

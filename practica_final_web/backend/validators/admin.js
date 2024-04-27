@@ -3,7 +3,6 @@ const { check } = require("express-validator")
 const { validateResults } = require("../utils/handleValidator")
 
 
-
 const validatorCreateComercio = [
 
     check("nombreComercio").exists().notEmpty(),
