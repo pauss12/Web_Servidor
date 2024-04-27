@@ -12,10 +12,10 @@ const comercioScheme = new mongoose.Schema(
             type: String,
             unique: true
         },
-        direccion: {
+        direccionComercio: {
             type: String
         },
-        email: {
+        emailComercio: {
             type: String,
             unique: true
         },
