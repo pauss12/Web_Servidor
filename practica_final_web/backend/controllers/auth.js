@@ -51,6 +51,7 @@ const loginControl = async (req, res) => {
     try {
         
         req = matchedData(req)
+
         const user = await usersModel.findOne({ emailUsuario: req.emailUsuario }).select("passwordUsuario nombreUsuario role emailUsuario")
 
         if (!user) {
@@ -59,6 +60,7 @@ const loginControl = async (req, res) => {
         }
 
         const hashPassword = user.passwordUsuario;
+        
         const check = await compare(req.passwordUsuario, hashPassword)
 
         if (!check) {
