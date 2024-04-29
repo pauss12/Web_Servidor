@@ -46,7 +46,27 @@ router.get('/', getComercios);
 */
 router.get('/:id', validatorGetItem, getComercio);
 
-//Login comercio
+/** 
+ * @openapi
+ * /api/api/comercio/loginComercio:
+ *  post:
+ *      tags:
+ *      - Admin
+ *      summary: Login Merchant
+ *      description: Login a Merchant; checks the token we have in the header and after that, checks the role of the users whose token we have in the header and if it is admin, it will allow us to create the merchant
+ *      requestBody:
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      $ref: "#/components/schemas/loginComercio"
+ *      responses:
+ *          '200':
+ *              description: Returns the inserted object and the token of the merchant created
+ *          '403':
+ *              description: Validation error
+ *      security:
+ *          - bearerAuth: []
+ */
 router.post('/loginComercio', checkearComercio, validatorLoginComercio, loginComercio);
 
 /**
