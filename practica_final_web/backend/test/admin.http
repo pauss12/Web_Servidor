@@ -1,0 +1,35 @@
+### POST DE UN COMERCIO CON UN USUARIO QUE ES ADMINISTRADOR
+
+POST http://localhost:3000/api/admin/crearComercio HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiNzVmYjEzOGI4MTY2MWFhN2IyOGEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTQ0MTI3NDcsImV4cCI6MTcxNDQxOTk0N30.kx6XWuvnr4zYPrChVqxp0YxfEHu8KDot9Plvnwn7gf0
+
+{
+    "nombreComercio": "Comercio 1",
+    "cifComercio": "12345678",
+    "direccionComercio": "Calle 1",
+    "emailComercio": "comercio1@gmail.com",
+    "passwordComercio": "12345678",
+    "telefonoContacto": "4123456789FG"
+    
+}
+
+### MODIFICACION DE UN COMERCIO CON UN USUARIO QUE ES ADMINISTRADOR
+PUT http://localhost:3000/api/comercio/662b8acd7289b86a735ba4fb HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiNzVmYjEzOGI4MTY2MWFhN2IyOGEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTQyMTY0MTMsImV4cCI6MTcxNDIyMzYxM30.VcpoDhqcM7WooxCdOx64GC_tJRIRUk1Bn-IESTRSvus
+
+{
+    "nombreComercio": "Comercio1",
+    "cifComercio": "12345678",
+    "direccionComercio": "Calle1",
+    "emailComercio": "comercio1@gmail.com",
+    "telefonoContacto": "4123456789",
+    
+}
+
+###
+
+DELETE http://localhost:3000/api/admin/deleteComercio/662ce47d3092468f798c6ef7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJjZTQ3ZDMwOTI0NjhmNzk4YzZlZjciLCJpYXQiOjE3MTQyMTgxMDksImV4cCI6MTcxNDIyNTMwOX0.0thBng7yImZTuKKKpaezLSdkrTQQmY23n_7U_DQHj7E
+
