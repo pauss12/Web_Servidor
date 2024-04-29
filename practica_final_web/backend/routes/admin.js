@@ -34,7 +34,7 @@ const { validatorCreateItem, validatorUpdateItemAdmin, validatorGetItem } = requ
  *      security:
  *          - bearerAuth: []
  */
-router.post('/', authMiddleware, checkRol(["admin"]), validatorCreateItem, createComercio);
+router.post('/crearComercio', authMiddleware, checkRol(["admin"]), validatorCreateItem, createComercio);
 
 /** 
  * @openapi
@@ -88,5 +88,6 @@ router.put('/:id', authMiddleware, checkRol(["admin"]), validatorUpdateItemAdmin
  *          - bearerAuth: []
  */
 router.delete('/:id', authMiddleware, checkRol(["admin"]), validatorGetItem, deleteComercio);
+
 
 module.exports = router;
