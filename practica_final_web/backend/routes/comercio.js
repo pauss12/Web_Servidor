@@ -69,27 +69,5 @@ router.get('/:id', validatorGetItem, getComercio);
  */
 router.post('/loginComercio', checkearComercio, validatorLoginComercio, loginComercio);
 
-/**
- * @openapi
- * /api/comercio/{id}:
- *  delete:
- *      tags:
- *      - Comercio
- *      summary: Delete merchant himself
- *      description: Delete a merchant himself; checks the token we have in the header and after that, checks if the ID from the token is the same as the ID from the URL, if it is, it will allow us to delete the merchant
- *      parameters:
- *          -   name: id
- *              in: path
- *              description: id that need to be deleted
- *              required: true
- *      responses:
- *          '200':
- *              description: Returns the inserted object
- *          '401':
- *              description: Validation error
- *      security:
- *          - bearerAuth: []
- */
-router.delete('/:id', checkearComercio, validatorGetItem, deleteComercio);
 
 module.exports = router;
