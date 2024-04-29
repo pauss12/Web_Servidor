@@ -162,6 +162,19 @@ const options = {
                         },
                     },
                 },
+                loginComercio: {
+                    type: "object",
+                    required: ["emailComercio", "passwordComercio"],
+                    properties: {
+                        emailComercio: {
+                            type: "string",
+                            example: "mediamarkt@gmail.com"
+                        },
+                        passwordComercio: {
+                            type: "string"
+                        },
+                    }
+                },
                 
             },
         },
