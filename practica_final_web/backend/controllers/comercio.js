@@ -20,7 +20,7 @@ const getComercios = async (req, res) => {
 
     } catch (err) {
 
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, 'ERROR_GET_COMERCIOS')
     }
 }
@@ -43,7 +43,7 @@ const getComercio = async (req, res) => {
 
     } catch (err) {
 
-        console.log(err)
+        //console.log(err)
 
         handleHttpError(res, "ERROR_GET_COMERCIO")
     }
@@ -57,10 +57,6 @@ const loginComercio = async (req, res) => {
         req = matchedData(req)
 
         const comercio = await comercioModel.findOne({ emailComercio: req.emailComercio }).select("passwordComercio nombreComercio _id emailComercio")
-
-        /*const comercio = await comercioModel.findOne({ emailComercio: req.emailComercio })*/
-
-        console.log(comercio)
 
         if (!comercio) {
             handleHttpError(res, "COMERCIO_NOT_EXISTS", 404)
@@ -87,7 +83,7 @@ const loginComercio = async (req, res) => {
         res.send(data)
 
     } catch (err) {
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, "ERROR_LOGIN_USER")
     }
 }
@@ -96,11 +92,6 @@ const loginComercio = async (req, res) => {
 const createComercio = async (req, res) => {
 
     try {
-
-        /*const body = matchedData(req)
-
-        const data = await comercioModel.create(body)
-        res.status(201).send(data)*/
 
         req = matchedData(req)
 
@@ -121,7 +112,7 @@ const createComercio = async (req, res) => {
 
     } catch (err) {
 
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, 'ERROR_CREATE_COMERCIO')
     }
 }
