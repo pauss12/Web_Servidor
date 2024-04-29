@@ -10,6 +10,7 @@ Content-Type: application/json
     "emailUsuario": "usuario2@gmail.com",
     "passwordUsuario": "1234578P",
     "edadUsuario": 22,
+    "sexoUsuario": "Hombre",
     "ciudadUsuario": "Ciudad 2",
     "interesesUsuario": [
         "Interes 2"

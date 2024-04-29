@@ -16,6 +16,9 @@ const UsersScheme = new mongoose.Schema(
         edadUsuario: {
             type: Number
         },
+        sexoUsuario: {
+            type: String
+        },
         ciudadUsuario: {
             type: String
         },

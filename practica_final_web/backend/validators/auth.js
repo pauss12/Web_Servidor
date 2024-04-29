@@ -7,6 +7,7 @@ const validatorRegister = [
     check("emailUsuario").isString(),
     check("passwordUsuario").exists().notEmpty(),
     check("edadUsuario").isNumeric().notEmpty(),
+    check("sexoUsuario").isString().notEmpty(),
     check("ciudadUsuario").isString().notEmpty(),
     check("interesesUsuario").isArray().notEmpty(),
     check("permiteOfertas").isBoolean(), 
