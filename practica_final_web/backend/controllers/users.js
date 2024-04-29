@@ -16,7 +16,7 @@ const getItems = async (req, res) => {
 
     } catch (err) {
 
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, 'ERROR_GET_ITEMS')
     }
 }
@@ -39,7 +39,7 @@ const getItem = async (req, res) => {
 
     } catch (err) {
 
-        console.log(err)
+        //console.log(err)
 
         handleHttpError(res, "ERROR_GET_ITEM")
     }
@@ -61,7 +61,7 @@ const getUser = async (req, res) => {
 
     } catch (err) {
 
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, "ERROR_GET_ITEM")
 
     }
