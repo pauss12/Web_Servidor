@@ -23,6 +23,39 @@ const getPaginasComercio = async (req, res) => {
     }
 }
 
+const getPaginasComercioCiudad = async (req, res) => {
+
+    try {
+
+        const city = req.params.city
+
+        const data = await paginaModel.find({ciudadComercio: city})
+        res.status(200).send(data)
+
+    } catch (err) {
+
+        //console.log(err)
+        handleHttpError(res, 'ERROR_GET_PAGINAS_COMERCIO')
+    }
+}
+
+const getPaginasComercioCiudadActividad = async (req, res) => {
+
+    try {
+
+        const city = req.params.city
+        const activity = req.params.activity
+
+        const data = await paginaModel.find({ ciudadComercio: city, actividadComercio: activity })
+        res.status(200).send(data)
+
+    } catch (err) {
+
+        //console.log(err)
+        handleHttpError(res, 'ERROR_GET_PAGINAS_COMERCIO')
+    }
+}
+
 const getPaginaComercio = async (req, res) => {
 
     try {
@@ -80,4 +113,4 @@ const deletePaginaComercio = async (req, res) => {
 
 
 
-module.exports = { getPaginasComercio, createPaginaComercio, deletePaginaComercio, getPaginaComercio }
+module.exports = { getPaginasComercio, createPaginaComercio, deletePaginaComercio, getPaginaComercio, getPaginasComercioCiudad, getPaginasComercioCiudadActividad }
