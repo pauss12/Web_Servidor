@@ -143,10 +143,13 @@ const updateItem = async (req, res) => {
 const deleteItem = async (req, res) => {
 
     try {
+
         const { id } = matchedData(req)
+        
         const data = await usersModel.deleteOne({ _id: id });
 
         res.status(200).send(data)
+
     } catch (err) {
         //console.log(err)
         handleHttpError(res, 'ERROR_DELETE_ITEM')
