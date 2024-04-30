@@ -1,6 +1,7 @@
 const { usersModel } = require('../models')
 const { matchedData } = require('express-validator')
 const { handleHttpError } = require('../utils/handleError')
+const { encrypt, compare } = require('../utils/handlePassword')
 
 /**
  * Obtener lista de usuarios de la base de datos
@@ -91,17 +92,31 @@ const updateItem = async (req, res) => {
 
     try {
 
-        const { id, ...body } = matchedData(req)
+        const body = matchedData(req)
 
-        const data = await usersModel.findByIdAndUpdate({ _id: id }, body);
+        //Obtengo el user de la BBDD con el id que me llega en la request
+        const user = await usersModel.findById({ _id: body.id});
+
+        //Hashear la contraseña que me llega en la request
+        const passwordUsuarioHasheada = body.passwordUsuario;
+
+        //Si cambia la contraseña, tengo que volver a encriptarla; si no, la dejo igual. 
+        const isPasswordMatch = await compare(passwordUsuarioHasheada, user.passwordUsuario);
+        
+        if (!isPasswordMatch) {
+            body.passwordUsuario = passwordUsuarioHasheada
+        }
+
+        const data = await usersModel.findByIdAndUpdate({_id: body.id}, body)
 
         if (!data)
             return handleHttpError(res, 'Documento no encontrado', 404)
         else
             res.status(200).send(data)
 
+
     } catch (err) {
-        //console.log(err) 
+        console.log(err) 
         handleHttpError(res, 'ERROR_UPDATE_ITEMS')
     }
 }
