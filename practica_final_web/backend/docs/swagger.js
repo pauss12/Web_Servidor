@@ -175,7 +175,70 @@ const options = {
                         },
                     }
                 },
-                
+                crearPaginaComercio: {
+                    type: "object",
+                    required: ["titulo", "ciudadComercio", "actividadComercio", "resumenComercio", "textos", "fotos"],
+                    properties: {
+                        titulo: {
+                            type: "string",
+                            example: "Media Markt"
+                        },
+                        ciudadComercio: {
+                            type: "string",
+                            example: "Madrid"
+                        },
+                        actividadComercio: {
+                            type: "string",
+                            example: "Electronica"
+                        },
+                        resumenComercio: {
+                            type: "string",
+                            example: "Media Markt es una cadena de tiendas de electrónica, informática y electrodomésticos."
+                        },
+                        textos: {
+                            type: "array",
+                            items: {
+                                type: "string"
+                            },
+                            example: ["Media Markt es una cadena de tiendas de electrónica, informática y electrodomésticos."]
+                        },
+                        fotos: {
+                            type: "array",
+                            items: {
+                                type: "string"
+                            },
+                            example: ["https://www.google.com"]
+                        },
+                    }
+                },
+                updatePaginaComercio: {
+                    type: "object",
+                    required: ["ciudadComercio", "actividadComercio", "textos", "fotos"],
+                    properties: {
+                        ciudadComercio: {
+                            type: "string",
+                            example: "Madrid"
+                        },
+                        actividadComercio: {
+                            type: "string",
+                            example: "Electronica"
+                        },
+                        textos: {
+                            type: "array",
+                            items: {
+                                type: "string"
+                            },
+                            example: ["Media Markt es una cadena de tiendas de electrónica, informática y electrodomésticos."]
+                        },
+                        fotos: {
+                            type: "array",
+                            items: {
+                                type: "string"
+                            },
+                            example: ["https://www.google.com"]
+                        },
+                    }
+                },
             },
         },
     },
