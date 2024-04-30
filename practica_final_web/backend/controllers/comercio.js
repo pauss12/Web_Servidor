@@ -36,9 +36,7 @@ const getComercio = async (req, res) => {
     try {
 
         const { id } = matchedData(req)
-
         const data = await comercioModel.findById(id)
-
         res.status(200).send(data)
 
     } catch (err) {
@@ -162,7 +160,6 @@ const updateComercio = async (req, res) => {
     try {
 
         const { id, ...body } = matchedData(req)
-
         const data = await comercioModel.findByIdAndUpdate({ _id: id }, body);
 
         if (!data)
@@ -210,17 +207,6 @@ const deleteComercio = async (req, res) => {
         handleHttpError(res, 'ERROR_DELETE_ITEM')
     }
 }
-
-/*const verificarUsuario = async (req, res) => {
-    try {
-        const { id } = matchedData(req)
-        const data = await comercioModel.findOneAndUpdate({ _id: id }, { verificado: true })
-        res.status(200).send('Cuenta verificada correctamente')
-    } catch (err) {
-        console.log(err)
-        handleHttpError(res, 'ERROR_VERIFICAR_USUARIO')
-    }
-}*/
 
 module.exports = { getComercios, getComercio, deleteComercio, updateComercio, createComercio, loginComercio };
 
