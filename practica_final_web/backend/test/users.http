@@ -39,19 +39,20 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/api/users/662fe419b6e43a01cdb6e6c4
+GET http://localhost:3000/api/users/6630d4f46e6252fcccff1594
 
 ###
 
-PUT http://localhost:3000/api/users/662ad81bdbd44d55b9b432ee HTTP/1.1
+PUT http://localhost:3000/api/users/6630d4f46e6252fcccff1594 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjMwZDRmNDZlNjI1MmZjY2NmZjE1OTQiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTQ0NzYyNzYsImV4cCI6MTcxNDQ4MzQ3Nn0.Gnc4i90h1p1fxRINlFMsM01C9QKjU0SymCfIs1l6_ng
 
 {
-    "nombreUsuario": "Usuario 3",
-    "emailUsuario": "usuario1@gmail.com",
-    "passwordUsuario": "123456780",
+    "nombreUsuario": "Usuario 1",
+    "emailUsuario": "usuario2@gmail.com",
+    "passwordUsuario": "1234578P",
     "edadUsuario": 22,
+    "sexoUsuario": "Hombre",
     "ciudadUsuario": "Ciudad 1",
     "interesesUsuario": [
         "Interes 1"
@@ -59,6 +60,8 @@ Authorization: Bearer
     "permiteOfertas": true
 }
 
-###
+### DARSE DE BAJA A SI MISMO
 
-DELETE http://localhost:3000/api/users/662b83eb138b81661aa7b29c
+DELETE http://localhost:3000/api/users/6630d4f46e6252fcccff1594
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjMwZDRmNDZlNjI1MmZjY2NmZjE1OTQiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTQ0NzYyNzYsImV4cCI6MTcxNDQ4MzQ3Nn0.Gnc4i90h1p1fxRINlFMsM01C9QKjU0SymCfIs1l6_ng
