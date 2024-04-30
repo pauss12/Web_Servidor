@@ -12,6 +12,7 @@ const { encrypt, compare } = require('../utils/handlePassword')
 const getItems = async (req, res) => {
 
     try {
+    
         const data = await usersModel.find({})
         res.status(200).send(data)
 
@@ -33,15 +34,12 @@ const getItem = async (req, res) => {
     try {
 
         const { id } = matchedData(req)
-
         const data = await usersModel.findById(id)
-
         res.status(200).send(data)
 
     } catch (err) {
 
         //console.log(err)
-
         handleHttpError(res, "ERROR_GET_ITEM")
     }
 }
@@ -155,15 +153,6 @@ const deleteItem = async (req, res) => {
     }
 }
 
-/*const verificarUsuario = async (req, res) => {
-    try {
-        const { id } = matchedData(req)
-        const data = await usersModel.findOneAndUpdate({ _id: id }, { verificado: true })
-        res.status(200).send('Cuenta verificada correctamente')
-    } catch (err) {
-        console.log(err)
-        handleHttpError(res, 'ERROR_VERIFICAR_USUARIO')
-    }
-}*/
+
 
 module.exports = { getItems, getItem, getUser, updateItem, deleteItem, updateItem };
