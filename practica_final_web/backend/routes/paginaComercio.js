@@ -26,8 +26,53 @@ const { getPaginasComercio, createPaginaComercio, deletePaginaComercio, getPagin
  */
 router.get('/', getPaginasComercio);
 
+/**
+ * @openapi
+ * /api/paginaComercio/search/{city}:
+ *  get:
+ *      tags:
+ *      - Merchant`s Page
+ *      summary: Get all the merchants pages from the database with the city filter
+ *      description: 'Receives the city as a parameter and returns the pages from all the merchants for which the city is true'
+ *      parameters:
+ *         -   name: city
+ *             in: path
+ *             required: true
+ *             schema:
+ *                 type: string
+ *      responses:
+ *          '200':
+ *              description: Returns the pages from all the merchants for which the filter is true
+ *          '403':
+ *              description: Error fetching merchants
+ */
 router.get('/search/:city', getPaginasComercioCiudad);
 
+/**
+ * @openapi
+ * /api/paginaComercio/search/{city}/{activity}:
+ *  get:
+ *      tags:
+ *      - Merchant`s Page
+ *      summary: Get all the merchants pages from the database with the city and activity filter
+ *      description: 'Receives the city and activity as a parameter and returns the pages from all the merchants for which the city and activity are true'
+ *      parameters:
+ *         -  name: city
+ *            in: path
+ *            required: true
+ *            schema:
+ *                type: string
+ *         -  name: activity
+ *            in: path
+ *            required: true
+ *            schema:
+ *                type: string
+ *      responses:
+ *          '200':
+ *              description: Returns the pages from all the merchants for which the filters are true
+ *          '403':
+ *              description: Error fetching merchants
+ */
 router.get('/search/:city/:activity', getPaginasComercioCiudadActividad);
 
 /**
