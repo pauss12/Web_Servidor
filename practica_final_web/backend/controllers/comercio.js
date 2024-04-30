@@ -75,6 +75,7 @@ const loginComercio = async (req, res) => {
         comercio.set('passwordComercio', undefined, { strict: false })
 
         const data = {
+            token: await tokenSigComercio(comercio),
             comercio
         }
 
