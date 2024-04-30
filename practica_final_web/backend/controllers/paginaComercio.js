@@ -4,7 +4,7 @@ const { matchedData } = require('express-validator')
 
 const { handleHttpError } = require('../utils/handleError')
 
-const { encrypt, compare } = require("../utils/handlePassword")
+const { verifyToken } = require('../utils/handleJwt')
 
 /**
  * Obtener lista de paginas de comercio de la base de datos sin ningun tipo de fitro
@@ -31,13 +31,19 @@ const createPaginaComercio = async (req, res) => {
 
         const body = matchedData(req)
 
+        const token = req.headers.authorization.split(' ').pop()
+        
+        const dataToken = await verifyToken(token)
+
+        body.idPagina = dataToken._id;
+
         const data = await paginaModel.create(body)
+
         res.status(200).send(data)
 
     } catch (err) {
 
         console.log(err)
-
         handleHttpError(res, "ERROR_CREATE_PAGINA_COMERCIO")
     }
 }
