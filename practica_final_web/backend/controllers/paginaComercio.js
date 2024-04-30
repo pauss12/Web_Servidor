@@ -18,8 +18,28 @@ const getPaginasComercio = async (req, res) => {
 
     } catch (err) {
 
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, 'ERROR_GET_PAGINAS_COMERCIO')
+    }
+}
+
+const getPaginaComercio = async (req, res) => {
+
+    console.log("getPaginaComercio")
+
+    try {
+        
+        const { id } = matchedData(req)
+
+        const data = await paginaModel.findOne({ _id: id })
+        res.status(200).send(data)
+        
+
+    } catch (err) {
+
+        console.log(err)
+        handleHttpError(res, "ERROR_GET_ITEM")
+
     }
 }
 
@@ -43,7 +63,7 @@ const createPaginaComercio = async (req, res) => {
 
     } catch (err) {
 
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, "ERROR_CREATE_PAGINA_COMERCIO")
     }
 }
@@ -60,7 +80,7 @@ const deletePaginaComercio = async (req, res) => {
 
     } catch (err) {
 
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, 'ERROR_DELETE_ITEM')
     }
 }
@@ -68,4 +88,4 @@ const deletePaginaComercio = async (req, res) => {
 
 
 
-module.exports = { getPaginasComercio, createPaginaComercio, deletePaginaComercio }
+module.exports = { getPaginasComercio, createPaginaComercio, deletePaginaComercio, getPaginaComercio }
