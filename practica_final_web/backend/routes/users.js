@@ -19,6 +19,6 @@ router.put('/:id', authMiddleware, validatorUpdateItem, updateItem)
 
 /*router.patch("/:id", validatorGetItem, updateItem)*/
 
-router.delete("/:id", validatorGetItem, deleteItem)
+router.delete("/:id", authMiddleware, validatorGetItem, deleteItem)
 
 module.exports = router
