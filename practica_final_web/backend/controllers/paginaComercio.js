@@ -25,13 +25,29 @@ const getPaginasComercio = async (req, res) => {
 
 const getPaginaComercio = async (req, res) => {
 
-    console.log("getPaginaComercio")
-
     try {
         
-        const { id } = matchedData(req)
+        
+        const { id, ciudad, scoring } = matchedData(req);
+        let query = {};
 
-        const data = await paginaModel.findOne({ _id: id })
+        // Si se proporciona el ID, buscar por ID
+        if (id) {
+            query._id = id;
+        }
+
+        // Si se proporciona la ciudad, buscar por ciudad
+        if (ciudad) {
+            query.ciudad = ciudad;
+        }
+
+        // Si se proporciona el scoring, buscar por scoring
+        if (scoring) {
+            query.scoring = scoring;
+        }
+
+        const data = await paginaModel.find(query);
+
         res.status(200).send(data)
         
 
@@ -43,16 +59,12 @@ const getPaginaComercio = async (req, res) => {
     }
 }
 
-
-
 const createPaginaComercio = async (req, res) => {
 
     try {
 
         const body = matchedData(req)
-
         const token = req.headers.authorization.split(' ').pop()
-        
         const dataToken = await verifyToken(token)
 
         body.idPagina = dataToken._id;
@@ -73,9 +85,7 @@ const deletePaginaComercio = async (req, res) => {
     try {
 
         const { id } = matchedData(req)
-
         const data = await paginaModel.deleteOne({ _id: id });
-
         res.status(200).send(data)
 
     } catch (err) {
