@@ -8,7 +8,7 @@ const { updateComercio } = require('../controllers/comercio');
 
 const { validatorUpdateItemComercio, validatorCrearPaginaComercio, validatorGetPaginaComercio } = require('../validators/paginaComercio');
 
-const { getPaginasComercio, createPaginaComercio, deletePaginaComercio, getPaginaComercio } = require('../controllers/paginaComercio')
+const { getPaginasComercio, createPaginaComercio, deletePaginaComercio, getPaginaComercio, getPaginasComercioCiudad, getPaginasComercioCiudadActividad } = require('../controllers/paginaComercio')
 
 /**
  * @openapi
@@ -25,6 +25,10 @@ const { getPaginasComercio, createPaginaComercio, deletePaginaComercio, getPagin
  *              description: Error fetching merchants
  */
 router.get('/', getPaginasComercio);
+
+router.get('/search/:city', getPaginasComercioCiudad);
+
+router.get('/search/:city/:activity', getPaginasComercioCiudadActividad);
 
 /**
 *   @openapi
