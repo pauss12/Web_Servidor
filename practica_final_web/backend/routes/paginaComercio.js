@@ -16,7 +16,7 @@ router.get('/', getPaginasComercio);
 //Get comercio por id
 /*router.get('/:id', getPaginaComercio);*/
 
-router.post('/createPage', validatorCrearPaginaComercio, createPaginaComercio);
+router.post('/createPage', checkearComercio, validatorCrearPaginaComercio, createPaginaComercio);
 
 //Crear comercio
 /*router.post('/createPage', checkearComercio, validatorCrearPaginaComercio, createPaginaComercio);*/
