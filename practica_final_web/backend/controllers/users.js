@@ -121,7 +121,6 @@ const updateItem = async (req, res) => {
     }
 }
 
-
 /*const submitFile = async (req, res) => {
     try {
         const id = req.params.id
@@ -167,4 +166,4 @@ const deleteItem = async (req, res) => {
     }
 }*/
 
-module.exports = { getItems, getItem, getUser, updateItem, deleteItem };
+module.exports = { getItems, getItem, getUser, updateItem, deleteItem, updateItem };
