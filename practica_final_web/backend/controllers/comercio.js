@@ -44,7 +44,6 @@ const getComercio = async (req, res) => {
     } catch (err) {
 
         //console.log(err)
-
         handleHttpError(res, "ERROR_GET_COMERCIO")
     }
 }
@@ -76,7 +75,7 @@ const loginComercio = async (req, res) => {
         comercio.set('passwordComercio', undefined, { strict: false })
 
         const data = {
-            token: await tokenSigComercio(comercio),
+            //token: await tokenSigComercio(comercio),
             comercio
         }
 
