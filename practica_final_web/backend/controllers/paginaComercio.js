@@ -28,32 +28,14 @@ const getPaginaComercio = async (req, res) => {
     try {
         
         
-        const { id, ciudad, scoring } = matchedData(req);
-        let query = {};
-
-        // Si se proporciona el ID, buscar por ID
-        if (id) {
-            query._id = id;
-        }
-
-        // Si se proporciona la ciudad, buscar por ciudad
-        if (ciudad) {
-            query.ciudad = ciudad;
-        }
-
-        // Si se proporciona el scoring, buscar por scoring
-        if (scoring) {
-            query.scoring = scoring;
-        }
-
-        const data = await paginaModel.find(query);
-
+        const { id} = matchedData(req);
+        const data = await paginaModel.findOne({_id: id});
         res.status(200).send(data)
         
 
     } catch (err) {
 
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, "ERROR_GET_ITEM")
 
     }
