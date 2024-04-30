@@ -2,6 +2,13 @@ const { check } = require("express-validator")
 const { validateResults } = require("../utils/handleValidator")
 
 
+const validatorGetPaginaComercio = [
+
+    check("id").exists().notEmpty().isMongoId(),
+    (req, res, next) => {
+        return validateResults(req, res, next)
+    }
+]
 
 const validatorCrearPaginaComercio = [
 
@@ -33,4 +40,4 @@ const validatorUpdateItemComercio = [
     }
 ]
 
-module.exports = { validatorCrearPaginaComercio, validatorUpdateItemComercio }
+module.exports = { validatorCrearPaginaComercio, validatorUpdateItemComercio, validatorGetPaginaComercio }
