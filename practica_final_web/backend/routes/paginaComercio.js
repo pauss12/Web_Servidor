@@ -6,20 +6,17 @@ const router = express.Router();
 
 const { updateComercio } = require('../controllers/comercio');
 
-const { validatorUpdateItemComercio, validatorCrearPaginaComercio } = require('../validators/paginaComercio');
+const { validatorUpdateItemComercio, validatorCrearPaginaComercio, validatorGetPaginaComercio } = require('../validators/paginaComercio');
 
 
-const { getPaginasComercio, createPaginaComercio, deletePaginaComercio } = require('../controllers/paginaComercio')
+const { getPaginasComercio, createPaginaComercio, deletePaginaComercio, getPaginaComercio } = require('../controllers/paginaComercio')
 
 router.get('/', getPaginasComercio);
 
 //Get comercio por id
-/*router.get('/:id', getPaginaComercio);*/
+router.get('/:id', validatorGetPaginaComercio, getPaginaComercio);
 
 router.post('/createPage', checkearComercio, validatorCrearPaginaComercio, createPaginaComercio);
-
-//Crear comercio
-/*router.post('/createPage', checkearComercio, validatorCrearPaginaComercio, createPaginaComercio);*/
 
 //Modificar comercio siendo el dueño del comercio
 router.put('/:id', checkearComercio, validatorUpdateItemComercio, updateComercio);
