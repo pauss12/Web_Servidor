@@ -23,7 +23,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiODk0Y
 ### HACER LOGIN EN LA PAGINA DE UN COMERCIO
 POST http://localhost:3000/api/comercio/loginComercio HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJmZGQwODZlYTMzNTNhMjRiNjUwZGYiLCJpYXQiOjE3MTQ0MTI4MDgsImV4cCI6MTcxNDQyMDAwOH0.uM0VVgRuWAlXGXCIBtoZmy0VKIZpUbZKY90R6wcEZeA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjMwYjIxZTQyOTM3MTZjYjI5ZTYwZTgiLCJpYXQiOjE3MTQ0NjczNTgsImV4cCI6MTcxNDQ3NDU1OH0.k2rd8yjmci3PviXFirG4FSaD5c3GgSGYqnzqsT_catA
 
 {
     "emailComercio": "comercio1@gmail.com",

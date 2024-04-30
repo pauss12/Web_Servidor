@@ -2,7 +2,7 @@
 
 POST http://localhost:3000/api/admin/crearComercio HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiNzVmYjEzOGI4MTY2MWFhN2IyOGEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTQ0MTI3NDcsImV4cCI6MTcxNDQxOTk0N30.kx6XWuvnr4zYPrChVqxp0YxfEHu8KDot9Plvnwn7gf0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJmZTQxOWI2ZTQzYTAxY2RiNmU2YzQiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTQ0NjcyNzQsImV4cCI6MTcxNDQ3NDQ3NH0.SegfNpP0q7AImXya7hlqEmG1q6c_bsXw2WY_9A11uRw
 
 {
     "nombreComercio": "Comercio 1",

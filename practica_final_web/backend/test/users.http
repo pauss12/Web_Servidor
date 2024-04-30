@@ -33,18 +33,19 @@ POST http://localhost:3000/api/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "emailUsuario": "usuario1@gmail.com",
-    "passwordUsuario": "123456780"
+    "emailUsuario": "usuario2@gmail.com",
+    "passwordUsuario": "1234578P"
 }
 
 ###
 
-GET http://localhost:3000/api/users/662b817e138b81661aa7b293
+GET http://localhost:3000/api/users/662fe419b6e43a01cdb6e6c4
 
 ###
 
 PUT http://localhost:3000/api/users/662ad81bdbd44d55b9b432ee HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer 
 
 {
     "nombreUsuario": "Usuario 3",
