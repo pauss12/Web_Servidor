@@ -5,8 +5,6 @@ const { validateResults } = require("../utils/handleValidator")
 
 const validatorCrearPaginaComercio = [
 
-    
-    check("idPagina").optional().notEmpty().isNumeric(),
     check("titulo").optional().notEmpty().isString(),
     check("ciudadComercio").optional().notEmpty(),
     check("actividadComercio").optional().notEmpty(),
