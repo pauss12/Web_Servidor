@@ -25,15 +25,15 @@ const validatorGetUser = [
 const validatorUpdateItem = [
 
     check("id").exists().notEmpty().isMongoId(),
+    
     check("nombreUsuario").optional(),
     check("emailUsuario").optional(),
     check("passwordUsuario").optional(),
     check("edadUsuario").optional(),
+    check("sexoUsuario").optional(),
     check("ciudadUsuario").optional(),
     check("interesesUsuario").optional(),
     check("permiteOfertas").optional(),
-    check("permiteNotificaciones").optional(),
-    check("role").optional(),
     (req, res, next) => {
         return validateResults(req, res, next)
     }
