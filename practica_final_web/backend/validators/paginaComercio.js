@@ -16,8 +16,6 @@ const validatorCrearPaginaComercio = [
     check("ciudadComercio").optional().notEmpty(),
     check("actividadComercio").optional().notEmpty(),
     check("resumenComercio").optional().notEmpty(),
-    check("textos").optional().isArray(),
-    check("fotos").optional().isArray(),
     (req, res, next) => {
         return validateResults(req, res, next)
     }
