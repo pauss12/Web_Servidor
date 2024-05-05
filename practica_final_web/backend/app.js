@@ -25,7 +25,8 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpecs))
 
 app.use("/api", require("./routes"))
 
-app.use(express.static("storage"))//localhost:3000/file.jpg
+app.use(express.static("storage"))
+//localhost:3000/file.jpg
 
 //const webHook = new IncomingWebhook(process.env.SLACK_WEBHOOK)
 
