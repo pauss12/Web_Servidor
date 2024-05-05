@@ -121,6 +121,30 @@ router.get('/:id', validatorGetPaginaComercio, getPaginaComercio);
 */
 router.post('/createPage', checkearComercio, validatorCrearPaginaComercio, createPaginaComercio);
 
+/**
+*  @openapi 
+*  /api/paginaComercio/textos/{id}:
+*   post:
+*       tags:
+*       - Merchant`s Page
+*       summary: "Post a text to the merchant's page"
+*       description: Post a text to merchant's page 
+*       requestBody: 
+*           content: 
+*               application/json: 
+*                   schema:
+*                       $ref: "#/components/schemas/subirTextos"          
+*       responses:
+*           '200':
+*               description: Returns the inserted object
+*           '401':
+*               description: Validation error
+*           '404':
+*               description: Not found
+* 
+*       security:
+*         - bearerAuth: []
+*/
 router.post('/textos/:id', checkearComercio, validatorSubirTexto, subirTextosComercio);
 
 /** 
