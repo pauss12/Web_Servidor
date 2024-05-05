@@ -1,4 +1,4 @@
-const { comercioModel } = require('../models')
+const { comercioModel, paginaModel } = require('../models')
 const { matchedData } = require('express-validator')
 const { handleHttpError } = require('../utils/handleError')
 
@@ -199,11 +199,14 @@ const deleteComercio = async (req, res) => {
 
         const data = await comercioModel.deleteOne({ _id: id });
 
+        //Si se elimina el comercio, habria que eliminar sus paginas de comercio
+        await paginaModel.deleteOne({ idPagina: id })
+        
         res.status(200).send(data)
 
     } catch (err) {
 
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, 'ERROR_DELETE_ITEM')
     }
 }

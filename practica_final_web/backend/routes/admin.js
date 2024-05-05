@@ -87,7 +87,7 @@ router.put('/:id', authMiddleware, checkRol(["admin"]), validatorUpdateItemAdmin
  *      security:
  *          - bearerAuth: []
  */
-router.delete('/:id', authMiddleware, checkRol(["admin"]), validatorGetItem, deleteComercio);
+router.delete('/deleteComercio/:id', authMiddleware, checkRol(["admin"]), validatorGetItem, deleteComercio);
 
 
 module.exports = router;
