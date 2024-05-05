@@ -16,7 +16,7 @@ GET http://localhost:3000/api/paginaComercio/6637f100a5f57a37e047a5b0
 ### CREACION DE UNA PAGINA DE COMERCIO
 POST http://localhost:3000/api/paginaComercio/createPage HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM3ZjRhYTEzMzFjY2EwZTJiNzQxY2EiLCJpYXQiOjE3MTQ5NDMxNDYsImV4cCI6MTcxNDk1MDM0Nn0.qO76MYaY7yBbZ_rzQDpwku0i-MhciU-GwAU5jY-sGbc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM4MDE4NTk4NWJlNzZhOWRjMjEwNDMiLCJpYXQiOjE3MTQ5NDY0MzcsImV4cCI6MTcxNDk1MzYzN30.LAYJjcAGlGgIo9MQxsCaYd60bhA8P5HpVlzUHnfCjWw
 
 {
     "titulo": "Titulo 1",
@@ -25,12 +25,24 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM3ZjRhY
     "resumenComercio": "Resumen 1"
 }
 
+### SUBIR UN TEXTO A LA PAGINA DE COMERCIO
+
+POST http://localhost:3000/api/paginaComercio/textos/663802c9985be76a9dc21046 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM4MDE4NTk4NWJlNzZhOWRjMjEwNDMiLCJpYXQiOjE3MTQ5NDY0MzcsImV4cCI6MTcxNDk1MzYzN30.LAYJjcAGlGgIo9MQxsCaYd60bhA8P5HpVlzUHnfCjWw
+
+{
+    "textos": [
+        "Texto 2"
+    ]
+}
+
 
 ### MODIFICACION DE UN COMERCIO SIENDO EL COMERCIO PROPIO, solo puede modificar cosas de su pagina de comercio
 
 PUT http://localhost:3000/api/paginaComercio/662b8acd7289b86a735ba4fb HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiYjAwNjJmNjkyZjA1OTYxZWY5MGIiLCJlbWFpbCI6ImNvbWVyY2lvMUBnbWFpbC5jb20iLCJpYXQiOjE3MTQxMzkxNDIsImV4cCI6MTcxNDE0NjM0Mn0.qfzAGdEA87vdb_dxJ14pOby0kykfwYJmBkr-icyZi2o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM3ZjBiMWE1ZjU3YTM3ZTA0N2E1YWMiLCJpYXQiOjE3MTQ5NDIxMjksImV4cCI6MTcxNDk0OTMyOX0.uK6rFMepOvKgPgPUo4CetIPaEOXInksvBkk-qtL8E44
 
 {
     "ciudadComercio": "Ciudad 1",
@@ -40,12 +52,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiYjAwN
 ### ELIMINACION DE UNA PAGINA DE COMERCIO
 DELETE http://localhost:3000/api/paginaComercio/6637f1e7a5f57a37e047a5bb HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM3ZjBiMWE1ZjU3YTM3ZTA0N2E1YWMiLCJpYXQiOjE3MTQ5NDIxMjksImV4cCI6MTcxNDk0OTMyOX0.uK6rFMepOvKgPgPUo4CetIPaEOXInksvBkk-qtL8E44
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM4MDE4NTk4NWJlNzZhOWRjMjEwNDMiLCJpYXQiOjE3MTQ5NDY0MzcsImV4cCI6MTcxNDk1MzYzN30.LAYJjcAGlGgIo9MQxsCaYd60bhA8P5HpVlzUHnfCjWw
 
 ### SUBIR UNA FOTO
-POST http://localhost:3000/api/storage/6637f100a5f57a37e047a5b0 HTTP/1.1
+POST http://localhost:3000/api/storage/photos/663802c9985be76a9dc21046 HTTP/1.1
 Content-Type: multipart/form-data; boundary=Boundry
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM3ZjBiMWE1ZjU3YTM3ZTA0N2E1YWMiLCJpYXQiOjE3MTQ5NDIxMjksImV4cCI6MTcxNDk0OTMyOX0.uK6rFMepOvKgPgPUo4CetIPaEOXInksvBkk-qtL8E44
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM4MDE4NTk4NWJlNzZhOWRjMjEwNDMiLCJpYXQiOjE3MTQ5NDY0MzcsImV4cCI6MTcxNDk1MzYzN30.LAYJjcAGlGgIo9MQxsCaYd60bhA8P5HpVlzUHnfCjWw
 
 --Boundry
 Content-Disposition: form-data; name="image"; filename="firmaSinFondo.png"
@@ -55,9 +67,9 @@ Content-Type: image/jpg
 --Boundry--
 
 ### SUBIR OTRA FOTO
-POST http://localhost:3000/api/storage/6637f1e7a5f57a37e047a5bb HTTP/1.1
+POST http://localhost:3000/api/storage/photos/663802c9985be76a9dc21046 HTTP/1.1
 Content-Type: multipart/form-data; boundary=Boundry
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM3ZjBiMWE1ZjU3YTM3ZTA0N2E1YWMiLCJpYXQiOjE3MTQ5NDIxMjksImV4cCI6MTcxNDk0OTMyOX0.uK6rFMepOvKgPgPUo4CetIPaEOXInksvBkk-qtL8E44
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM4MDE4NTk4NWJlNzZhOWRjMjEwNDMiLCJpYXQiOjE3MTQ5NDY0MzcsImV4cCI6MTcxNDk1MzYzN30.LAYJjcAGlGgIo9MQxsCaYd60bhA8P5HpVlzUHnfCjWw
 
 --Boundry
 Content-Disposition: form-data; name="image"; filename="otra.png"
