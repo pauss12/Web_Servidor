@@ -38,4 +38,13 @@ const validatorUpdateItemComercio = [
     }
 ]
 
-module.exports = { validatorCrearPaginaComercio, validatorUpdateItemComercio, validatorGetPaginaComercio }
+const validatorSubirTexto = [
+    
+        check("id").exists().notEmpty().isMongoId(),
+        check("textos").exists().notEmpty().isArray(),
+        (req, res, next) => {
+            return validateResults(req, res, next)
+        }
+    ]
+
+module.exports = { validatorCrearPaginaComercio, validatorUpdateItemComercio, validatorGetPaginaComercio, validatorSubirTexto }
