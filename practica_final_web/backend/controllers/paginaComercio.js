@@ -61,7 +61,7 @@ const getPaginaComercio = async (req, res) => {
     try {
         
         
-        const { id} = matchedData(req);
+        const { id } = matchedData(req);
         const data = await paginaModel.findOne({_id: id});
         res.status(200).send(data)
         
@@ -96,8 +96,6 @@ const createPaginaComercio = async (req, res) => {
 }
 
 const subirTextosComercio = async (req, res) => {
-
-    console.log("Subir textos")
 
     try {
             
