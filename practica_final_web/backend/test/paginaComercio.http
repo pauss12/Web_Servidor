@@ -16,19 +16,13 @@ GET http://localhost:3000/api/paginaComercio/663119efee90e8633a2701ae
 ### CREACION DE UNA PAGINA DE COMERCIO
 POST http://localhost:3000/api/paginaComercio/createPage HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjMxMGYxZWU4Mjc1OGUzOWVmMDUzYzMiLCJpYXQiOjE3MTQ0OTExNjYsImV4cCI6MTcxNDQ5ODM2Nn0.V2Kz9RA1HrlCIjxyRFTkqZDxrSlrPl0gvlI0-jGCKcs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM3YTg5YWEwY2FjNjc3ZDY4YTdhNWEiLCJpYXQiOjE3MTQ5MjM2NzQsImV4cCI6MTcxNDkzMDg3NH0.k7kNrbSDtEpOFVGiYjfPArkCoaf6-tOF7bCFeNZ80EQ
 
 {
     "titulo": "Titulo 2",
     "ciudadComercio": "Madrid",
     "actividadComercio": "Actividad2",
-    "resumenComercio": "Resumen 2",
-    "textos": [
-        "Titulo 2: Descripcion 2"
-    ],
-    "fotos": [
-        "https://www.google.com"
-    ]
+    "resumenComercio": "Resumen 2"
 }
 
 
@@ -40,16 +34,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiYjAwN
 
 {
     "ciudadComercio": "Ciudad 1",
-    "actividadComercio": "Actividad 1",
-    "textos": [
-        "Titulo 1: Descripcion 1"
-    ],
-    "fotos": [
-        "https://www.google.com"
-    ]
+    "actividadComercio": "Actividad 1"
 }
 
 ### ELIMINACION DE UNA PAGINA DE COMERCIO
 DELETE http://localhost:3000/api/paginaComercio/66311eef0ca0505b24275c4b HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjMxMGYxZWU4Mjc1OGUzOWVmMDUzYzMiLCJpYXQiOjE3MTQ0OTExNjYsImV4cCI6MTcxNDQ5ODM2Nn0.V2Kz9RA1HrlCIjxyRFTkqZDxrSlrPl0gvlI0-jGCKcs
+
+### SUBIR UNA FOTO
+POST http://localhost:3000/api/storage/6637a8e4a0cac677d68a7a5d HTTP/1.1
+Content-Type: multipart/form-data; boundary=Boundry
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM3YTg5YWEwY2FjNjc3ZDY4YTdhNWEiLCJpYXQiOjE3MTQ5MjM2NzQsImV4cCI6MTcxNDkzMDg3NH0.k7kNrbSDtEpOFVGiYjfPArkCoaf6-tOF7bCFeNZ80EQ
+
+--Boundry
+Content-Disposition: form-data; name="image"; filename="firmaSinFondo.png"
+Content-Type: image/jpg
+
+< ./firmaSinFondo.png
+--Boundry--
