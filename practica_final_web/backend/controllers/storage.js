@@ -8,8 +8,6 @@ const createItem = async (req, res) => {
 
     const { id } = req.params
 
-    console.log(id)
-
     const fileData = {
 
         filename: file.filename,
