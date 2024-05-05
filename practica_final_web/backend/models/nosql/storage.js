@@ -3,6 +3,10 @@ const mongooseDelete = require("mongoose-delete")
 
 const StorageScheme = new mongoose.Schema(
     {
+        idPropietario: {
+            type: String,
+            required: true
+        },
         url: {
             type: String
         },
