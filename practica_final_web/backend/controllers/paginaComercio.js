@@ -95,6 +95,34 @@ const createPaginaComercio = async (req, res) => {
     }
 }
 
+const subirTextosComercio = async (req, res) => {
+
+    console.log("Subir textos")
+
+    try {
+            
+        const { id } = matchedData(req)
+        const { textos } = matchedData(req)
+
+        //Quiero que los textos se vayan añadiendo a un array de textos en caso de que quiera añadir mas de uno por separado
+        const pagina = await paginaModel.findOne({ _id: id })
+
+        const textosActuales = pagina.textos
+
+        //como junto el array que esta en la base de datos, com el array que me llega por el body
+        textosActuales.push(...textos)
+
+        const data = await paginaModel.updateOne({_id: id }, {textos: textosActuales })
+
+        res.status(200).send(data)
+    
+    } catch (err) {
+    
+        //console.log(err)
+        handleHttpError(res, 'ERROR_UPDATE_TEXTOS_COMERCIO')
+    } 
+}
+
 const deletePaginaComercio = async (req, res) => {
 
     try {
@@ -113,4 +141,4 @@ const deletePaginaComercio = async (req, res) => {
 
 
 
-module.exports = { getPaginasComercio, createPaginaComercio, deletePaginaComercio, getPaginaComercio, getPaginasComercioCiudad, getPaginasComercioCiudadActividad }
+module.exports = { getPaginasComercio, createPaginaComercio, deletePaginaComercio, subirTextosComercio, getPaginaComercio, getPaginasComercioCiudad, getPaginasComercioCiudadActividad }
