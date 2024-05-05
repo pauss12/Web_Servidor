@@ -1,5 +1,6 @@
 const swaggerJsdoc = require("swagger-jsdoc");
 const comercio = require("../models/nosql/comercio");
+const { subirTextosComercio } = require("../controllers/paginaComercio");
 
 const options = {
     definition: {
@@ -237,6 +238,32 @@ const options = {
                             },
                             example: ["https://www.google.com"]
                         },
+                    }
+                },
+                subirTextos: {
+                    type: "object",
+                    required: ["textos"],
+                    properties: {
+                        textos: {
+                            type: "array",
+                            items: {
+                                type: "string"
+                            },
+                            example: ["Media Markt es una cadena de tiendas de electrónica, informática y electrodomésticos."]
+                        }
+                    }
+                },
+                subirFotos: {
+                    type: "object",
+                    required: ["fotos"],
+                    properties: {
+                        fotos: {
+                            type: "array",
+                            items: {
+                                type: "string"
+                            },
+                            example: ["/test/foto.jpg"]
+                        }
                     }
                 },
             },
