@@ -1,12 +1,15 @@
 const router = require("../routes")
 
 const { storageModel, paginaModel} = require("../models")
+const { matchedData } = require("express-validator")
 
 const createItem = async (req, res) => {
 
-    const { body, file } = req
+    console.log("entra en createItem")
 
-    const { id } = req.params
+    const { id } = matchedData(req)
+
+    const { body, file } = req
 
     const fileData = {
 
