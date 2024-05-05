@@ -6,9 +6,9 @@ const router = express.Router();
 
 const { updateComercio } = require('../controllers/comercio');
 
-const { validatorUpdateItemComercio, validatorCrearPaginaComercio, validatorGetPaginaComercio } = require('../validators/paginaComercio');
+const { validatorUpdateItemComercio, validatorCrearPaginaComercio, validatorGetPaginaComercio, validatorSubirTexto } = require('../validators/paginaComercio');
 
-const { getPaginasComercio, createPaginaComercio, deletePaginaComercio, getPaginaComercio, getPaginasComercioCiudad, getPaginasComercioCiudadActividad } = require('../controllers/paginaComercio')
+const { getPaginasComercio, createPaginaComercio, deletePaginaComercio, subirTextosComercio, getPaginaComercio, getPaginasComercioCiudad, getPaginasComercioCiudadActividad } = require('../controllers/paginaComercio')
 
 /**
  * @openapi
@@ -120,6 +120,8 @@ router.get('/:id', validatorGetPaginaComercio, getPaginaComercio);
 *         - bearerAuth: []
 */
 router.post('/createPage', checkearComercio, validatorCrearPaginaComercio, createPaginaComercio);
+
+router.post('/textos/:id', checkearComercio, validatorSubirTexto, subirTextosComercio);
 
 /** 
  * @openapi
