@@ -21,7 +21,6 @@ const createItem = async (req, res) => {
     const data = await storageModel.create(fileData)
 
     //Tengo que añadir la ruta de la imagen en la variable de fotos de la pagina del comercio al que pertenece
-    
     const paginaComercio = await paginaModel.findOne({ _id: id })
 
     const fotos = paginaComercio.fotos;
