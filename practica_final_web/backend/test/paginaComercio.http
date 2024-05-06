@@ -77,3 +77,13 @@ Content-Type: image/jpg
 
 < ./otra.png
 --Boundry--
+
+### PATCH DE UNA PAGINA DE COMERCIO
+PATCH http://localhost:3000/api/paginaComercio/663802c9985be76a9dc21046 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer 
+
+{
+    "puntuacion": 5,
+    "comentarios": "Comentario 1"
+}
