@@ -8,7 +8,7 @@ const { updateComercio } = require('../controllers/comercio');
 
 const { validatorUpdateItemComercio, validatorCrearPaginaComercio, validatorGetPaginaComercio, validatorSubirTexto } = require('../validators/paginaComercio');
 
-const { getPaginasComercio, createPaginaComercio, deletePaginaComercio, subirTextosComercio, getPaginaComercio, getPaginasComercioCiudad, getPaginasComercioCiudadActividad } = require('../controllers/paginaComercio')
+const { getPaginasComercio, createPaginaComercio, deletePaginaComercio, subirTextosComercio, getPaginaComercio, getPaginasComercioCiudad, getPaginasComercioCiudadActividad, updatePatchComercio } = require('../controllers/paginaComercio')
 
 /**
  * @openapi
@@ -204,5 +204,7 @@ router.put('/:id', checkearComercio, validatorUpdateItemComercio, updateComercio
 *         - bearerAuth: []
 */
 router.delete('/:id', checkearComercio, validatorGetPaginaComercio, deletePaginaComercio);
+
+router.patch('/:id', checkearComercio, updatePatchComercio);
 
 module.exports = router;
