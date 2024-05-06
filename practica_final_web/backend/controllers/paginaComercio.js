@@ -6,6 +6,10 @@ const { handleHttpError } = require('../utils/handleError')
 
 const { verifyToken } = require('../utils/handleJwt')
 
+//Variable global para el array de puntuaciones
+let puntuacionesGlobal = []
+
+
 /**
  * Obtener lista de paginas de comercio de la base de datos sin ningun tipo de fitro
 */
@@ -136,7 +140,44 @@ const deletePaginaComercio = async (req, res) => {
     }
 }
 
+const updatePatchComercio = async (req, res) => {
+    
+    try {
+    
+        const { id } = matchedData(req)
+
+        console.log(id)
+
+        //La nota q me pasen, la guardo en "puntuacionGlobal"; aumento uno el contador de puntuacones de la BBDD, y luego hago la media
+        const { puntuacion } = matchedData(req)
+
+        puntuacionesGlobal.push(puntuacion)
+
+        const pagina = await paginaModel.findOne({ _id: id })
+
+        const puntuacionActual = pagina.puntuacion
+
+        const numeroPuntuaciones = pagina.numeroPuntuaciones
+
+        const nuevaPuntuacion = (puntuacionActual + puntuacion) / (numeroPuntuaciones + 1)
+
+        console.log(nuevaPuntuacion)
+
+        const data = await paginaModel.updateOne({ _id: id }, { puntuacion: nuevaPuntuacion, numeroPuntuaciones: numeroPuntuaciones + 1 })
+
+        res.status(200).send(data)
+      
+
+    } catch (err) {
+     
+        //console.log(err)
+        handleHttpError(res, 'ERROR_UPDATE_ITEM')
+    
+    }
+
+}
 
 
 
-module.exports = { getPaginasComercio, createPaginaComercio, deletePaginaComercio, subirTextosComercio, getPaginaComercio, getPaginasComercioCiudad, getPaginasComercioCiudadActividad }
+
+module.exports = { getPaginasComercio, createPaginaComercio, deletePaginaComercio, subirTextosComercio, getPaginaComercio, getPaginasComercioCiudad, getPaginasComercioCiudadActividad, updatePatchComercio }
