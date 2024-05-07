@@ -54,9 +54,14 @@ const getUser = async (req, res) => {
 
     try {
 
-        const { username } = matchedData(req)
-        const data = await usersModel.find({ username: username })
-        res.status(200).send(data)
+        const { city } = matchedData(req)
+
+        const data = await usersModel.find({ ciudadUsuario: city })
+
+        //Filtrar por los usuarios que tengan recibirOfertas = true
+        const dataFiltrada = data.filter(user => user.permiteOfertas === true)
+
+        res.status(200).send(dataFiltrada)
 
     } catch (err) {
 
