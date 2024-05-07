@@ -31,8 +31,6 @@ const validatorUpdateItemComercio = [
     check("ciudadComercio").optional().notEmpty(),
     check("actividadComercio").optional().notEmpty(),
     check("resumenComercio").optional().notEmpty().isString(),
-    check("textos").optional().isArray(),
-    check("fotos").optional().isArray(),
     (req, res, next) => {
         return validateResults(req, res, next)
     }
