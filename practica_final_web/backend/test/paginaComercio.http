@@ -1,22 +1,22 @@
 GET http://localhost:3000/api/paginaComercio
 
 ### VER LOS COMERCIOS DE SU CIUDAD
-GET http://localhost:3000/api/paginaComercio/search/Madrid
+GET http://localhost:3000/api/paginaComercio/search/Barcelona
 
 ### VER TODAS LAS PAGINAS DE COMERCIOS DE UNA CIUDAD Y ACTIVIDAD
 
-GET http://localhost:3000/api/paginaComercio/search/Madrid/Actividad1
+GET http://localhost:3000/api/paginaComercio/search/Barcelona/Actividad1
 
 
 ### VER UNA PAGINA DE COMERCIO
 
-GET http://localhost:3000/api/paginaComercio/6639f2c479fd1f4c5b506c06
+GET http://localhost:3000/api/paginaComercio/663a189881c35c818b836671
 
 
 ### CREACION DE UNA PAGINA DE COMERCIO
 POST http://localhost:3000/api/paginaComercio/createPage HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5ZjJiMDc5ZmQxZjRjNWI1MDZjMDMiLCJpYXQiOjE3MTUwNzM3MTIsImV4cCI6MTcxNTA4MDkxMn0.jR1CiD3yyZnWOWkNvuDTNk78p0jlqRQYxhlnHyUxszA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNhMTg3YjgxYzM1YzgxOGI4MzY2NmUiLCJpYXQiOjE3MTUwODMzODcsImV4cCI6MTcxNTA5MDU4N30.T92RSTb6kOWVmcrTvUYRSyGtSVkP-2v51uCTDnhSqkk
 
 {
     "titulo": "Titulo 1",
@@ -27,33 +27,35 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5ZjJiM
 
 ### SUBIR UN TEXTO A LA PAGINA DE COMERCIO
 
-POST http://localhost:3000/api/paginaComercio/textos/6639f2c479fd1f4c5b506c06 HTTP/1.1
+POST http://localhost:3000/api/paginaComercio/textos/663a189881c35c818b836671 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5ZjJiMDc5ZmQxZjRjNWI1MDZjMDMiLCJpYXQiOjE3MTUwNzM3MTIsImV4cCI6MTcxNTA4MDkxMn0.jR1CiD3yyZnWOWkNvuDTNk78p0jlqRQYxhlnHyUxszA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNhMTg3YjgxYzM1YzgxOGI4MzY2NmUiLCJpYXQiOjE3MTUwODMzODcsImV4cCI6MTcxNTA5MDU4N30.T92RSTb6kOWVmcrTvUYRSyGtSVkP-2v51uCTDnhSqkk
 
 {
     "textos": [
-        "Texto 1"
+        "Texto 2"
     ]
 }
 
 
 ### MODIFICACION DE UN COMERCIO SIENDO EL COMERCIO PROPIO, solo puede modificar cosas de su pagina de comercio
 
-PUT http://localhost:3000/api/paginaComercio/662b8acd7289b86a735ba4fb HTTP/1.1
+PUT http://localhost:3000/api/paginaComercio/663a189881c35c818b836671 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM3ZjBiMWE1ZjU3YTM3ZTA0N2E1YWMiLCJpYXQiOjE3MTQ5NDIxMjksImV4cCI6MTcxNDk0OTMyOX0.uK6rFMepOvKgPgPUo4CetIPaEOXInksvBkk-qtL8E44
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNhMTg3YjgxYzM1YzgxOGI4MzY2NmUiLCJpYXQiOjE3MTUwODMzODcsImV4cCI6MTcxNTA5MDU4N30.T92RSTb6kOWVmcrTvUYRSyGtSVkP-2v51uCTDnhSqkk
 
 {
-    "ciudadComercio": "Ciudad 1",
-    "actividadComercio": "Actividad 1"
+    "ciudadComercio": "Madrid",
+    "actividadComercio": "Actividad 1",
+    "titulo": "Titulo 1",
+    "resumenComercio": "Resumen 1"
 }
 
 
 ### SUBIR UNA FOTO
-POST http://localhost:3000/api/storage/photos/6639f2c479fd1f4c5b506c06 HTTP/1.1
+POST http://localhost:3000/api/storage/photos/663a189881c35c818b836671 HTTP/1.1
 Content-Type: multipart/form-data; boundary=Boundry
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5ZjJiMDc5ZmQxZjRjNWI1MDZjMDMiLCJpYXQiOjE3MTUwNzM3MTIsImV4cCI6MTcxNTA4MDkxMn0.jR1CiD3yyZnWOWkNvuDTNk78p0jlqRQYxhlnHyUxszA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNhMTg3YjgxYzM1YzgxOGI4MzY2NmUiLCJpYXQiOjE3MTUwODMzODcsImV4cCI6MTcxNTA5MDU4N30.T92RSTb6kOWVmcrTvUYRSyGtSVkP-2v51uCTDnhSqkk
 
 --Boundry
 Content-Disposition: form-data; name="image"; filename="firmaSinFondo.png"
@@ -63,9 +65,9 @@ Content-Type: image/jpg
 --Boundry--
 
 ### SUBIR OTRA FOTO
-POST http://localhost:3000/api/storage/photos/6639f2c479fd1f4c5b506c06 HTTP/1.1
+POST http://localhost:3000/api/storage/photos/663a189881c35c818b836671 HTTP/1.1
 Content-Type: multipart/form-data; boundary=Boundry
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5ZjJiMDc5ZmQxZjRjNWI1MDZjMDMiLCJpYXQiOjE3MTUwNzM3MTIsImV4cCI6MTcxNTA4MDkxMn0.jR1CiD3yyZnWOWkNvuDTNk78p0jlqRQYxhlnHyUxszA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNhMTg3YjgxYzM1YzgxOGI4MzY2NmUiLCJpYXQiOjE3MTUwODMzODcsImV4cCI6MTcxNTA5MDU4N30.T92RSTb6kOWVmcrTvUYRSyGtSVkP-2v51uCTDnhSqkk
 
 --Boundry
 Content-Disposition: form-data; name="image"; filename="otra.png"
