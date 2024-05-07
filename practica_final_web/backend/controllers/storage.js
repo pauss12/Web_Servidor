@@ -5,8 +5,6 @@ const { matchedData } = require("express-validator")
 
 const createItem = async (req, res) => {
 
-    console.log("entra en createItem")
-
     const { id } = matchedData(req)
 
     const { body, file } = req
