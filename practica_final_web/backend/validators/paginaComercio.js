@@ -39,12 +39,22 @@ const validatorUpdateItemComercio = [
 ]
 
 const validatorSubirTexto = [
-    
-        check("id").exists().notEmpty().isMongoId(),
-        check("textos").exists().notEmpty().isArray(),
-        (req, res, next) => {
-            return validateResults(req, res, next)
-        }
-    ]
 
-module.exports = { validatorCrearPaginaComercio, validatorUpdateItemComercio, validatorGetPaginaComercio, validatorSubirTexto }
+    check("id").exists().notEmpty().isMongoId(),
+    check("textos").exists().notEmpty().isArray(),
+    (req, res, next) => {
+        return validateResults(req, res, next)
+    }
+]
+
+const validatorPatchComercio = [
+
+    check("id").exists().notEmpty().isMongoId(),
+    check("puntuacion").optional().notEmpty().isNumeric(),
+    check("comentarios").optional().notEmpty().isString(),
+    (req, res, next) => {
+        return validateResults(req, res, next)
+    }
+]
+
+module.exports = { validatorCrearPaginaComercio, validatorUpdateItemComercio, validatorGetPaginaComercio, validatorSubirTexto, validatorPatchComercio }
