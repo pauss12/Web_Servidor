@@ -6,7 +6,7 @@ const router = express.Router();
 
 const { updateComercio } = require('../controllers/comercio');
 
-const { validatorUpdateItemComercio, validatorCrearPaginaComercio, validatorGetPaginaComercio, validatorSubirTexto } = require('../validators/paginaComercio');
+const { validatorUpdateItemComercio, validatorCrearPaginaComercio, validatorGetPaginaComercio, validatorSubirTexto, validatorPatchComercio } = require('../validators/paginaComercio');
 
 const { getPaginasComercio, createPaginaComercio, deletePaginaComercio, subirTextosComercio, getPaginaComercio, getPaginasComercioCiudad, getPaginasComercioCiudadActividad, updatePatchComercio } = require('../controllers/paginaComercio')
 
@@ -205,6 +205,6 @@ router.put('/:id', checkearComercio, validatorUpdateItemComercio, updateComercio
 */
 router.delete('/:id', checkearComercio, validatorGetPaginaComercio, deletePaginaComercio);
 
-router.patch('/:id', checkearComercio, updatePatchComercio);
+router.patch('/:id', checkearComercio, validatorPatchComercio, updatePatchComercio);
 
 module.exports = router;
