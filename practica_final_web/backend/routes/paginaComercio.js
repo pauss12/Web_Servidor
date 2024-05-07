@@ -177,9 +177,6 @@ router.post('/textos/:id', checkearComercio, validatorSubirTexto, subirTextosCom
  */
 router.put('/:id', checkearComercio, validatorUpdateItemComercio, updateComercio);
 
-//Modificar las reseñas o puntuacion de un comercio
-/*router.patch('/:id', checkearComercio, updateReviewsComercio);*/
-
 /**
 *  @openapi 
 *  /api/paginaComercio/{id}:
@@ -205,6 +202,34 @@ router.put('/:id', checkearComercio, validatorUpdateItemComercio, updateComercio
 */
 router.delete('/:id', checkearComercio, validatorGetPaginaComercio, deletePaginaComercio);
 
+/** 
+ * @openapi
+ * /api/paginaComercio/{id}:
+ *  patch:
+ *      tags:
+ *      - Merchant`s Page
+ *      summary: The user can posts a review and a score on the merchants page
+ *      description: The user can posts a review and a score on the merchants page
+ *      parameters:
+ *          -   name: id
+ *              in: path
+ *              description: id that need to be updated
+ *              required: true
+ *              schema:
+ *                  type: string
+ *      requestBody:
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      $ref: "#/components/schemas/patchPaginaComercio"
+ *      responses:
+ *          '200':
+ *              description: Returns the inserted object
+ *          '403':
+ *              description: Validation error
+ *      security:
+ *          - bearerAuth: []
+ */
 router.patch('/:id', checkearComercio, validatorPatchComercio, updatePatchComercio);
 
 module.exports = router;
