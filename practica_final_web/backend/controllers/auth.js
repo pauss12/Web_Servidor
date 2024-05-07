@@ -1,11 +1,7 @@
 const { matchedData } = require("express-validator")
-
 const { tokenSigUser } = require("../utils/handleJwt")
-
 const { encrypt, compare } = require("../utils/handlePassword")
-
 const { handleHttpError } = require("../utils/handleError")
-
 const { usersModel } = require("../models")
 
 /**
@@ -20,9 +16,7 @@ const registerControl = async (req, res) => {
         req = matchedData(req)
 
         const passwordUsuario = await encrypt(req.passwordUsuario)
-
         const body = { ...req, passwordUsuario }
-
         const dataUser = await usersModel.create(body)
         
         dataUser.set('passwordUsuario', undefined, { strict: false })
@@ -83,49 +77,4 @@ const loginControl = async (req, res) => {
     }
 }
 
-const updateUser = async (req, res) => {
-
-    try {
-
-        // Obtener el email del usuario de los parámetros de la solicitud
-        const { email } = req.params; 
-
-        // Obtener el nuevo rol del usuario de los parámetros de la solicitud
-        const { role } = req.body; 
-
-        // Verificar si el email proporcionado es válido
-        if (!email) {
-            handleHttpError(res, "INVALID_EMAIL", 400);
-            return;
-        }
-
-        // Verificar si se proporcionó un nuevo rol
-        if (!role) {
-            handleHttpError(res, "MISSING_ROLE", 400);
-            return;
-        }
-
-        // Actualizar el usuario por su email y establecer el nuevo rol
-        const updatedUser = await usersModel.findOneAndUpdate(
-            { email },
-            { role },
-            { new: true }
-        );
-
-        // Verificar si se encontró y actualizó el usuario correctamente
-        if (!updatedUser) {
-            handleHttpError(res, "USER_NOT_FOUND", 404);
-            return;
-        }
-
-        // Enviar respuesta con el usuario actualizado
-        res.json({ message: "User role updated successfully", user: updatedUser });
-
-    } catch (err) {
-
-        handleHttpError(res, "UPDATE_FAILED", 500);
-    }
-};
-
-
-module.exports = { registerControl, loginControl, updateUser }
+module.exports = { registerControl, loginControl }
