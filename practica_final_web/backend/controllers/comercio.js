@@ -160,10 +160,11 @@ const updateComercio = async (req, res) => {
     try {
 
         const { id, ...body } = matchedData(req)
-        const data = await comercioModel.findByIdAndUpdate({ _id: id }, body);
+
+        const data = await paginaModel.findByIdAndUpdate({ _id: id }, body);
 
         if (!data)
-            return handleHttpError(res, 'Documento no encontrado', 404)
+            return handleHttpError(res, 'PAGE NOT FOUND', 404)
         else
             res.status(200).send(data)
 
