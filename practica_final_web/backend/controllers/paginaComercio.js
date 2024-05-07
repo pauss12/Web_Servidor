@@ -141,32 +141,39 @@ const deletePaginaComercio = async (req, res) => {
 }
 
 const updatePatchComercio = async (req, res) => {
-    
+
     try {
     
-        const { id } = matchedData(req)
-
-        console.log(id)
-
         //La nota q me pasen, la guardo en "puntuacionGlobal"; aumento uno el contador de puntuacones de la BBDD, y luego hago la media
-        const { puntuacion } = matchedData(req)
-
-        puntuacionesGlobal.push(puntuacion)
+        const { id, puntuacion, comentarios } = matchedData(req)
 
         const pagina = await paginaModel.findOne({ _id: id })
 
-        const puntuacionActual = pagina.puntuacion
 
         const numeroPuntuaciones = pagina.numeroPuntuaciones
 
-        const nuevaPuntuacion = (puntuacionActual + puntuacion) / (numeroPuntuaciones + 1)
+        //Si el array de puntuaciones esta vacio, meto la primera puntuacion
+        if (puntuacionesGlobal.length == 0)
+            puntuacionesGlobal.push(puntuacion)
+        else
+            puntuacionesGlobal.push(puntuacion)
 
-        console.log(nuevaPuntuacion)
 
-        const data = await paginaModel.updateOne({ _id: id }, { puntuacion: nuevaPuntuacion, numeroPuntuaciones: numeroPuntuaciones + 1 })
+        //Hago la media de las puntuaciones que estan en el array
+        let sumaPuntuaciones = 0
+
+        for (let i = 0; i < puntuacionesGlobal.length; i++) {
+            sumaPuntuaciones += puntuacionesGlobal[i]
+        }
+
+        //Cuando se hace una puntuacion, se suma uno al contador
+        const nuevaPuntuacion = sumaPuntuaciones / (numeroPuntuaciones + 1)
+
+        const data = await paginaModel.updateOne({ _id: id }, { puntuacion: nuevaPuntuacion, numeroPuntuaciones: numeroPuntuaciones + 1 , comentarios: comentarios})
+
+        //Actualizo la puntuacion, el numero de puntuaciones y el comentario
 
         res.status(200).send(data)
-      
 
     } catch (err) {
      
