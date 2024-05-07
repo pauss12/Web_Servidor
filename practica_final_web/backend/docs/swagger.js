@@ -266,6 +266,23 @@ const options = {
                         }
                     }
                 },
+                patchPaginaComercio: {
+                    type: "object",
+                    required: ["puntuacion", "comentarios"],
+                    properties: {
+                        puntuacion: {
+                            type: "integer",
+                            example: 5
+                        },
+                        comentarios: {
+                            type: "array",
+                            items: {
+                                type: "string"
+                            },
+                            example: ["Me encanta Media Markt"]
+                        }
+                    }
+                },
             },
         },
     },
