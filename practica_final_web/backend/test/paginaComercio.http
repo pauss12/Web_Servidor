@@ -10,13 +10,13 @@ GET http://localhost:3000/api/paginaComercio/search/Madrid/Actividad1
 
 ### VER UNA PAGINA DE COMERCIO
 
-GET http://localhost:3000/api/paginaComercio/6637f100a5f57a37e047a5b0
+GET http://localhost:3000/api/paginaComercio/6639f2c479fd1f4c5b506c06
 
 
 ### CREACION DE UNA PAGINA DE COMERCIO
 POST http://localhost:3000/api/paginaComercio/createPage HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM4MDE4NTk4NWJlNzZhOWRjMjEwNDMiLCJpYXQiOjE3MTQ5NDY0MzcsImV4cCI6MTcxNDk1MzYzN30.LAYJjcAGlGgIo9MQxsCaYd60bhA8P5HpVlzUHnfCjWw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5ZjJiMDc5ZmQxZjRjNWI1MDZjMDMiLCJpYXQiOjE3MTUwNzM3MTIsImV4cCI6MTcxNTA4MDkxMn0.jR1CiD3yyZnWOWkNvuDTNk78p0jlqRQYxhlnHyUxszA
 
 {
     "titulo": "Titulo 1",
@@ -27,13 +27,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM4MDE4N
 
 ### SUBIR UN TEXTO A LA PAGINA DE COMERCIO
 
-POST http://localhost:3000/api/paginaComercio/textos/663802c9985be76a9dc21046 HTTP/1.1
+POST http://localhost:3000/api/paginaComercio/textos/6639f2c479fd1f4c5b506c06 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM4MDE4NTk4NWJlNzZhOWRjMjEwNDMiLCJpYXQiOjE3MTQ5NDY0MzcsImV4cCI6MTcxNDk1MzYzN30.LAYJjcAGlGgIo9MQxsCaYd60bhA8P5HpVlzUHnfCjWw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5ZjJiMDc5ZmQxZjRjNWI1MDZjMDMiLCJpYXQiOjE3MTUwNzM3MTIsImV4cCI6MTcxNTA4MDkxMn0.jR1CiD3yyZnWOWkNvuDTNk78p0jlqRQYxhlnHyUxszA
 
 {
     "textos": [
-        "Texto 2"
+        "Texto 1"
     ]
 }
 
@@ -49,15 +49,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM3ZjBiM
     "actividadComercio": "Actividad 1"
 }
 
-### ELIMINACION DE UNA PAGINA DE COMERCIO
-DELETE http://localhost:3000/api/paginaComercio/6637f1e7a5f57a37e047a5bb HTTP/1.1
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM4MDE4NTk4NWJlNzZhOWRjMjEwNDMiLCJpYXQiOjE3MTQ5NDY0MzcsImV4cCI6MTcxNDk1MzYzN30.LAYJjcAGlGgIo9MQxsCaYd60bhA8P5HpVlzUHnfCjWw
 
 ### SUBIR UNA FOTO
-POST http://localhost:3000/api/storage/photos/663802c9985be76a9dc21046 HTTP/1.1
+POST http://localhost:3000/api/storage/photos/6639f2c479fd1f4c5b506c06 HTTP/1.1
 Content-Type: multipart/form-data; boundary=Boundry
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM4MDE4NTk4NWJlNzZhOWRjMjEwNDMiLCJpYXQiOjE3MTQ5NDY0MzcsImV4cCI6MTcxNDk1MzYzN30.LAYJjcAGlGgIo9MQxsCaYd60bhA8P5HpVlzUHnfCjWw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5ZjJiMDc5ZmQxZjRjNWI1MDZjMDMiLCJpYXQiOjE3MTUwNzM3MTIsImV4cCI6MTcxNTA4MDkxMn0.jR1CiD3yyZnWOWkNvuDTNk78p0jlqRQYxhlnHyUxszA
 
 --Boundry
 Content-Disposition: form-data; name="image"; filename="firmaSinFondo.png"
@@ -67,9 +63,9 @@ Content-Type: image/jpg
 --Boundry--
 
 ### SUBIR OTRA FOTO
-POST http://localhost:3000/api/storage/photos/663802c9985be76a9dc21046 HTTP/1.1
+POST http://localhost:3000/api/storage/photos/6639f2c479fd1f4c5b506c06 HTTP/1.1
 Content-Type: multipart/form-data; boundary=Boundry
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM4MDE4NTk4NWJlNzZhOWRjMjEwNDMiLCJpYXQiOjE3MTQ5NDY0MzcsImV4cCI6MTcxNDk1MzYzN30.LAYJjcAGlGgIo9MQxsCaYd60bhA8P5HpVlzUHnfCjWw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5ZjJiMDc5ZmQxZjRjNWI1MDZjMDMiLCJpYXQiOjE3MTUwNzM3MTIsImV4cCI6MTcxNTA4MDkxMn0.jR1CiD3yyZnWOWkNvuDTNk78p0jlqRQYxhlnHyUxszA
 
 --Boundry
 Content-Disposition: form-data; name="image"; filename="otra.png"
@@ -78,12 +74,8 @@ Content-Type: image/jpg
 < ./otra.png
 --Boundry--
 
-### PATCH DE UNA PAGINA DE COMERCIO
-PATCH http://localhost:3000/api/paginaComercio/663802c9985be76a9dc21046 HTTP/1.1
-Content-Type: application/json
-Authorization: Bearer 
 
-{
-    "puntuacion": 5,
-    "comentarios": "Comentario 1"
-}
+### ELIMINACION DE UNA PAGINA DE COMERCIO
+DELETE http://localhost:3000/api/paginaComercio/6639fccf77905ea5d38f5f52 HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjM5ZjJiMDc5ZmQxZjRjNWI1MDZjMDMiLCJpYXQiOjE3MTUwNzM3MTIsImV4cCI6MTcxNTA4MDkxMn0.jR1CiD3yyZnWOWkNvuDTNk78p0jlqRQYxhlnHyUxszA
