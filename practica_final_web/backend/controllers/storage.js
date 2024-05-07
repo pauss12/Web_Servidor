@@ -1,4 +1,3 @@
-const router = require("../routes")
 
 const { storageModel, paginaModel} = require("../models")
 const { matchedData } = require("express-validator")
