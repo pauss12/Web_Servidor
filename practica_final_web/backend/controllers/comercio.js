@@ -115,42 +115,6 @@ const createComercio = async (req, res) => {
 }
 
 /**
- * Obtener usuario de la base de datos
- * @param {*} req
- * @param {*} res
- */
-
-/*const getComercio = async (req, res) => {
-
-    try {
-
-        const { username } = matchedData(req)
-        const data = await comercioModel.find({ username: username })
-        res.status(200).send(data)
-
-    } catch (err) {
-
-        console.log(err)
-        handleHttpError(res, "ERROR_GET_ITEM")
-
-    }
-}*/
-
-/*const getEmail = async (req, res) => {
-    try {
-        const { email } = matchedData(req)
-        const data = await comercioModel.find({ email: email })
-        if (data.length > 0)
-            res.status(200).send(data)
-        else
-            handleHttpError(res, "ERROR_EMAIL_DONT_EXIST")
-    } catch (err) {
-        console.log(err)
-        handleHttpError(res, "ERROR_GET_ITEM")
-    }
-}*/
-
-/**
  * Actualiza los datos del usuario en la base de datos
  * @param {*} req
  * @param {*} res
@@ -173,19 +137,6 @@ const updateComercio = async (req, res) => {
         handleHttpError(res, 'ERROR_UPDATE_COMERCIOS')
     }
 }
-
-/*const submitFile = async (req, res) => {
-    try {
-        const id = req.params.id
-        const { body, file } = req
-        const data = await comercioModel.findByIdAndUpdate({ _id: id }, { $set: { fotoDePerfil: file.filename } })
-        res.status(200).send(data)
-    } catch (err) {
-        console.log(err)
-        handleHttpError(res, 'ERROR_SUBMIT_FILE')
-    }
-}*/
-
 
 /**
  * Borra el usuario que el id recibidio
