@@ -8,20 +8,6 @@ const validatorGetItem = [
     }
 ]
 
-const validatorGetUser = [
-    check("username").exists().notEmpty(),
-    (req, res, next) => {
-        return validateResults(req, res, next)
-    }
-]
-
-/*const validatorGetEmail = [
-    check("email").exists().notEmpty(),
-    (req, res, next) => {
-        return validateResults(req, res, next)
-    }
-]*/
-
 const validatorUpdateItem = [
 
     check("id").exists().notEmpty().isMongoId(),
@@ -39,4 +25,12 @@ const validatorUpdateItem = [
     }
 ];
 
-module.exports = { validatorGetItem, validatorGetUser, validatorUpdateItem }
+const validatorGetUserCity = [
+
+    check("city").exists().notEmpty().isString(),
+    (req, res, next) => {
+        return validateResults(req, res, next)
+    }
+]
+
+module.exports = { validatorGetItem, validatorUpdateItem, validatorGetUserCity }
