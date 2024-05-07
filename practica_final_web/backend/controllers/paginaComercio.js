@@ -1,9 +1,7 @@
 const { paginaModel } = require('../models')
 
 const { matchedData } = require('express-validator')
-
 const { handleHttpError } = require('../utils/handleError')
-
 const { verifyToken } = require('../utils/handleJwt')
 
 //Variable global para el array de puntuaciones
