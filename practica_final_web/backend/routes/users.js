@@ -5,9 +5,7 @@ const { getItems, getItem, getUser, deleteItem, updateItem } = require("../contr
 
 const { authMiddleware } = require("../middleware/session")
 
-const { validatorGetItem, validatorGetUser, validatorUpdateItem } = require("../validators/users")
-
-//const { uploadMiddlewareUsuario } = require("../utils/handleStorage")
+const { validatorGetItem, validatorUpdateItem, validatorGetUserCity } = require("../validators/users")
 
 /**
  * @openapi
@@ -47,7 +45,27 @@ router.get('/', getItems)
 */
 router.get('/:id', validatorGetItem, getItem)
 
-/*router.get("/users/:username", validatorGetUser, getUser)*/
+/**
+ * @openapi
+ * /api/users/user/{city}:
+ *  get:
+ *      tags:
+ *      - User
+ *      summary: Get Users by city
+ *      description: Get Users by city with the recibirOfertas "true"
+ *      parameters:
+ *         -   name: city
+ *             in: path
+ *             required: true
+ *             schema:
+ *                 type: string
+ *      responses:
+ *          '200':
+ *              description: Returns the pages from all the merchants for which the filter is true
+ *          '403':
+ *              description: Error fetching merchants
+ */
+router.get('/user/:city', validatorGetUserCity, getUser)
 
 /** 
  * @openapi
