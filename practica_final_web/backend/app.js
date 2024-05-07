@@ -2,10 +2,8 @@ require('dotenv').config();
 
 const express = require("express")
 
-/*
-    const morganBody = require("morgan-body")
+const morganBody = require("morgan-body")
 const { IncomingWebhook } = require("@slack/webhook")
-*/ 
 
 const swaggerUi = require("swagger-ui-express")
 const swaggerSpecs = require("./docs/swagger")
@@ -28,7 +26,7 @@ app.use("/api", require("./routes"))
 app.use(express.static("storage"))
 //localhost:3000/file.jpg
 
-//const webHook = new IncomingWebhook(process.env.SLACK_WEBHOOK)
+const webHook = new IncomingWebhook(process.env.SLACK_WEBHOOK)
 
 const port = process.env.PORT || 3000
 
@@ -39,7 +37,6 @@ app.listen(port, () => {
 
 })
 
-/*
 
 const loggerStream = {
     write: message => {
@@ -57,6 +54,5 @@ morganBody(app, {
     }, stream: loggerStream
 })
 
-*/
 
 module.exports = app
