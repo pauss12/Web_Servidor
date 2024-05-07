@@ -283,6 +283,46 @@ const options = {
                         }
                     }
                 },
+                updateUser: {
+                    type: "object",
+                    required: ["nombreUsuario", "emailUsuario", "edadUsuario", "ciudadUsuario", "interesesUsuario", "permiteOfertas"],
+                    properties: {
+                        nombreUsuario: {
+                            type: "string",
+                            example: "Paula"
+                        },
+                        emailUsuario: {
+                            type: "string",
+                            example: "paula@mail.com"
+                        },
+                        passwordUsuario: {
+                            type: "string"
+                        },
+                        edadUsuario: {
+                            type: "integer",
+                            example: 20
+                        },
+                        sexoUsuario: {
+                            type: "string",
+                            example: "Mujer"
+                        },
+                        ciudadUsuario: {
+                            type: "string",
+                            example: "Madrid"
+                        },
+                        interesesUsuario: {
+                            type: "array",
+                            items: {
+                                type: "string"
+                            },
+                            example: ["futbol", "baloncesto"]
+                        },
+                        permiteOfertas: {
+                            type: "boolean",
+                            example: true
+                        }
+                    }
+                },
             },
         },
     },
