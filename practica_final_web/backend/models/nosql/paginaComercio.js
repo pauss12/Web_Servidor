@@ -27,10 +27,12 @@ const paginaComercioScheme = new mongoose.Schema(
             type: String
         }],
         puntuacion: {
-            type: Number
+            type: Number,
+            default: 0
         },
-        numeroPutuaciones: {
-            type: Number
+        numeroPuntuaciones: {
+            type: Number,
+            default: 0
         },
         comentarios: [{
             type: String
