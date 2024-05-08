@@ -14,21 +14,22 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5Z
 }
 
 ### MODIFICACION DE UN COMERCIO CON UN USUARIO QUE ES ADMINISTRADOR
-PUT http://localhost:3000/api/comercio/662b8acd7289b86a735ba4fb HTTP/1.1
+PUT http://localhost:3000/api/admin/663c0cfd86da146514813301 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiNzVmYjEzOGI4MTY2MWFhN2IyOGEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTQyMTY0MTMsImV4cCI6MTcxNDIyMzYxM30.VcpoDhqcM7WooxCdOx64GC_tJRIRUk1Bn-IESTRSvus
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5ZDUyZjYwNmQ3YThmMWE3ZmYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTUyMTE2NzUsImV4cCI6MTcxNTIxODg3NX0.H-Bw2Tj283yrmb05dIniTh9mA7mn6zyXFdZvic1nYZ0
 
 {
-    "nombreComercio": "Comercio1",
+    "nombreComercio": "Comercio 1",
     "cifComercio": "12345678",
-    "direccionComercio": "Calle1",
+    "direccionComercio": "Calle 1",
     "emailComercio": "comercio1@gmail.com",
-    "telefonoContacto": "4123456789",
+    "passwordComercio": "hola12345",
+    "telefonoContacto": "611452480"
     
 }
 
 ###
 
-DELETE http://localhost:3000/api/admin/deleteComercio/6637f4aa1331cca0e2b741ca
+DELETE http://localhost:3000/api/admin/deleteComercio/663c018cb5ea59eb9b57e47f
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjMwZDRmNDZlNjI1MmZjY2NmZjE1OTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTQ5NDE4MTgsImV4cCI6MTcxNDk0OTAxOH0.NZqcfeGwM6nAwpbHjLTwAqCCMPy3KlnbG4TW2rOxV9A
 
