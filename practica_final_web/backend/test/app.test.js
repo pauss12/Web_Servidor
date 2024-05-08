@@ -51,7 +51,7 @@ describe('\nUSUARIOS', () => {
         token = response.body.token
         id = response.body.user._id
 
-        console.log("TOKEN USUARIO desde el login de usuario " + token)
+        //console.log("TOKEN USUARIO desde el login de usuario " + token)
 
     })
 
@@ -84,16 +84,14 @@ describe('\nUSUARIOS', () => {
             .set('Accept', 'application/json')
             .expect(200)
         
-        console.log("CIUDAD USUARIO de la respuesta " + response.body.ciudadUsuario)
+        //console.log("CIUDAD USUARIO de la respuesta " + response.body.ciudadUsuario)
         //expect(response.body.ciudadUsuario).toEqual('Madrid')
 
     })
 
     it('should update a user', async () => {
     
-        console.log("ID USUARIO " + id)
-
-        console.log("TOKEN USUARIO " + token)
+        //console.log("TOKEN USUARIO " + token)
 
         const response = await request(app)
             .put('/api/users/' + id)
@@ -111,9 +109,16 @@ describe('\nUSUARIOS', () => {
             .set('Accept', 'application/json')
             .expect(200)
         
-        console.log("NOMBRE USUARIO " + response.body.nombreUsuario)
-        
-        expect(response.token).toEqual(token)
+        //console.log("NOMBRE USUARIO " + response.body.nombreUsuario)
+        expect(response.body.user.nombreUsuario).toEqual('Menganito2')
+
+        //console.log("TOKEN USUARIO antes de modificarlo ---------" + token)
+        //console.log("TOKEN USUARIO antes de modificarlo RESPUESTA " + token)
+
+        token = response.body.token
+        id = response.body.user._id
+
+        //console.log("TOKEN USUARIO al modificarlo" + token)
     })
 
     it('should delete a user', async () => {
@@ -138,12 +143,13 @@ describe('\nCOMERCIOS', () => {
          .post('/api/auth/login')
             .send({
 
-                "emailUsuario": "usuario3@gmail.com",
-                "passwordUsuario": "1234578P"
+                "emailUsuario": "usuario1@gmail.com",
+                "passwordUsuario": "12345678"
             })
             .set('Accept', 'application/json')
             .expect(200)
     
+        token = ""
         token = response.body.token
 
         //console.log("TOKEN USUARIO ADMIN desde el login de usuario " + token)
@@ -171,10 +177,11 @@ describe('\nCOMERCIOS', () => {
         token = response.body.token
         //id = response.body.dataComercio._id
 
+        id = ""
         id = "663bb3639d4a460b80e5ebf2"
 
         //console.log("TOKEN COMERCIO " + token)
-        //console.log("ID COMERCIO " + id)
+        console.log("ID COMERCIO " + id)
 
     })
 
