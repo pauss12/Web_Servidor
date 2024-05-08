@@ -2,16 +2,15 @@
 
 POST http://localhost:3000/api/admin/crearComercio HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjMwZDRmNDZlNjI1MmZjY2NmZjE1OTQiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTUxNzQ0NDAsImV4cCI6MTcxNTE4MTY0MH0.IhgUHiE8NPA45Ms9yA-LvWro_Z5jzRsyScATV7eWL20
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYTAzMTgyYzYwOGNjMzNmZmFjZjciLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTUxOTI5NjMsImV4cCI6MTcxNTIwMDE2M30.GCPsPRCrbTyPDRg6KcS2cU1CjRpwnvPScNXYDd2s2i4
 
 {
-    "nombreComercio": "Comercio 1",
-    "cifComercio": "12345678",
-    "direccionComercio": "Calle 1",
-    "emailComercio": "comercio1@gmail.com",
-    "passwordComercio": "12345678",
-    "telefonoContacto": "4123456789FG"
-    
+    "nombreComercio": "Comerscio 1",
+    "cifComercio": "123456708",
+    "direccionComercio": "Caslle 1",
+    "emailComercio": "email@gmail.com",
+    "passwordComercio": "hola1a2345",
+    "telefonoContacto": "611s452480"
 }
 
 ### MODIFICACION DE UN COMERCIO CON UN USUARIO QUE ES ADMINISTRADOR
