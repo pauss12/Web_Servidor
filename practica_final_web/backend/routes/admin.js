@@ -6,9 +6,9 @@ const { authMiddleware } = require("../middleware/session")
 
 const router = express.Router();
 
-const { createComercio } = require('../controllers/admin');
+const { createComercio, updateComercioAdmin } = require('../controllers/admin');
 
-const { updateComercio, deleteComercio } = require('../controllers/comercio');
+const { deleteComercio } = require('../controllers/comercio');
 
 const { validatorCreateItem, validatorUpdateItemAdmin, validatorGetItem } = require('../validators/comercio');
 
@@ -64,7 +64,7 @@ router.post('/crearComercio', authMiddleware, checkRol(["admin"]), validatorCrea
  *      security:
  *          - bearerAuth: []
  */
-router.put('/:id', authMiddleware, checkRol(["admin"]), validatorUpdateItemAdmin, updateComercio);
+router.put('/:id', authMiddleware, checkRol(["admin"]), validatorUpdateItemAdmin, updateComercioAdmin);
 
 /**
  * @openapi
