@@ -16,7 +16,19 @@ const getPaginasComercio = async (req, res) => {
     try {
 
         const data = await paginaModel.find({})
-        res.status(200).send(data)
+
+        //depende de si el valor de scoring es true o false,se muestra las paginas de comercio por orden de puntacion
+        if (req.query.scoring === "true") {
+                
+            //Ordenar las paginas de comercio que me devuelven de la BBDD de menor a mayor puntuacion
+            const dataOrdenada = data.sort((a, b) => a.puntuacion - b.puntuacion)
+
+            res.status(200).send(dataOrdenada)
+            
+        } else {
+            res.status(200).send(data)
+        }
+
 
     } catch (err) {
 
@@ -32,7 +44,14 @@ const getPaginasComercioCiudad = async (req, res) => {
         const city = req.params.city
 
         const data = await paginaModel.find({ciudadComercio: city})
-        res.status(200).send(data)
+        
+        if (req.query.scoring === "true")
+        {
+            const dataOrdenada = data.sort((a, b) => a.puntuacion - b.puntuacion)
+            res.status(200).send(dataOrdenada)
+        }
+        else
+            res.status(200).send(data)
 
     } catch (err) {
 
@@ -49,7 +68,13 @@ const getPaginasComercioCiudadActividad = async (req, res) => {
         const activity = req.params.activity
 
         const data = await paginaModel.find({ ciudadComercio: city, actividadComercio: activity })
-        res.status(200).send(data)
+
+        if (req.query.scoring === "true") {
+            const dataOrdenada = data.sort((a, b) => a.puntuacion - b.puntuacion)
+            res.status(200).send(dataOrdenada)
+        }
+        else
+            res.status(200).send(data)
 
     } catch (err) {
 
