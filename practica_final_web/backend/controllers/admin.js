@@ -25,7 +25,7 @@ const createComercio = async (req, res) => {
 
         const data = {
             token: await tokenSigComercio(dataComercio),
-            user: dataComercio
+            dataComercio
         }
 
         res.status(200).send(data)
