@@ -1,7 +1,8 @@
 const { usersModel } = require('../models')
 const { matchedData } = require('express-validator')
 const { handleHttpError } = require('../utils/handleError')
-const { encrypt, compare } = require('../utils/handlePassword')
+const { compare } = require('../utils/handlePassword')
+const { tokenSigUser } = require('../utils/handleJwt')
 
 /**
  * Obtener lista de usuarios de la base de datos
@@ -95,16 +96,26 @@ const updateItem = async (req, res) => {
             body.passwordUsuario = passwordUsuarioHasheada
         }
 
-        const data = await usersModel.findByIdAndUpdate({_id: body.id}, body)
+        const data = await usersModel.findByIdAndUpdate({ _id: body.id }, body)
 
         if (!data)
             return handleHttpError(res, 'Documento no encontrado', 404)
         else
-            res.status(200).send(data)
+        {
+            //Si ha ido bien, devuelvo los datos actualizados
+            const datosActualizados = await usersModel.findById({ _id: body.id })
 
+            const data = {
+                token: await tokenSigUser(datosActualizados),
+                user: datosActualizados
+            }
+
+            res.status(200).send(data)
+        }
 
     } catch (err) {
-        //console.log(err) 
+        
+        console.log(err) 
         handleHttpError(res, 'ERROR_UPDATE_ITEMS')
     }
 }
