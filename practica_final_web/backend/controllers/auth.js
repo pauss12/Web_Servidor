@@ -46,8 +46,8 @@ const loginControl = async (req, res) => {
         
         req = matchedData(req)
 
-        const user = await usersModel.findOne({ emailUsuario: req.emailUsuario }).select("passwordUsuario nombreUsuario role emailUsuario")
-
+        const user = await usersModel.findOne({ emailUsuario: req.emailUsuario })
+        
         if (!user) {
             handleHttpError(res, "USER_NOT_EXISTS", 404)
             return
