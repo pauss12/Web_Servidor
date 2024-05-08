@@ -53,14 +53,14 @@ const loginComercio = async (req, res) => {
 
         req = matchedData(req)
 
-        const comercio = await comercioModel.findOne({ emailComercio: req.emailComercio })
+        const dataComercio = await comercioModel.findOne({ emailComercio: req.emailComercio })
 
-        if (!comercio) {
+        if (!dataComercio) {
             handleHttpError(res, "COMERCIO_NOT_EXISTS", 404)
             return
         }
 
-        const hashPassword = comercio.passwordComercio;
+        const hashPassword = dataComercio.passwordComercio;
 
         const check = await compare(req.passwordComercio, hashPassword)
 
@@ -70,18 +70,18 @@ const loginComercio = async (req, res) => {
         }
 
         //Si no quisiera devolver el hash del password
-        comercio.set('passwordComercio', undefined, { strict: false })
+        dataComercio.set('passwordComercio', undefined, { strict: false })
 
         const data = {
-            token: await tokenSigComercio(comercio),
-            comercio
+            token: await tokenSigComercio(dataComercio),
+            dataComercio
         }
 
         res.send(data)
 
     } catch (err) {
-        //console.log(err)
-        handleHttpError(res, "ERROR_LOGIN_USER")
+        console.log(err)
+        handleHttpError(res, "ERROR_LOGIN_COMERCIO")
     }
 }
 
@@ -102,7 +102,7 @@ const createComercio = async (req, res) => {
 
         const data = {
             token: await tokenSigComercio(dataComercio),
-            user: dataComercio
+            dataComercio
         }
 
         res.send(data)
@@ -130,7 +130,17 @@ const updateComercio = async (req, res) => {
         if (!data)
             return handleHttpError(res, 'PAGE NOT FOUND', 404)
         else
+        {
+            //Si ha ido bien, devuelvo los datos actualizados
+            const datosActualizados = await paginaModel.findById({ _id:id })
+
+            const data = {
+                token: await tokenSigUser(datosActualizados),
+                pagina: datosActualizados
+            }
+
             res.status(200).send(data)
+        }
 
     } catch (err) {
         //console.log(err) 
