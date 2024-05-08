@@ -1,5 +1,9 @@
 GET http://localhost:3000/api/paginaComercio
 
+### VER LAS PAGINAS DE COMERCIO ORDENADAS POR PUNTUACION
+
+GET http://localhost:3000/api/paginaComercio?scoring=true
+
 ### VER LOS COMERCIOS DE SU CIUDAD
 GET http://localhost:3000/api/paginaComercio/search/Barcelona
 
@@ -16,13 +20,13 @@ GET http://localhost:3000/api/paginaComercio/663a189881c35c818b836671
 ### CREACION DE UNA PAGINA DE COMERCIO
 POST http://localhost:3000/api/paginaComercio/createPage HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNhMTg3YjgxYzM1YzgxOGI4MzY2NmUiLCJpYXQiOjE3MTUwODMzODcsImV4cCI6MTcxNTA5MDU4N30.T92RSTb6kOWVmcrTvUYRSyGtSVkP-2v51uCTDnhSqkk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiN2M0MzIxMmM2NDM0NzY2ZjM0YmQiLCJpYXQiOjE3MTUxNzQ0NjcsImV4cCI6MTcxNTE4MTY2N30.wyUTh2QLYTaoOkpImZxK3jVnXdmsZM3ikKdxoCiihz8
 
 {
-    "titulo": "Titulo 1",
-    "ciudadComercio": "Barcelona",
-    "actividadComercio": "Actividad1",
-    "resumenComercio": "Resumen 1"
+    "titulo": "Titulo 3",
+    "ciudadComercio": "Madrid",
+    "actividadComercio": "Actividad3",
+    "resumenComercio": "Resumen 3"
 }
 
 ### SUBIR UN TEXTO A LA PAGINA DE COMERCIO
