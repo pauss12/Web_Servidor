@@ -28,7 +28,7 @@ const createComercio = async (req, res) => {
             user: dataComercio
         }
 
-        res.send(data)
+        res.status(200).send(data)
 
     } catch (err) {
 
