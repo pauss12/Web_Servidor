@@ -1,7 +1,5 @@
 const mongoose = require("mongoose")
 
-const mongooseDelete = require("mongoose-delete")
-
 const comercioScheme = new mongoose.Schema(
 
     {
@@ -32,8 +30,4 @@ const comercioScheme = new mongoose.Schema(
     }
 )
 
-//ID PAGINA: ALGO QUE IDENTIFIQUE A LA PAGINA DE CADA COMERCIO
-
-comercioScheme.plugin(mongooseDelete, { overrideMethods: "all" })
-
-module.exports = mongoose.model("comercio", comercioScheme)
+module.exports = mongoose.model("comercios", comercioScheme)
