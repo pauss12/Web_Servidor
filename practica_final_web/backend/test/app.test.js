@@ -134,7 +134,8 @@ describe('\nUSUARIOS', () => {
 
 describe('\nCOMERCIOS', () => {
 
-    var token = ""
+    var tokenComercio = ""
+    var tokenAdmin = ""
     var id = ""
 
     it('should login a admin user', async () => {
@@ -149,15 +150,15 @@ describe('\nCOMERCIOS', () => {
             .set('Accept', 'application/json')
             .expect(200)
     
-        token = ""
-        token = response.body.token
+        tokenAdmin = ""
+        tokenAdmin = response.body.token
 
         //console.log("TOKEN USUARIO ADMIN desde el login de usuario " + token)
     })
     
     it('should create a merchant', async () => {
 
-        //console.log("TOKEN USUARIO ADMIN " + token)
+        //console.log("TOKEN USUARIO ADMIN " + tokenAdmin)
 
         const response = await request(app)
             .post('/api/admin/crearComercio')
@@ -170,20 +171,41 @@ describe('\nCOMERCIOS', () => {
                 "passwordComercio": "12345678",
                 "telefonoContacto": "4123456789FG"
             })
-            .auth(token, { type: 'bearer' })
+            .auth(tokenAdmin, { type: 'bearer' })
             .set('Accept', 'application/json')
             .expect(200)
         
-        token = response.body.token
+        tokenComercio = response.body.token
         //id = response.body.dataComercio._id
-
-        id = ""
-        id = "663bb3639d4a460b80e5ebf2"
 
         //console.log("TOKEN COMERCIO " + token)
         console.log("ID COMERCIO " + id)
 
     })
+
+    it('should login a merchant', async () => {
+
+        tokenComercio = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNjMGZjNDc2YjRlMWQ4YmQzZGQ2Y2EiLCJpYXQiOjE3MTUyMTIyMjgsImV4cCI6MTcxNTIxOTQyOH0.fFryOl1q786sFdKyFJ89WbmM52rIo7duEGUoeuiPInM"
+
+        
+        const response = await request(app)
+            .post('/api/comercio/loginComercio')
+            .send({
+
+                "emailComercio": "comercio1@gmail.com",
+                "passwordComercio": "hola12345"
+            })
+            .auth(tokenComercio, { type: 'bearer' })
+            .set('Accept', 'application/json')
+            .expect(200)
+
+        tokenComercio = response.body.token
+        id = response.body.dataComercio._id
+
+        //console.log("TOKEN USUARIO desde el login de usuario " + token)
+
+    })
+
 
     it('should get the merchants', async () => {
         const response = await request(app)
@@ -195,11 +217,40 @@ describe('\nCOMERCIOS', () => {
 
     it('should get a merchant', async () => {
 
+        id = "663c0fc476b4e1d8bd3dd6ca"
+
         const response = await request(app)
             .get('/api/comercio/' + id)
             .set('Accept', 'application/json')
             .expect(200)
         
         //expect(response.body.dataComercio.nombreComercio).toEqual('Comercio 1')
+    })
+
+    it('should update a merchant', async () => {
+
+        /*tokenAdmin = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5ZDUyZjYwNmQ3YThmMWE3ZmYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTUyMTE2NzUsImV4cCI6MTcxNTIxODg3NX0.H-Bw2Tj283yrmb05dIniTh9mA7mn6zyXFdZvic1nYZ0"*/
+
+        id = "663c0fc476b4e1d8bd3dd6ca"
+
+        const response = await request(app)
+            .put('/api/admin/' + id)
+            .send({
+                "nombreComercio": "COM",
+                "cifComercio": "12345678",
+                "direccionComercio": "Calle 1",
+                "emailComercio": "com@gmail.com",
+                "passwordComercio": "hola12345",
+                "telefonoContacto": "611452480"
+            })
+            .auth(tokenAdmin, { type: 'bearer' })
+            .set('Accept', 'application/json')
+            .expect(200)
+        
+        tokenComercio = response.body.token
+        id = response.body.dataComercio._id
+        
+        //expect(response.body.dataComercio.nombreComercio).toEqual('Media Markt')
+
     })
 })
