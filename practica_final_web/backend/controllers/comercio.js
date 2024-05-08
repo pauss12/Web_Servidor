@@ -53,7 +53,7 @@ const loginComercio = async (req, res) => {
 
         req = matchedData(req)
 
-        const comercio = await comercioModel.findOne({ emailComercio: req.emailComercio }).select("passwordComercio nombreComercio _id emailComercio")
+        const comercio = await comercioModel.findOne({ emailComercio: req.emailComercio })
 
         if (!comercio) {
             handleHttpError(res, "COMERCIO_NOT_EXISTS", 404)
