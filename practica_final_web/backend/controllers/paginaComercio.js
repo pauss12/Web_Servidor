@@ -126,18 +126,17 @@ const subirTextosComercio = async (req, res) => {
 
     try {
             
-        const { id } = matchedData(req)
-        const { textos } = matchedData(req)
+        const { id, textos } = matchedData(req)
 
         //Quiero que los textos se vayan añadiendo a un array de textos en caso de que quiera añadir mas de uno por separado
         const pagina = await paginaModel.findOne({ _id: id })
 
-        const textosActuales = pagina.textos
+        //Si no hay textos, se crea un array vacio
+        const textosActuales = pagina.textos || []
 
-        //como junto el array que esta en la base de datos, com el array que me llega por el body
         textosActuales.push(...textos)
 
-        const data = await paginaModel.updateOne({_id: id }, {textos: textosActuales })
+        const data = await paginaModel.updateOne({_id: id }, { textos: textosActuales })
 
         res.status(200).send(data)
     
@@ -195,8 +194,19 @@ const updatePatchComercio = async (req, res) => {
         const data = await paginaModel.updateOne({ _id: id }, { puntuacion: nuevaPuntuacion, numeroPuntuaciones: numeroPuntuaciones + 1 , comentarios: comentarios})
 
         //Actualizo la puntuacion, el numero de puntuaciones y el comentario
+        if (!data)
+            return handleHttpError(res, 'PAGE NOT FOUND', 404)
+        else {
+            //Si ha ido bien, devuelvo los datos actualizados
+            const datosActualizados = await paginaModel.findById({ _id: id })
 
-        res.status(200).send(data)
+            const data = {
+                token: await tokenSigComercio(datosActualizados),
+                pagina: datosActualizados
+            }
+
+            res.status(200).send(data)
+        }
 
     } catch (err) {
      
