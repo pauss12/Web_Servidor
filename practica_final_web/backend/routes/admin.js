@@ -10,7 +10,9 @@ const { createComercio, updateComercioAdmin } = require('../controllers/admin');
 
 const { deleteComercio } = require('../controllers/comercio');
 
-const { validatorCreateItem, validatorUpdateItemAdmin, validatorGetItem } = require('../validators/comercio');
+const { validatorUpdateItemAdmin, validatorGetItem } = require('../validators/comercio');
+
+const { validatorCreateComercio } = require('../validators/admin');
 
 
 /** 
@@ -34,7 +36,7 @@ const { validatorCreateItem, validatorUpdateItemAdmin, validatorGetItem } = requ
  *      security:
  *          - bearerAuth: []
  */
-router.post('/crearComercio', authMiddleware, checkRol(["admin"]), validatorCreateItem, createComercio);
+router.post('/crearComercio', authMiddleware, checkRol(["admin"]), validatorCreateComercio, createComercio);
 
 /** 
  * @openapi
