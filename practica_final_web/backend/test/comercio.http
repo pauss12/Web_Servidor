@@ -15,7 +15,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiODk0Y
     "direccionComercio": "Calle 1",
     "emailComercio": "comercio1@gmail.com",
     "passwordComercio": "12345678",
-    "telefonoContacto": "4123456789"
+    "telefonoComercio": "4123456789"
 }
 
 
@@ -42,7 +42,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNjMDE4Y
     "direccionComercio": "Calle 1",
     "emailComercio": "com@gmail.com",
     "passwordComercio": "hola12345",
-    "telefonoContacto": "611452480"
+    "telefonoComercio": "611452480"
     
 }
 

@@ -20,7 +20,7 @@ const comercioScheme = new mongoose.Schema(
         passwordComercio: {
             type: String
         },
-        telefonoContacto: {
+        telefonoComercio: {
             type: String
         }
     },

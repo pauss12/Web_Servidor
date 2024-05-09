@@ -2,15 +2,15 @@
 
 POST http://localhost:3000/api/admin/crearComercio HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5ZDUyZjYwNmQ3YThmMWE3ZmYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTUyMDg1NTgsImV4cCI6MTcxNTIxNTc1OH0.B532LB7-dN2XS5G6G-FmY5czJ5I6WsQByprfqzWDND0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5ZDUyZjYwNmQ3YThmMWE3ZmYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTUyODgzODksImV4cCI6MTcxNTI5NTU4OX0.C4j9fmVT8CZLypLqZRQXdQ3EF3ZvwlvpTlUoswHDqkk
 
 {
     "nombreComercio": "Comercio 1",
-    "cifComercio": "12345678",
+    "cifComercio": "12345678P",
     "direccionComercio": "Calle 1",
     "emailComercio": "comercio1@gmail.com",
     "passwordComercio": "hola12345",
-    "telefonoContacto": "611452480"
+    "telefonoComercio": "611452480"
 }
 
 ### MODIFICACION DE UN COMERCIO CON UN USUARIO QUE ES ADMINISTRADOR
@@ -24,8 +24,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5Z
     "direccionComercio": "Calle 1",
     "emailComercio": "comercio1@gmail.com",
     "passwordComercio": "hola12345",
-    "telefonoContacto": "611452480"
-    
+    "telefonoComercio": "611452480"   
 }
 
 ###
