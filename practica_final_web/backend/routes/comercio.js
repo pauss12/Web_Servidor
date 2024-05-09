@@ -4,9 +4,9 @@ const { checkearComercio } = require('../middleware/rol');
 
 const router = express.Router();
 
-const { getComercios, getComercio, deleteComercio, loginComercio } = require('../controllers/comercio');
+const { getComercios, getComercio, loginComercio } = require('../controllers/comercio');
 
-const { validatorGetItem, validatorUpdateItemAdmin, validatorCreateItem, validatorLoginComercio } = require('../validators/comercio');
+const { validatorGetItem, validatorLoginComercio } = require('../validators/comercio');
 
 /**
  * @openapi
