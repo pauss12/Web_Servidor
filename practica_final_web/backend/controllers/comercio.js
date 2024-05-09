@@ -135,7 +135,7 @@ const updateComercio = async (req, res) => {
             const datosActualizados = await paginaModel.findById({ _id:id })
 
             const data = {
-                token: await tokenSigUser(datosActualizados),
+                token: await tokenSigComercio(datosActualizados),
                 pagina: datosActualizados
             }
 
