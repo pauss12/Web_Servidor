@@ -5,7 +5,7 @@ GET http://localhost:3000/api/paginaComercio
 GET http://localhost:3000/api/paginaComercio?scoring=true
 
 ### VER LOS COMERCIOS DE SU CIUDAD
-GET http://localhost:3000/api/paginaComercio/search/Barcelona
+GET http://localhost:3000/api/paginaComercio/search/Madrid
 
 ### VER TODAS LAS PAGINAS DE COMERCIOS DE UNA CIUDAD Y ACTIVIDAD
 
@@ -31,7 +31,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNkNGJlO
 
 ### SUBIR UN TEXTO A LA PAGINA DE COMERCIO
 
-POST http://localhost:3000/api/paginaComercio/textos/663d4c090ecb27ba0e77a7b6 HTTP/1.1
+POST http://localhost:3000/api/paginaComercio/textos/663d5f6392318e95a5db6ec2 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNkNGJlODBlY2IyN2JhMGU3N2E3YjMiLCJpYXQiOjE3MTUyOTMxNjAsImV4cCI6MTcxNTMwMDM2MH0._9K4qZD8otUI3A8qormU3vAY5-Mfm6ZNG2OX8362Hy8
 
