@@ -126,9 +126,14 @@ describe('\nCOMERCIOS', () => {
 
     var tokenComercio = ""
     var tokenAdmin = ""
+    
     var idComercio = ""
     var idWeb = ""
+    var idComercio2 = ""
+    var idWeb2 = ""
+
     var city = ""
+    var activity = ""
 
     it('should login a admin user', async () => {
 
@@ -228,7 +233,7 @@ describe('\nCOMERCIOS', () => {
 
     })
 
-    it('should create a web page for the merchant', async () => {
+    it('should create a web page 1 for the merchant', async () => {
     
         const response = await request(app)
             .post('/api/paginaComercio/createPage')
@@ -246,7 +251,7 @@ describe('\nCOMERCIOS', () => {
         idComercio = response.body.idPagina
     })
 
-    it('should create a web page for the merchant', async () => {
+    it('should create a web page 2 for the merchant -----', async () => {
 
         const response = await request(app)
             .post('/api/paginaComercio/createPage')
@@ -261,6 +266,10 @@ describe('\nCOMERCIOS', () => {
             .expect(200)
         
         city = response.body.ciudadComercio
+        activity = response.body.actividadComercio
+
+        idWeb2 = response.body._id
+        idComercio2 = response.body.idPagina
 
     })
 
@@ -295,6 +304,18 @@ describe('\nCOMERCIOS', () => {
 
     })
 
+    it('should get a merchant from the city and with the activity filter', async () => {
+
+        const response = await request(app)
+            .get('/api/paginaComercio/search/' + city + '/' + activity)
+            .set('Accept', 'application/json')
+            .expect(200)
+
+        expect(response.body[0].ciudadComercio).toEqual(city)
+        expect(response.body[0].actividadComercio).toEqual(activity)
+
+    })
+
     it('should update a merchant webpage', async () => {
 
         const response = await request(app)
@@ -316,7 +337,7 @@ describe('\nCOMERCIOS', () => {
 
     })
 
-    it('should posts a text in a merchants webpage', async () => {
+    it('should posts a text in a merchants webpage 1', async () => {
 
         const response = await request(app)
             .post('/api/paginaComercio/textos/' + idWeb)
@@ -336,6 +357,75 @@ describe('\nCOMERCIOS', () => {
 
     })
 
+    it('should posts a text in a merchants webpage 2 ----', async () => {
+
+        const response = await request(app)
+            .post('/api/paginaComercio/textos/' + idWeb2)
+            .set('Accept', 'application/json')
+            .auth(tokenComercio, { type: 'bearer' })
+            .send({
+
+                "textos": [
+
+                    "El Media Markt de Madrid es el mejor de todos",
+                    "Siempre tienen los mejores precios y productos"
+
+                ]
+
+            })
+        expect(response.body.acknowledged).toEqual(true)
+
+    })
+
+    //puntuacion y comentarios
+    it('should patch a merchants webpage', async () => {
+
+        const response = await request(app)
+            .patch('/api/paginaComercio/' + idWeb)
+            .set('Accept', 'application/json')
+            .auth(tokenComercio, { type: 'bearer' })
+            .send({
+
+                "puntuacion": 5,
+                "comentarios": "El mejor Media Markt de todos"
+
+            })
+            .expect(200)
+        
+        expect(response.body.acknowledged).toEqual(true)
+
+    })
+
+    it('should patch a merchants webpage 2 ---', async () => {
+
+        const response = await request(app)
+            .patch('/api/paginaComercio/' + idWeb2)
+            .set('Accept', 'application/json')
+            .auth(tokenComercio, { type: 'bearer' })
+            .send({
+
+                "puntuacion": 10,
+                "comentarios": "LO MEJOR DE LO MEJOR"
+
+            })
+            .expect(200)
+
+        expect(response.body.acknowledged).toEqual(true)
+
+    })
+
+    //hacer get para que ordene por scoring
+    it('should get the merchants webpages ordered by scoring', async () => {
+
+        const response = await request(app)
+            .get('/api/paginaComercio?scoring=true')
+            .set('Accept', 'application/json')
+            .expect(200)
+
+    })
+
+
+    //no funciona
     /*it('should posts a foto in a merchants webpage', async () => {
 
         const response = await request(app)
