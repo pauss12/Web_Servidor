@@ -1,5 +1,6 @@
 const request = require('supertest');
 const app = require('../app')
+const path = require('path')
 
 describe('\nUSUARIOS, como usuario normal', () => {
 
@@ -157,6 +158,8 @@ describe('\nCOMERCIOS', () => {
 
     var city = ""
     var activity = ""
+
+    var idFoto = ""
 
     it('should login a admin user', async () => {
 
@@ -464,18 +467,20 @@ describe('\nCOMERCIOS', () => {
 
 
     //no funciona
-    /*it('should posts a foto in a merchants webpage', async () => {
+    it('should posts a foto in a merchants webpage', async () => {
+
+        const image = path.join(__dirname, './otra.png')
 
         const response = await request(app)
-            .post('/api/paginaComercio/fotos/' + idWeb)
+            .post('/api/storage/photos/' + idWeb)
             .set('Accept', 'application/json')
             .auth(tokenComercio, { type: 'bearer' })
-            .contentDisposition('form-data', 'name="image"', 'filename="otra.png"')
-            .contentType('image/png')
+            .attach('image', image)
             .expect(200)
-            expect(response.body.acknowledged).toEqual(true)
+            
+        idFoto = response.body._id
 
-    })*/
+    })
 
     it('should delete a merchants webpage', async () => {
         const response = await request(app)
