@@ -2,11 +2,41 @@
 const { storageModel, paginaModel} = require("../models")
 const { matchedData } = require("express-validator")
 
+const getFotosStorage = async (req, res) => {
+
+    try {
+
+        const data = await storageModel.find({})
+        res.status(200).send(data)
+
+    } catch (err) {
+
+        //console.log(err)
+        handleHttpError(res, 'ERROR_GET_COMERCIOS')
+    }
+}
+
+const getFotoStorage = async (req, res) => {
+
+    try {
+
+        const { id } = matchedData(req)
+        const data = await storageModel.findById(id)
+        res.status(200).send(data)
+
+    } catch (err) {
+
+        //console.log(err)
+        handleHttpError(res, "ERROR_GET_COMERCIO")
+    }
+}
+
+
 const createItem = async (req, res) => {
 
     const { id } = matchedData(req)
 
-    const { body, file } = req
+    const { file } = req
 
     const fileData = {
 
@@ -29,4 +59,4 @@ const createItem = async (req, res) => {
     res.send(data)
 }
 
-module.exports = { createItem }
+module.exports = { createItem, getFotosStorage, getFotoStorage }
