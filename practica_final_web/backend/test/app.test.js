@@ -1,7 +1,7 @@
 const request = require('supertest');
 const app = require('../app')
 
-describe('\nUSUARIOS', () => {
+describe('\nUSUARIOS, como usuario normal', () => {
 
     var token = ""
     var id = ""
@@ -29,6 +29,13 @@ describe('\nUSUARIOS', () => {
         id = response.body.user._id
     })
 
+    it('should get a Unauthorized error', async () => {
+        const response = await request(app)
+            .get('/api/auth/users')
+            .set('Accept', 'application/json')
+            .expect(404)
+    });
+
     /*it('should get a Unauthorized error', async () => {
         const response = await request(app)
             .get('/api/auth/users')
@@ -51,6 +58,23 @@ describe('\nUSUARIOS', () => {
         token = response.body.token
         id = response.body.user._id
 
+    })
+
+    it('should create a merchant', async () => {
+
+        const response = await request(app)
+            .post('/api/admin/crearComercio')
+            .set('Accept', 'application/json')
+            .auth(token, { type: 'bearer' })
+            .send({
+                "nombreComercio": "Media Markt",
+                "cifComercio": "12345678",
+                "direccionComercio": "Calle 1",
+                "emailComercio": "mediamarkt@gmail.com",
+                "passwordComercio": "12345678",
+                "telefonoComercio": "611452480",
+            })
+            .expect(403)
     })
 
 
@@ -129,7 +153,6 @@ describe('\nCOMERCIOS', () => {
     
     var idComercio = ""
     var idWeb = ""
-    var idComercio2 = ""
     var idWeb2 = ""
 
     var city = ""
@@ -190,7 +213,6 @@ describe('\nCOMERCIOS', () => {
         idComercio = response.body.dataComercio._id
 
     })
-
 
     it('should get the merchants', async () => {
 
@@ -414,6 +436,22 @@ describe('\nCOMERCIOS', () => {
 
     })
 
+    it('what would happen if you put an 11; instead of a normal score ---', async () => {
+
+        const response = await request(app)
+            .patch('/api/paginaComercio/' + idWeb2)
+            .set('Accept', 'application/json')
+            .auth(tokenComercio, { type: 'bearer' })
+            .send({
+
+                "puntuacion": 11,
+                "comentarios": "LO MEJOR DE LO MEJOR"
+
+            })
+            .expect(403)
+
+    })
+
     //hacer get para que ordene por scoring
     it('should get the merchants webpages ordered by scoring', async () => {
 
@@ -441,12 +479,22 @@ describe('\nCOMERCIOS', () => {
 
     it('should delete a merchants webpage', async () => {
         const response = await request(app)
-            .delete('/api/admin/deleteComercio/' + idWeb)
+            .delete('/api/paginaComercio/' + idWeb)
             .set('Accept', 'application/json')
-            .auth(tokenAdmin, { type: 'bearer' })
+            .auth(tokenComercio, { type: 'bearer' })
             .expect(200)
         expect(response.body.acknowledged).toEqual(true)
     })
+
+    it('should delete a merchants webpage', async () => {
+        const response = await request(app)
+            .delete('/api/paginaComercio/' + idWeb2)
+            .set('Accept', 'application/json')
+            .auth(tokenComercio, { type: 'bearer' })
+            .expect(200)
+        expect(response.body.acknowledged).toEqual(true)
+    })
+
 
     it('should delete a merchant', async () => {
         const response = await request(app)
@@ -456,4 +504,15 @@ describe('\nCOMERCIOS', () => {
             .expect(200)
         expect(response.body.acknowledged).toEqual(true)
     })
+
+    /*it('should get a merchants page', async () => {
+
+        console.log(idWeb)
+
+        const response = await request(app)
+            .get('/api/paginaComercio/' + idWeb2)
+            .set('Accept', 'application/json')
+            .expect(404)
+
+    })*/
 })
