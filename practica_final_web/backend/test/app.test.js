@@ -465,8 +465,6 @@ describe('\nCOMERCIOS', () => {
 
     })
 
-
-    //no funciona
     it('should posts a foto in a merchants webpage', async () => {
 
         const image = path.join(__dirname, './otra.png')
@@ -479,6 +477,24 @@ describe('\nCOMERCIOS', () => {
             .expect(200)
             
         idFoto = response.body._id
+
+    })
+
+    it('should get the photos that are in the storage database', async () => {
+
+        const response = await request(app)
+            .get('/api/storage/photos')
+            .set('Accept', 'application/json')
+            .expect(200)
+
+    })
+
+    it('should get the photo from the storage database', async () => {
+
+        const response = await request(app)
+            .get('/api/storage/photos/' + idFoto)
+            .set('Accept', 'application/json')
+            .expect(200)
 
     })
 
@@ -500,7 +516,6 @@ describe('\nCOMERCIOS', () => {
         expect(response.body.acknowledged).toEqual(true)
     })
 
-
     it('should delete a merchant', async () => {
         const response = await request(app)
             .delete('/api/admin/deleteComercio/' + idComercio)
@@ -510,14 +525,4 @@ describe('\nCOMERCIOS', () => {
         expect(response.body.acknowledged).toEqual(true)
     })
 
-    /*it('should get a merchants page', async () => {
-
-        console.log(idWeb)
-
-        const response = await request(app)
-            .get('/api/paginaComercio/' + idWeb2)
-            .set('Accept', 'application/json')
-            .expect(404)
-
-    })*/
 })
