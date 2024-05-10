@@ -90,6 +90,11 @@ Content-Type: image/jpg
 < ./otra.png
 --Boundry--
 
+### VER FOTOS DE UNA PAGINA DE COMERCIO
+GET http://localhost:3000/api/storage/photos
+
+### VER FOTO DE UNA PAGINA DE COMERCIO
+GET http://localhost:3000/api/storage/photos/663e1384d6875feb34310a72
 
 ### ELIMINACION DE UNA PAGINA DE COMERCIO
 DELETE http://localhost:3000/api/paginaComercio/6639fccf77905ea5d38f5f52 HTTP/1.1
