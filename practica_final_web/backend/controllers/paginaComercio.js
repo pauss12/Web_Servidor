@@ -2,7 +2,7 @@ const { paginaModel } = require('../models')
 
 const { matchedData } = require('express-validator')
 const { handleHttpError } = require('../utils/handleError')
-const { verifyToken } = require('../utils/handleJwt')
+const { verifyToken, tokenSigComercio } = require('../utils/handleJwt')
 
 //Variable global para el array de puntuaciones
 let puntuacionesGlobal = []
@@ -194,7 +194,7 @@ const updatePatchComercio = async (req, res) => {
         const data = await paginaModel.updateOne({ _id: id }, { puntuacion: nuevaPuntuacion, numeroPuntuaciones: numeroPuntuaciones + 1 , comentarios: comentarios})
 
         //Actualizo la puntuacion, el numero de puntuaciones y el comentario
-        if (!data)
+        /*if (!data)
             return handleHttpError(res, 'PAGE NOT FOUND', 404)
         else {
             //Si ha ido bien, devuelvo los datos actualizados
@@ -206,11 +206,13 @@ const updatePatchComercio = async (req, res) => {
             }
 
             res.status(200).send(data)
-        }
+        }*/
+
+        res.status(200).send(data)
 
     } catch (err) {
      
-        //console.log(err)
+        console.log(err)
         handleHttpError(res, 'ERROR_UPDATE_ITEM')
     
     }
