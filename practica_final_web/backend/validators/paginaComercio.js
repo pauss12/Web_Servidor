@@ -48,7 +48,7 @@ const validatorSubirTexto = [
 const validatorPatchComercio = [
 
     check("id").exists().notEmpty().isMongoId(),
-    check("puntuacion").optional().notEmpty().isNumeric(),
+    check("puntuacion").optional().notEmpty().isInt({ min: 0, max: 10 }),
     check("comentarios").optional().notEmpty().isString(),
     (req, res, next) => {
         return validateResults(req, res, next)
