@@ -9,8 +9,42 @@ const { validatorGetPaginaComercio } = require("../validators/paginaComercio")
 const { createItem, getFotosStorage, getFotoStorage } = require("../controllers/storage");
 const { validatorGetItem } = require("../validators/comercio");
 
+/**
+ * @openapi
+ * /api/storage/photos:
+ *  get:
+ *      tags:
+ *      - Storage
+ *      summary: Get the photos from the database
+ *      description: 'Get all the photos that have been uploded to the database'
+ *      responses:
+ *          '200':
+ *              description: Returns the photos from the database
+ *          '403':
+ *              description: Error fetching photos
+ */
 router.get('/photos', getFotosStorage);
 
+/**
+*   @openapi
+*  /api/storage/photos/{id}:
+*  get:
+*      tags:
+*      - Storage
+*      summary: Get a photo from the Storage`s database by id
+*      description: Get a photo from the Storage`s database by id
+*      parameters:
+*          -   name: id
+*              in: path
+*              required: true
+*              schema:
+*                  type: string
+*      responses:
+*          '200':
+*              description: Returns the photo
+*          '403':
+*              description: Error fetching Photo
+*/
 router.get('/photos/:id', validatorGetItem, getFotoStorage);
 
 /**
