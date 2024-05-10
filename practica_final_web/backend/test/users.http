@@ -70,13 +70,3 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYTAzM
 DELETE http://localhost:3000/api/users/6630d4f46e6252fcccff1594
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjMwZDRmNDZlNjI1MmZjY2NmZjE1OTQiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTQ0NzYyNzYsImV4cCI6MTcxNDQ4MzQ3Nn0.Gnc4i90h1p1fxRINlFMsM01C9QKjU0SymCfIs1l6_ng
-
-### PATCH DE UNA PAGINA DE COMERCIO
-PATCH http://localhost:3000/api/paginaComercio/663d5f6392318e95a5db6ec2 HTTP/1.1
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNkNGJlODBlY2IyN2JhMGU3N2E3YjMiLCJpYXQiOjE3MTUyOTMxNjAsImV4cCI6MTcxNTMwMDM2MH0._9K4qZD8otUI3A8qormU3vAY5-Mfm6ZNG2OX8362Hy8
-
-{
-    "puntuacion": 10,
-    "comentario": "Comentario 1"
-}
