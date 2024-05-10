@@ -6,7 +6,12 @@ const uploadMiddleware = require("../utils/handleStorage")
 
 const { validatorGetPaginaComercio } = require("../validators/paginaComercio")
 
-const { createItem } = require("../controllers/storage")
+const { createItem, getFotosStorage, getFotoStorage } = require("../controllers/storage");
+const { validatorGetItem } = require("../validators/comercio");
+
+router.get('/photos', getFotosStorage);
+
+router.get('/photos/:id', validatorGetItem, getFotoStorage);
 
 /**
 *  @openapi 
