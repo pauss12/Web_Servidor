@@ -1,17 +1,11 @@
 const express = require('express');
-
-const { checkRol } = require('../middleware/rol');
-
-const { authMiddleware } = require("../middleware/session")
-
 const router = express.Router();
 
+const { checkRol } = require('../middleware/rol');
+const { authMiddleware } = require("../middleware/session")
 const { createComercio, updateComercioAdmin } = require('../controllers/admin');
-
 const { deleteComercio } = require('../controllers/comercio');
-
 const { validatorUpdateItemAdmin, validatorGetItem } = require('../validators/comercio');
-
 const { validatorCreateComercio } = require('../validators/admin');
 
 

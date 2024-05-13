@@ -1,9 +1,7 @@
 const express = require('express');
-
-const { checkearComercio } = require('../middleware/rol');
-
 const router = express.Router();
 
+const { checkearComercio } = require('../middleware/rol');
 const { updateComercio } = require('../controllers/comercio');
 
 const { validatorUpdateItemComercio, validatorCrearPaginaComercio, validatorGetPaginaComercio, validatorSubirTexto, validatorPatchComercio } = require('../validators/paginaComercio');
