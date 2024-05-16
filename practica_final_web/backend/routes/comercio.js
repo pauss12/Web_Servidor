@@ -71,7 +71,5 @@ router.get('/:id', authMiddleware, validatorGetItem, getComercio);
  */
 router.post('/loginComercio', checkearComercio, validatorLoginComercio, loginComercio);
 
-//checkear q el id que le paso en la peticion, sea el mismo que esta en el token.en el controller
-
 
 module.exports = router;
