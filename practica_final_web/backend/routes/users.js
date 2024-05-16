@@ -29,7 +29,7 @@ const { checkearComercio } = require("../middleware/rol")
  *          '403':
  *              description: Error fetching merchants
  */
-router.get('/user/:city', checkearComercio, validatorGetUserCity, getUser)
+router.get('/:city', checkearComercio, validatorGetUserCity, getUser)
 
 /** 
  * @openapi

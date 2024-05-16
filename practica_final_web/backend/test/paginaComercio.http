@@ -9,23 +9,23 @@ GET http://localhost:3000/api/paginaComercio/search/Barcelona
 
 ### VER TODAS LAS PAGINAS DE COMERCIOS DE UNA CIUDAD Y ACTIVIDAD
 
-GET http://localhost:3000/api/paginaComercio/search/Madrid/Actividad1
+GET http://localhost:3000/api/paginaComercio/search/Barcelona/Actividad1
 
 
 ### VER UNA PAGINA DE COMERCIO
 
-GET http://localhost:3000/api/paginaComercio/6646308347eeb5b12c34ef19
+GET http://localhost:3000/api/paginaComercio/664672bf218c7afc34bb2427
 
 
 ### CREACION DE UNA PAGINA DE COMERCIO
 POST http://localhost:3000/api/paginaComercio/createPage HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ2NGI4ZTY3NjQ2ZDRkNzUyYWQ3MmUiLCJlbWFpbCI6ImNvbWVyY2lvMUBnbWFpbC5jb20iLCJpYXQiOjE3MTU4ODI4OTQsImV4cCI6MTcxNTg5MDA5NH0.-395GQaSIsLm-Owadx5AdEld3Si82lYumVS2iv37rqQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ2NmUxZmI2MzI4NjM0YWNhNGY3NDkiLCJlbWFpbCI6ImNvbWVyY2lvMkBnbWFpbC5jb20iLCJpYXQiOjE3MTU4OTM4NjQsImV4cCI6MTcxNTkwMTA2NH0.vrl8CDwDgRZ5xba7xtu-kRCX8U0AjWftGNQKq21eG6M
 
 {
     "titulo": "Titulo 2",
     "ciudadComercio": "Barcelona",
-    "actividadComercio": "Actividad2",
+    "actividadComercio": "Actividad 2",
     "resumenComercio": "Resumen 2"
 }
 
@@ -45,31 +45,31 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ2NGI4Z
 
 ### MODIFICACION DE UN COMERCIO SIENDO EL COMERCIO PROPIO, solo puede modificar cosas de su pagina de comercio
 
-PUT http://localhost:3000/api/paginaComercio/66464dc3f3abeab31e1fb63e HTTP/1.1
+PUT http://localhost:3000/api/paginaComercio/664676b04eeefbb35585409d HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ2NGRkNGYzYWJlYWIzMWUxZmI2NDEiLCJpYXQiOjE3MTU4ODM2MzEsImV4cCI6MTcxNTg5MDgzMX0.p16xXMZ7-hjk6tv_6QWVddeHRToToignLZoNSnu2Q4U
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ2NmUxZmI2MzI4NjM0YWNhNGY3NDkiLCJlbWFpbCI6ImNvbWVyY2lvMkBnbWFpbC5jb20iLCJpYXQiOjE3MTU4OTM4NjQsImV4cCI6MTcxNTkwMTA2NH0.vrl8CDwDgRZ5xba7xtu-kRCX8U0AjWftGNQKq21eG6M
 
 {
-    "titulo": "COMERCIO MODIFICADO",
+    "titulo": "Titulo 1",
     "ciudadComercio": "Barcelona",
-    "actividadComercio": "Actividad2",
-    "resumenComercio": "Resumen 2"
+    "actividadComercio": "Actividad 1",
+    "resumenComercio": "Resumen 1"
 }
 
 ### PATCH DE UNA PAGINA DE COMERCIO
-PATCH http://localhost:3000/api/paginaComercio/664320c2b2dff40fa8b52c77 HTTP/1.1
+PATCH http://localhost:3000/api/paginaComercio/664681581913de71873af4d5 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQzMjMxNGIyZGZmNDBmYThiNTJjOTgiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTU2NzU5MjQsImV4cCI6MTcxNTY4MzEyNH0.ofxHyCzsmfMSoN2nM5DtFstBcr-ufzpDKHhfcde9So0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ2NmUxZmI2MzI4NjM0YWNhNGY3NDkiLCJlbWFpbCI6ImNvbWVyY2lvMkBnbWFpbC5jb20iLCJpYXQiOjE3MTU4OTM4NjQsImV4cCI6MTcxNTkwMTA2NH0.vrl8CDwDgRZ5xba7xtu-kRCX8U0AjWftGNQKq21eG6M
 
 {
-    "puntuacion": 10,
+    "puntuacion": 5,
     "comentario": "Comentario 1"
 }
 
 ### SUBIR UNA FOTO
-POST http://localhost:3000/api/storage/photos/663a189881c35c818b836671 HTTP/1.1
+POST http://localhost:3000/api/storage/photos/66464dc3f3abeab31e1fb63e HTTP/1.1
 Content-Type: multipart/form-data; boundary=Boundry
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNkNGJlODBlY2IyN2JhMGU3N2E3YjMiLCJpYXQiOjE3MTUyOTMxNjAsImV4cCI6MTcxNTMwMDM2MH0._9K4qZD8otUI3A8qormU3vAY5-Mfm6ZNG2OX8362Hy8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ2NmUxZmI2MzI4NjM0YWNhNGY3NDkiLCJlbWFpbCI6ImNvbWVyY2lvMkBnbWFpbC5jb20iLCJpYXQiOjE3MTU4OTE3NDMsImV4cCI6MTcxNTg5ODk0M30.r1CW7j1A_NHBH_CxRXnDOkXOrmym2uo-j6PeDEbHq5c
 
 --Boundry
 Content-Disposition: form-data; name="image"; filename="firmaSinFondo.png"
@@ -97,6 +97,6 @@ GET http://localhost:3000/api/storage/photos
 GET http://localhost:3000/api/storage/photos/663e1384d6875feb34310a72
 
 ### ELIMINACION DE UNA PAGINA DE COMERCIO
-DELETE http://localhost:3000/api/paginaComercio/6639fccf77905ea5d38f5f52 HTTP/1.1
+DELETE http://localhost:3000/api/paginaComercio/664681211913de71873af4c5 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNkNGJlODBlY2IyN2JhMGU3N2E3YjMiLCJpYXQiOjE3MTUyOTMxNjAsImV4cCI6MTcxNTMwMDM2MH0._9K4qZD8otUI3A8qormU3vAY5-Mfm6ZNG2OX8362Hy8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ2NmUxZmI2MzI4NjM0YWNhNGY3NDkiLCJlbWFpbCI6ImNvbWVyY2lvMkBnbWFpbC5jb20iLCJpYXQiOjE3MTU4OTM4NjQsImV4cCI6MTcxNTkwMTA2NH0.vrl8CDwDgRZ5xba7xtu-kRCX8U0AjWftGNQKq21eG6M

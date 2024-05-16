@@ -2,7 +2,9 @@ const { paginaModel } = require('../models')
 
 const { matchedData } = require('express-validator')
 const { handleHttpError } = require('../utils/handleError')
-const { verifyToken, tokenSigComercio } = require('../utils/handleJwt')
+const { verifyToken } = require('../utils/handleJwt')
+
+const jwt = require('jsonwebtoken')
 
 //Variable global para el array de puntuaciones
 let puntuacionesGlobal = []
@@ -153,6 +155,13 @@ const deletePaginaComercio = async (req, res) => {
 
         const { id } = matchedData(req)
         const data = await paginaModel.deleteOne({ _id: id });
+
+        //Limpiar el array de puntuaciones
+        puntuacionesGlobal = 0
+
+        if (puntuacionesGlobal.length <= 0)
+            console.log("El array de puntuaciones esta vacio")
+
         res.status(200).send(data)
 
     } catch (err) {
@@ -165,14 +174,29 @@ const deletePaginaComercio = async (req, res) => {
 const updatePatchComercio = async (req, res) => {
 
     try {
+
+        console.log(puntuacionesGlobal)
     
         //La nota q me pasen, la guardo en "puntuacionGlobal"; aumento uno el contador de puntuacones de la BBDD, y luego hago la media
         const { id, puntuacion, comentarios } = matchedData(req)
 
-        const pagina = await paginaModel.findOne({ _id: id })
+        const token = req.headers.authorization.split(' ').pop()
+        const tokenDecodificado = jwt.decode(token)
 
+        //Comprobar que el id del token y el id de pagina del merchant coinciden
+        const comercio = await paginaModel.findOne({ idPagina: tokenDecodificado._id })
 
-        const numeroPuntuaciones = pagina.numeroPuntuaciones
+        if (!comercio) {
+            handleHttpError(res, "THERE IS NO MERCHANT`S PAGES", 404)
+            return
+        }
+
+        if (comercio._id.toString() != id) {
+            handleHttpError(res, "ID_MERCHANT_DOES_NOT_MATCH", 401)
+            return
+        }
+
+        const numeroPuntuaciones = comercio.numeroPuntuaciones
 
         //Si el array de puntuaciones esta vacio, meto la primera puntuacion
         if (puntuacionesGlobal.length == 0)
@@ -194,25 +218,22 @@ const updatePatchComercio = async (req, res) => {
         const data = await paginaModel.updateOne({ _id: id }, { puntuacion: nuevaPuntuacion, numeroPuntuaciones: numeroPuntuaciones + 1 , comentarios: comentarios})
 
         //Actualizo la puntuacion, el numero de puntuaciones y el comentario
-        /*if (!data)
+        if (!data)
             return handleHttpError(res, 'PAGE NOT FOUND', 404)
         else {
             //Si ha ido bien, devuelvo los datos actualizados
             const datosActualizados = await paginaModel.findById({ _id: id })
 
             const data = {
-                token: await tokenSigComercio(datosActualizados),
                 pagina: datosActualizados
             }
 
             res.status(200).send(data)
-        }*/
-
-        res.status(200).send(data)
+        }
 
     } catch (err) {
      
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, 'ERROR_UPDATE_ITEM')
     
     }

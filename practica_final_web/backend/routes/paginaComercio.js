@@ -2,11 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 const { checkearComercio } = require('../middleware/rol');
-const { updateComercio } = require('../controllers/comercio');
+const { updateComercio  } = require('../controllers/comercio');
 
 const { validatorUpdateItemComercio, validatorCrearPaginaComercio, validatorGetPaginaComercio, validatorSubirTexto, validatorPatchComercio } = require('../validators/paginaComercio');
 
-const { getPaginasComercio, createPaginaComercio, deletePaginaComercio, subirTextosComercio, getPaginaComercio, getPaginasComercioCiudad, getPaginasComercioCiudadActividad, updatePatchComercio } = require('../controllers/paginaComercio')
+const { getPaginasComercio, createPaginaComercio, deletePaginaComercio, subirTextosComercio, getPaginaComercio, getPaginasComercioCiudad, getPaginasComercioCiudadActividad, updatePatchComercio } = require('../controllers/paginaComercio');
+
+
 
 /**
  * @openapi

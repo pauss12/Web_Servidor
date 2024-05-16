@@ -1,10 +1,10 @@
-GET http://localhost:3000/api/users
+### GET USUARIO POR CIUDAD
+
+GET http://localhost:3000/api/users/Madrid
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ2NGI4ZTY3NjQ2ZDRkNzUyYWQ3MmUiLCJlbWFpbCI6ImNvbWVyY2lvMUBnbWFpbC5jb20iLCJpYXQiOjE3MTU4ODI4OTQsImV4cCI6MTcxNTg5MDA5NH0.-395GQaSIsLm-Owadx5AdEld3Si82lYumVS2iv37rqQ
 
-### HACER UN GET, CON TOKEN DE COMERCIO PARA LISTAR USUARIOS QUE PERMITAN RECIBIR OFERTAS
-
-###
+### REGISTRAR UN USUARIO
 
 POST http://localhost:3000/api/auth/register HTTP/1.1
 Content-Type: application/json
@@ -40,15 +40,6 @@ Content-Type: application/json
     "emailUsuario": "usuario1@gmail.com",
     "passwordUsuario": "12345678"
 }
-
-### GET USUARIO POR ID
-
-GET http://localhost:3000/api/users/6630d4f46e6252fcccff1594
-
-### GET USUARIO POR CIUDAD
-
-GET http://localhost:3000/api/users/user/Madrid
-
 
 ###
 

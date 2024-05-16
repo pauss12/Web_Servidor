@@ -1,6 +1,6 @@
 GET http://localhost:3000/api/comercio
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5ZDUyZjYwNmQ3YThmMWE3ZmYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTU4Njk5ODIsImV4cCI6MTcxNTg3NzE4Mn0.SDiqFb3W8Mq__bwhMiQsiBufjRBMyz8f0lt5warlIjo 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ2NmUxZmI2MzI4NjM0YWNhNGY3NDkiLCJlbWFpbCI6ImNvbWVyY2lvMkBnbWFpbC5jb20iLCJpYXQiOjE3MTU4OTE3NDMsImV4cCI6MTcxNTg5ODk0M30.r1CW7j1A_NHBH_CxRXnDOkXOrmym2uo-j6PeDEbHq5c
 
 ### GET de los Comercios; va a mostrar las paginas pertenecientes a los comercios
 GET http://localhost:3000/api/comercio
@@ -30,11 +30,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5Z
 ### HACER LOGIN EN LA PAGINA DE UN COMERCIO
 POST http://localhost:3000/api/comercio/loginComercio HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ2MzAxNzQ3ZWViNWIxMmMzNGVmMTEiLCJlbWFpbCI6ImNvbWVyY2lvMkBnbWFpbC5jb20iLCJpYXQiOjE3MTU4NzU4NjMsImV4cCI6MTcxNTg4MzA2M30.yt7DcyghsP37DTBi81chnUeP2R8-8dsXTAC-Ffqs_A8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ2NmUxZmI2MzI4NjM0YWNhNGY3NDkiLCJlbWFpbCI6ImNvbWVyY2lvMkBnbWFpbC5jb20iLCJpYXQiOjE3MTU4OTE3NDMsImV4cCI6MTcxNTg5ODk0M30.r1CW7j1A_NHBH_CxRXnDOkXOrmym2uo-j6PeDEbHq5c
 
 {
-    "emailComercio": "com@gmail.com",
-    "passwordComercio": "hola12345"
+    "emailComercio": "comercio2@gmail.com",
+    "passwordComercio": "12345678"
 }
 
 
