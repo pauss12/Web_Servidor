@@ -154,7 +154,7 @@ router.post('/textos/:id', checkearComercio, validatorSubirTexto, subirTextosCom
  *      tags:
  *      - Merchant`s Page
  *      summary: Update the city, activity, texts and photos from merchant page
- *      description: Update the city, activity, texts and photos from merchant page
+ *      description: Update the city, activity, texts and photos from merchant page; it must check that the merchant`s page being updated is the same as the merchant`s page that the user has.
  *      parameters:
  *          -   name: id
  *              in: path
@@ -209,7 +209,7 @@ router.delete('/:id', checkearComercio, validatorGetPaginaComercio, deletePagina
  *      tags:
  *      - Merchant`s Page
  *      summary: The user can posts a review and a score on the merchants page
- *      description: The user can posts a review and a score on the merchants page
+ *      description: The user can posts a review and a score on the merchants page. Before posting the review and score, is must check that the merchant`s page being updated is the same as the merchant`s page that the user has.
  *      parameters:
  *          -   name: id
  *              in: path

@@ -11,7 +11,7 @@ const { checkearComercio } = require("../middleware/rol")
 
 /**
  * @openapi
- * /api/users/user/{city}:
+ * /api/users/{city}:
  *  get:
  *      tags:
  *      - User
@@ -25,9 +25,10 @@ const { checkearComercio } = require("../middleware/rol")
  *                 type: string
  *      responses:
  *          '200':
- *              description: Returns the pages from all the merchants for which the filter is true
+ *              description: Returns the pages from all the merchants with the city filter
  *          '403':
  *              description: Error fetching merchants
+ *      security:
  */
 router.get('/:city', checkearComercio, validatorGetUserCity, getUser)
 
