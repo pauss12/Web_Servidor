@@ -11,7 +11,7 @@ const tokenSigUser = async (user) => {
     const sign = jwt.sign(
         {
             _id: user._id,
-            email: user.email,
+            email: user.emailUsuario,
             role: user.role
         },
         JWT_SECRET,
@@ -30,7 +30,7 @@ const tokenSigComercio = async (comercio) => {
     const sign = jwt.sign(
         {
             _id: comercio._id,
-            email: comercio.email
+            email: comercio.emailComercio,
         },
         JWT_SECRET,
         {
