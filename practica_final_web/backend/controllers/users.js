@@ -3,6 +3,7 @@ const { matchedData } = require('express-validator')
 const { handleHttpError } = require('../utils/handleError')
 const { compare } = require('../utils/handlePassword')
 const { tokenSigUser } = require('../utils/handleJwt')
+const jwt = require('jsonwebtoken')
 
 /**
  * Obtener lista de usuarios de la base de datos
@@ -83,15 +84,23 @@ const updateItem = async (req, res) => {
 
         const body = matchedData(req)
 
-        //Obtengo el user de la BBDD con el id que me llega en la request
-        const user = await usersModel.findById({ _id: body.id});
+        const token = req.headers.authorization.split(' ').pop()
+        const tokenDecodificado = jwt.decode(token)
+
+        const user = await usersModel.findById({ _id: tokenDecodificado._id });
+
+        if (!user)
+            return handleHttpError(res, 'USER NOT FOUND', 404)
+
+        if (user._id.toString() !== body.id)
+            return handleHttpError(res, 'ID_USER_DOES_NOT_MATCH', 401)
 
         //Hashear la contraseña que me llega en la request
         const passwordUsuarioHasheada = body.passwordUsuario;
 
         //Si cambia la contraseña, tengo que volver a encriptarla; si no, la dejo igual. 
         const isPasswordMatch = await compare(passwordUsuarioHasheada, user.passwordUsuario);
-        
+
         if (!isPasswordMatch) {
             body.passwordUsuario = passwordUsuarioHasheada
         }
@@ -100,8 +109,8 @@ const updateItem = async (req, res) => {
 
         if (!data)
             return handleHttpError(res, 'Documento no encontrado', 404)
-        else
-        {
+        else {
+
             //Si ha ido bien, devuelvo los datos actualizados
             const datosActualizados = await usersModel.findById({ _id: body.id })
 
