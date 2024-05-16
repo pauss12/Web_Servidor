@@ -1,49 +1,13 @@
 const express = require("express")
 const router = express.Router()
 
-const { getItems, getItem, getUser, deleteItem, updateItem } = require("../controllers/users")
+const { getUser, deleteItem, updateItem } = require("../controllers/users")
 
 const { authMiddleware } = require("../middleware/session")
 
 const { validatorGetItem, validatorUpdateItem, validatorGetUserCity } = require("../validators/users")
 
-/**
- * @openapi
- * /api/users:
- *  get:
- *      tags:
- *      - User
- *      summary: Get Users from the database
- *      description: ''
- *      responses:
- *          '200':
- *              description: Returns the Users
- *          '403':
- *              description: Error fetching Users
- */
-router.get('/', getItems)
-
-/**
-*   @openapi
-*  /api/users/{id}:
-*  get:
-*      tags:
-*      - User
-*      summary: Get a User by id
-*      description: Get a User by id
-*      parameters:
-*          -   name: id
-*              in: path
-*              required: true
-*              schema:
-*                  type: string
-*      responses:
-*          '200':
-*              description: Returns the User
-*          '403':
-*              description: Error fetching User
-*/
-router.get('/:id', validatorGetItem, getItem)
+const { checkearComercio } = require("../middleware/rol")
 
 /**
  * @openapi
@@ -65,7 +29,7 @@ router.get('/:id', validatorGetItem, getItem)
  *          '403':
  *              description: Error fetching merchants
  */
-router.get('/user/:city', validatorGetUserCity, getUser)
+router.get('/user/:city', checkearComercio, validatorGetUserCity, getUser)
 
 /** 
  * @openapi
