@@ -4,6 +4,7 @@ const { handleHttpError } = require('../utils/handleError')
 
 const { tokenSigComercio } = require("../utils/handleJwt")
 const { encrypt, compare } = require("../utils/handlePassword")
+
 /**
  * Obtener lista de comercios de la base de datos sin ningun tipo de fitro
  * 
