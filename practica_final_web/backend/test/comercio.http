@@ -1,13 +1,20 @@
 GET http://localhost:3000/api/comercio
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5ZDUyZjYwNmQ3YThmMWE3ZmYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTU4Njk5ODIsImV4cCI6MTcxNTg3NzE4Mn0.SDiqFb3W8Mq__bwhMiQsiBufjRBMyz8f0lt5warlIjo 
 
-###
+### GET de los Comercios; va a mostrar las paginas pertenecientes a los comercios
+GET http://localhost:3000/api/comercio
 
-GET http://localhost:3000/api/comercio/663c018cb5ea59eb9b57e47f
+### GET de un Comercio en especifico
+
+GET http://localhost:3000/api/comercio/664619613521392f4d7b660d
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5ZDUyZjYwNmQ3YThmMWE3ZmYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTU4Njk5ODIsImV4cCI6MTcxNTg3NzE4Mn0.SDiqFb3W8Mq__bwhMiQsiBufjRBMyz8f0lt5warlIjo 
 
 ### POST DE UN COMERCIO CON UN USUARIO NORMAL, QUE NO ES ADMINISTRADOR
 POST http://localhost:3000/api/comercio HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiODk0YzNkNTk3MTAxNDg3YmRiYWMiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTQxNTE2NDIsImV4cCI6MTcxNDE1ODg0Mn0.XHG0CJLU3fruqDbVeK2tNoTlqFiX6Bd1w-cOOXF344c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5ZDUyZjYwNmQ3YThmMWE3ZmYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTU4Njk5ODIsImV4cCI6MTcxNTg3NzE4Mn0.SDiqFb3W8Mq__bwhMiQsiBufjRBMyz8f0lt5warlIjo
 
 {
     "nombreComercio": "Comercio 1",
@@ -23,26 +30,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJiODk0Y
 ### HACER LOGIN EN LA PAGINA DE UN COMERCIO
 POST http://localhost:3000/api/comercio/loginComercio HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNjMDE4Y2I1ZWE1OWViOWI1N2U0N2YiLCJpYXQiOjE3MTUyMDg1ODgsImV4cCI6MTcxNTIxNTc4OH0.tZz5OLerXebziwO6CY0nLBz-ypdbA7DVSUH3zs2OzDI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQ2MTk2MTM1MjEzOTJmNGQ3YjY2MGQiLCJpYXQiOjE3MTU4NzAwNDksImV4cCI6MTcxNTg3NzI0OX0.yOZ-WaPi1f4hHStSyRHKIfufggYp591DsjjQOcShGWs
 
 {
     "emailComercio": "com@gmail.com",
     "passwordComercio": "hola12345"
 }
 
-
-### MODIFICACION DE UN COMERCIO CON UN USUARIO QUE NO ES ADMINISTRADOR
-PUT http://localhost:3000/api/comercio/663c018cb5ea59eb9b57e47f HTTP/1.1
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNjMDE4Y2I1ZWE1OWViOWI1N2U0N2YiLCJpYXQiOjE3MTUyMDg1ODgsImV4cCI6MTcxNTIxNTc4OH0.tZz5OLerXebziwO6CY0nLBz-ypdbA7DVSUH3zs2OzDI
-
-{
-    "nombreComercio": "COM",
-    "cifComercio": "12345678",
-    "direccionComercio": "Calle 1",
-    "emailComercio": "com@gmail.com",
-    "passwordComercio": "hola12345",
-    "telefonoComercio": "611452480"
-    
-}
 
