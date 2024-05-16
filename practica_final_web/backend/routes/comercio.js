@@ -17,12 +17,14 @@ const { validatorGetItem, validatorLoginComercio } = require('../validators/come
  *      tags:
  *      - Comercio
  *      summary: Get merchants from the database
- *      description: ''
+ *      description: 'Get merchants from the database but only the admin can access this route'
  *      responses:
  *          '200':
  *              description: Returns the merchants
  *          '403':
  *              description: Error fetching merchants
+ *      security:
+ *          - bearerAuth: []
  */
 router.get('/', authMiddleware, getComercios);
 
@@ -33,7 +35,7 @@ router.get('/', authMiddleware, getComercios);
 *      tags:
 *      - Comercio
 *      summary: Get a merchant by id
-*      description: Get a merchant by id
+*      description: Get a merchant by id, only the admin can access this route
 *      parameters:
 *          -   name: id
 *              in: path
@@ -45,15 +47,17 @@ router.get('/', authMiddleware, getComercios);
 *              description: Returns the merchant
 *          '403':
 *              description: Error fetching Merchant
+*      security:
+*          - bearerAuth: []
 */
 router.get('/:id', authMiddleware, validatorGetItem, getComercio);
 
 /** 
  * @openapi
- * /api/api/comercio/loginComercio:
+ * /api/comercio/loginComercio:
  *  post:
  *      tags:
- *      - Admin
+ *      - Comercio
  *      summary: Login Merchant
  *      description: Login a Merchant; checks the token we have in the header and after that, checks the role of the users whose token we have in the header and if it is admin, it will allow us to create the merchant
  *      requestBody:
