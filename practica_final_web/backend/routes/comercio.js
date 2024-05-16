@@ -2,6 +2,8 @@ const express = require('express');
 
 const { checkearComercio } = require('../middleware/rol');
 
+const { authMiddleware } = require("../middleware/session")
+
 const router = express.Router();
 
 const { getComercios, getComercio, loginComercio } = require('../controllers/comercio');
@@ -22,7 +24,7 @@ const { validatorGetItem, validatorLoginComercio } = require('../validators/come
  *          '403':
  *              description: Error fetching merchants
  */
-router.get('/', getComercios);
+router.get('/', authMiddleware, getComercios);
 
 /**
 *   @openapi
@@ -44,7 +46,7 @@ router.get('/', getComercios);
 *          '403':
 *              description: Error fetching Merchant
 */
-router.get('/:id', validatorGetItem, getComercio);
+router.get('/:id', authMiddleware, validatorGetItem, getComercio);
 
 /** 
  * @openapi
@@ -68,6 +70,8 @@ router.get('/:id', validatorGetItem, getComercio);
  *          - bearerAuth: []
  */
 router.post('/loginComercio', checkearComercio, validatorLoginComercio, loginComercio);
+
+//checkear q el id que le paso en la peticion, sea el mismo que esta en el token.en el controller
 
 
 module.exports = router;
