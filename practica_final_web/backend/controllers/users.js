@@ -6,47 +6,6 @@ const { tokenSigUser } = require('../utils/handleJwt')
 const jwt = require('jsonwebtoken')
 
 /**
- * Obtener lista de usuarios de la base de datos
- * @param {*} req
- * @param {*} res
- */
-
-const getItems = async (req, res) => {
-
-    try {
-    
-        const data = await usersModel.find({})
-        res.status(200).send(data)
-
-    } catch (err) {
-
-        //console.log(err)
-        handleHttpError(res, 'ERROR_GET_ITEMS')
-    }
-}
-
-/**
- * Obtener usuario de la base de datos
- * @param {*} req
- * @param {*} res
- */
-
-const getItem = async (req, res) => {
-
-    try {
-
-        const { id } = matchedData(req)
-        const data = await usersModel.findById(id)
-        res.status(200).send(data)
-
-    } catch (err) {
-
-        //console.log(err)
-        handleHttpError(res, "ERROR_GET_ITEM")
-    }
-}
-
-/**
  * Obtener usuario de la base de datos
  * @param {*} req
  * @param {*} res
@@ -152,4 +111,4 @@ const deleteItem = async (req, res) => {
 
 
 
-module.exports = { getItems, getItem, getUser, updateItem, deleteItem, updateItem };
+module.exports = { getUser, updateItem, deleteItem, updateItem };
