@@ -16,13 +16,12 @@ const { validatorRegister, validatorLogin } = require("../validators/auth")
 *           content: 
 *               application/json: 
 *                   schema:
-*                       $ref: "#/components/schemas/register"          
+*                       $ref: "#/components/schemas/registerUser"          
 *       responses:
 *           '200':
 *               description: Returns the inserted object
 *           '401':
 *               description: Validation error 
-* 
 *       security:
 *         - bearerAuth: []
 */
@@ -40,7 +39,7 @@ router.post("/register", validatorRegister, registerControl)
 *           content: 
 *               application/json: 
 *                   schema:
-*                       $ref: "#/components/schemas/login"          
+*                       $ref: "#/components/schemas/loginUser"          
 *       responses:
 *           '200':
 *               description: Returns the token and the user data
