@@ -8,14 +8,14 @@ POST http://localhost:3000/api/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombreUsuario": "Usuario 3",
-    "emailUsuario": "usuario3@gmail.com",
-    "passwordUsuario": "hola67890",
+    "nombreUsuario": "Usuario 2",
+    "emailUsuario": "usuario2@gmail.com",
+    "passwordUsuario": "1234578P",
     "edadUsuario": 22,
     "sexoUsuario": "mujer",
     "ciudadUsuario": "Madrid",
     "interesesUsuario": [
-        "Interes 3"
+        "Interes 2"
     ],
     "permiteOfertas": false
 }
@@ -50,19 +50,19 @@ GET http://localhost:3000/api/users/user/Madrid
 
 ###
 
-PUT http://localhost:3000/api/users/66432314b2dff40fa8b52c98 HTTP/1.1
+PUT http://localhost:3000/api/users/664651b2f3abeab31e1fb65e HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQzMjMxNGIyZGZmNDBmYThiNTJjOTgiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTU2NzU5MjQsImV4cCI6MTcxNTY4MzEyNH0.ofxHyCzsmfMSoN2nM5DtFstBcr-ufzpDKHhfcde9So0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5ZDUyZjYwNmQ3YThmMWE3ZmYiLCJlbWFpbCI6InVzdWFyaW8xQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNTg4Mjg1MywiZXhwIjoxNzE1ODkwMDUzfQ.Ep-YtZucT2XU-vpFAKurPzLNTz6vZD0-8-xzCZts9pk
 
 { 
-    "nombreUsuario": "Usuario 3",
-    "emailUsuario": "usuario3@gmail.com",
-    "passwordUsuario": "hola67890",
+    "nombreUsuario": "Usuario 2",
+    "emailUsuario": "usuario2@gmail.com",
+    "passwordUsuario": "1234578P",
     "edadUsuario": 22,
     "sexoUsuario": "mujer",
     "ciudadUsuario": "Madrid",
     "interesesUsuario": [
-        "Interes 3"
+        "Interes 2"
     ],
     "permiteOfertas": true
 }

@@ -2,11 +2,11 @@
 
 POST http://localhost:3000/api/admin/crearComercio HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5ZDUyZjYwNmQ3YThmMWE3ZmYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTU4Njk5ODIsImV4cCI6MTcxNTg3NzE4Mn0.SDiqFb3W8Mq__bwhMiQsiBufjRBMyz8f0lt5warlIjo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5ZDUyZjYwNmQ3YThmMWE3ZmYiLCJlbWFpbCI6InVzdWFyaW8xQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcxNTg4Mjg1MywiZXhwIjoxNzE1ODkwMDUzfQ.Ep-YtZucT2XU-vpFAKurPzLNTz6vZD0-8-xzCZts9pk
 
 {
     "nombreComercio": "Comercio 2",
-    "cifComercio": "123456972k",
+    "cifComercio": "123456789k",
     "direccionComercio": "Calle 2",
     "emailComercio": "comercio2@gmail.com",
     "passwordComercio": "12345678",
@@ -14,17 +14,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5Z
 }
 
 ### MODIFICACION DE UN COMERCIO CON UN USUARIO QUE ES ADMINISTRADOR
-PUT http://localhost:3000/api/admin/663c0cfd86da146514813301 HTTP/1.1
+PUT http://localhost:3000/api/admin/6646301747eeb5b12c34ef11 HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYjc5ZDUyZjYwNmQ3YThmMWE3ZmYiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTU4Njk5ODIsImV4cCI6MTcxNTg3NzE4Mn0.SDiqFb3W8Mq__bwhMiQsiBufjRBMyz8f0lt5warlIjo
 
 {
-    "nombreComercio": "Comercio 1",
-    "cifComercio": "12345678",
-    "direccionComercio": "Calle 1",
-    "emailComercio": "comercio1@gmail.com",
-    "passwordComercio": "hola12345",
-    "telefonoComercio": "611452480"   
+    "nombreComercio": "Comercio2",
+    "cifComercio": "123456972k",
+    "direccionComercio": "Calle 2",
+    "emailComercio": "comercio2@gmail.com",
+    "passwordComercio": "12345678",
+    "telefonoComercio": "911542879"
 }
 
 ###
