@@ -1,21 +1,23 @@
 GET http://localhost:3000/api/users
 
+### HACER UN GET, CON TOKEN DE COMERCIO PARA LISTAR USUARIOS QUE PERMITAN RECIBIR OFERTAS
+
 ###
 
 POST http://localhost:3000/api/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombreUsuario": "Usuario 1",
-    "emailUsuario": "usuario1@gmail.com",
-    "passwordUsuario": "12345678",
+    "nombreUsuario": "Usuario 3",
+    "emailUsuario": "usuario3@gmail.com",
+    "passwordUsuario": "hola67890",
     "edadUsuario": 22,
-    "sexoUsuario": "Hombre",
+    "sexoUsuario": "mujer",
     "ciudadUsuario": "Madrid",
     "interesesUsuario": [
-        "Interes 1"
+        "Interes 3"
     ],
-    "permiteOfertas": true
+    "permiteOfertas": false
 }
 
 ### USUARIO NO ADMIN
@@ -48,19 +50,19 @@ GET http://localhost:3000/api/users/user/Madrid
 
 ###
 
-PUT http://localhost:3000/api/users/663ba03182c608cc33ffacf7 HTTP/1.1
+PUT http://localhost:3000/api/users/66432314b2dff40fa8b52c98 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjNiYTAzMTgyYzYwOGNjMzNmZmFjZjciLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTUyMDY0NDYsImV4cCI6MTcxNTIxMzY0Nn0.bT5qaP-pPW1en7ERzot7knl4fXB17ZStjKPEyxfPrI4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjQzMjMxNGIyZGZmNDBmYThiNTJjOTgiLCJyb2xlIjoidXN1YXJpb1JlZ2lzdHJhZG8iLCJpYXQiOjE3MTU2NzU5MjQsImV4cCI6MTcxNTY4MzEyNH0.ofxHyCzsmfMSoN2nM5DtFstBcr-ufzpDKHhfcde9So0
 
-{
-    "nombreUsuario": "Usuario 2",
-    "emailUsuario": "usuario2@gmail.com",
-    "passwordUsuario": "1234578P",
+{ 
+    "nombreUsuario": "Usuario 3",
+    "emailUsuario": "usuario3@gmail.com",
+    "passwordUsuario": "hola67890",
     "edadUsuario": 22,
-    "sexoUsuario": "Hombre",
-    "ciudadUsuario": "Ciudad 1",
+    "sexoUsuario": "mujer",
+    "ciudadUsuario": "Madrid",
     "interesesUsuario": [
-        "Interes 1"
+        "Interes 3"
     ],
     "permiteOfertas": true
 }
