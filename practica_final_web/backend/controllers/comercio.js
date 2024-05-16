@@ -5,6 +5,8 @@ const { handleHttpError } = require('../utils/handleError')
 const { tokenSigComercio } = require("../utils/handleJwt")
 const { encrypt, compare } = require("../utils/handlePassword")
 
+const jwt = require('jsonwebtoken')
+
 /**
  * Obtener lista de comercios de la base de datos sin ningun tipo de fitro
  * 
@@ -81,7 +83,7 @@ const loginComercio = async (req, res) => {
         res.send(data)
 
     } catch (err) {
-        console.log(err)
+        //console.log(err)
         handleHttpError(res, "ERROR_LOGIN_COMERCIO")
     }
 }
@@ -126,6 +128,22 @@ const updateComercio = async (req, res) => {
 
         const { id, ...body } = matchedData(req)
 
+        const token = req.headers.authorization.split(' ').pop()
+        const tokenDecodificado = jwt.decode(token)
+
+        //Comprobar que el id del token y el id de pagina del merchant coinciden
+        const comercio = await paginaModel.findOne({ idPagina: tokenDecodificado._id })
+        
+        if (!comercio) {
+            handleHttpError(res, "THERE IS NO MERCHANT`S PAGES", 404)
+            return
+        }
+
+        if (comercio._id.toString() != id) {
+            handleHttpError(res, "ID_MERCHANT_DOES_NOT_MATCH", 401)
+            return
+        }
+
         const data = await paginaModel.findByIdAndUpdate({ _id: id }, body);
 
         if (!data)
@@ -144,6 +162,7 @@ const updateComercio = async (req, res) => {
         }
 
     } catch (err) {
+        
         //console.log(err) 
         handleHttpError(res, 'ERROR_UPDATE_COMERCIOS')
     }
