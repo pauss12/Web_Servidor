@@ -6,6 +6,7 @@ const { authMiddleware } = require("../middleware/session")
 const { createComercio, updateComercioAdmin } = require('../controllers/admin');
 const { deleteComercio } = require('../controllers/comercio');
 const { validatorUpdateItemAdmin, validatorGetItem } = require('../validators/comercio');
+
 const { validatorCreateComercio } = require('../validators/admin');
 
 
