@@ -5,6 +5,8 @@ const { handleHttpError } = require('../utils/handleError')
 const { tokenSigComercio } = require("../utils/handleJwt")
 const { encrypt, compare } = require("../utils/handlePassword")
 
+const jwt = require('jsonwebtoken')
+
 //Funcion para crear un comercio
 const createComercio = async (req, res) => {
 
@@ -29,7 +31,7 @@ const createComercio = async (req, res) => {
 
     } catch (err) {
 
-        //console.log(err)
+        console.log(err)
         handleHttpError(res, 'ERROR_CREATE_COMERCIO')
     }
 }
@@ -37,7 +39,8 @@ const createComercio = async (req, res) => {
 const updateComercioAdmin = async (req, res) => {
 
     try {
-            
+
+        //Antes de ponerme a actualizar el comercio; tengo que comprobar que el id del comercio que me pasan en la URL es el mismo que el que me pasan en el token
         const body = matchedData(req)
 
         //Obtengo el user de la BBDD con el id que me llega en la request
